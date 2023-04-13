@@ -876,7 +876,7 @@ void ball(){
     ballSound();
     if (ballCount == 4){
         Sleep(1000);
-        printf("Runner take your base!\n");
+        printf("Runner take your base!\n\n");
         baseCheck();
     }
     else{
