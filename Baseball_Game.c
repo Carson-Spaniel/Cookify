@@ -203,9 +203,6 @@ void playBall(){
         
         printf("Hit it!\n");
         printf("\033[0m");
-        if (bot != 0){
-            Beep(659.255,500);
-        }
         
         
         int c = 0;
