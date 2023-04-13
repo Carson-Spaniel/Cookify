@@ -71,7 +71,6 @@ int main(){
 }
 
 void menu(){
-    startGame = 0;
     printf("------- Menu ------- \n\n");
     printf("1.\t");
     printf("\033[1;31m");
@@ -204,6 +203,10 @@ void playBall(){
         
         printf("Hit it!\n");
         printf("\033[0m");
+        if (bot != 0){
+            Beep(659.255,500);
+        }
+        
         
         int c = 0;
         int cbot = 0;
@@ -241,17 +244,17 @@ void playBall(){
                 exit(0);
             }
             else{
-                printf("Press SPACE to hit it!\n");
+                printf("Press any key to hit it!\n");
                 c = getch();
                 _ftime(&end);
             }
         }
         int diff;
         if(bot == 1 && inningHalf == 1){
-            diff = rand() % (550 - 150 + 1) + 150;
+            diff = rand() % (500 - 250 + 1) + 250;
         }
         else if (bot == 2){
-            diff = rand() % (550 - 150 + 1) + 150;
+            diff = rand() % (500 - 250 + 1) + 250;
         }
         else{
             diff = (int) (1000.0 * (end.time - start.time) + (end.millitm - start.millitm));
@@ -295,7 +298,7 @@ void hit(){
     if (inningNum > 18){
         b = 15;
     }
-    else if(inningNum == 17 && ballCount == 3 && strikeCount == 2 && outCount == 2 && onBase == 3 && team1Score == team2Score){
+    else if(inningNum == 17 && ballCount == 3 && strikeCount == 2 && outCount == 2 && onBase == 3 && team1Score <= team2Score){
         b = 5;
     }
     int hrChance = (((int)rand()));
@@ -373,11 +376,15 @@ void hit(){
         Sleep(1000);
     }
     else{
+        int dropC = 8;
+        if (inningNum > 18){
+            dropC = 5;
+        }
         int hitR = ((int)rand());
         hitR = hitR % 5;
         if (hitR == 0){
             int catchC = ((int)rand());
-            catchC = catchC % 8;
+            catchC = catchC % dropC;
             ballCount = 0;
             strikeCount = 0;
             printf("Thats a pop fly.\n");
@@ -409,7 +416,7 @@ void hit(){
         }
         else if(hitR == 1){
             int catchC = ((int)rand());
-            catchC = catchC % 8;
+            catchC = catchC % dropC;
             ballCount = 0;
             strikeCount = 0;
             printf("Thats a hit!\n");
@@ -494,7 +501,7 @@ void hit(){
                             printf("The runner is out.\n");
                             outCount += 1;
                             if(doubleP == 1){
-                                printf("Its a double play!\n");
+                                printf("Its a Double play!\n");
                             }
                             rally();
                             outCheck();
@@ -829,16 +836,20 @@ void tutorial(){
     Sleep(500);
     printf("When it tells you to hit the ball\n");
     Sleep(750);
-    printf("Press SPACE to hit it ");
-    Sleep(1000);
-    printf("or Press p to pause the game.\n\n");
-    Sleep(1000);
-    /*printf("");
+    printf("Press any key to hit it ");
     Sleep(500);
-    printf(".");
+    printf("or Press p to pause the game.\n");
+    Sleep(1000);
+    printf("This game is based on timing,");
+    Sleep(1000);
+    printf(" so don't swing too fast or too slow.\n");
     Sleep(500);
-    printf(".");
-    Sleep(1000);*/
+    printf(".\n");
+    Sleep(500);
+    printf(".\n");
+    Sleep(500);
+    printf(".\n");
+    Sleep(500);
     printf("Press 1 to continue...\n");
     while(c != '1'){
         c = getch();
@@ -890,7 +901,7 @@ void outCheck(){
     ballCount = 0;
     if (outCount >= 3){
         Sleep(1000);
-        printf("And thats the end of the ");
+        printf("\n\nAnd thats the end of the ");
         newInning = 0;
         inningCheck();
         inningNum += 1;
@@ -941,8 +952,8 @@ void baseCheck(){
     }
     else{
         onBase += 1;
-        onBaseSound();
     }
+    onBaseSound();
 }
 
 void inningCheck(){
@@ -977,14 +988,18 @@ void inningCheck(){
         printf("And thats the ballgame!\n\n");
         Sleep(1000);
         if (team1Score>team2Score && bot == 1){
-            printf("The Bot wins the game!\n");
+            printf("Bot 1 wins the game!\n");
             Sleep(500);
         }
-        else if (team1Score>team2Score && bot != 1){
+        else if (team1Score>team2Score && bot == 0){
             printf("Player 2 wins the game!\n");
             Sleep(500);
         }
-        else{
+        else if(team2Score>team1Score && bot == 2){
+            printf("Bot 2 wins the game!\n");
+            Sleep(500);
+        }
+        else {
             printf("Player 1 wins the game!\n");
             Sleep(500);
         }
@@ -1001,6 +1016,22 @@ void gameEndCheck(){
             endGame = 1;
             printf("And thats the ballgame!\n\n");
             Sleep(1000);
+            if (team1Score>team2Score && bot == 1){
+                printf("Bot 1 wins the game!\n");
+                Sleep(500);
+            }
+            else if (team1Score>team2Score && bot == 0){
+                printf("Player 2 wins the game!\n");
+                Sleep(500);
+            }
+            else if(team2Score>team1Score && bot == 2){
+                printf("Bot 2 wins the game!\n");
+                Sleep(500);
+            }
+            else {
+                printf("Player 1 wins the game!\n");
+                Sleep(500);
+            }
             printf("With the final score being %d to %d.\n",team1Score, team2Score);
             Sleep(1000);
             printf("Thanks for playing!\n\n\n");
@@ -1011,14 +1042,18 @@ void gameEndCheck(){
             printf("And thats the ballgame!\n\n");
             Sleep(1000);
             if (team1Score>team2Score && bot == 1){
-                printf("The Bot wins the game!\n");
+                printf("Bot 1 wins the game!\n");
                 Sleep(500);
             }
-            else if (team1Score>team2Score && bot != 1){
+            else if (team1Score>team2Score && bot == 0){
                 printf("Player 2 wins the game!\n");
                 Sleep(500);
             }
-            else{
+            else if(team2Score>team1Score && bot == 2){
+                printf("Bot 2 wins the game!\n");
+                Sleep(500);
+            }
+            else {
                 printf("Player 1 wins the game!\n");
                 Sleep(500);
             }
@@ -1034,14 +1069,18 @@ void gameEndCheck(){
             printf("And thats the ballgame!\n\n");
             Sleep(1000);
             if (team1Score>team2Score && bot == 1){
-                printf("The Bot wins the game!\n");
+                printf("Bot 1 wins the game!\n");
                 Sleep(500);
             }
-            else if (team1Score>team2Score && bot != 1){
+            else if (team1Score>team2Score && bot == 0){
                 printf("Player 2 wins the game!\n");
                 Sleep(500);
             }
-            else{
+            else if(team2Score>team1Score && bot == 2){
+                printf("Bot 2 wins the game!\n");
+                Sleep(500);
+            }
+            else {
                 printf("Player 1 wins the game!\n");
                 Sleep(500);
             }
