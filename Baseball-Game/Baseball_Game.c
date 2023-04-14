@@ -45,7 +45,7 @@ int user6 = 1000;
 
 /* Bot Difficulty */
 int bot1 = 250;
-int bot2 = 500;
+int bot2 = 600;
 
 /* Defines functions */
 void menu();
@@ -160,7 +160,7 @@ void botDif(){
                 break;
             case '2':
                 bot1 = 250;
-                bot2 = 500;
+                bot2 = 600;
                 printf("Bot Difficulty: ");
                 printf("Normal\n\n");
                 Sleep(1000);
