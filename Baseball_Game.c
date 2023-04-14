@@ -1,3 +1,10 @@
+/** 
+ * This is my Baseball game.
+ * I created it for fun while I was traveling to Kansas on the plane.
+ * Date: 4/10/23
+ * Author: Carson Spaniel
+ * 
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
