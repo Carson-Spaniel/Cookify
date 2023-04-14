@@ -297,6 +297,7 @@ void playBall(){
     reset();
     char player;
     while(player != '1' && player != '2' && player != '3' && player != '4'){
+        printf("\n------- Play ball ------- \n\n");
         printf("1. Single Player\n");
         printf("2. Two Player\n");
         printf("3. Simulation\n");
