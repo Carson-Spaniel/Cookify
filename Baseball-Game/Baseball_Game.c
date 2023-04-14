@@ -305,11 +305,8 @@ void playBall(){
     else if(player == '3'){
         bot = 2;
     }
-    //inningNum = 13; //16 sets the inning to top of the 9th
+    //inningNum = 17; //16 sets the inning to top of the 9th
     while(endGame != 1){
-        if(endGame == 1){
-            exit(0);
-        }
         if(startGame == 0){
             tutorial();
             charge();
@@ -342,18 +339,19 @@ void playBall(){
             ballCount = 0;
             //printf("Inning number is: %d\n",inningNum);
             printf("The score is ");
-            if(bot != 0){
-                printf("Bot 1: ");
-            }
-            else{
-                printf("Player 2: ");
-            }
             if(bot == 2){
-                printf("%d to Bot 2: %d at the ",team1Score, team2Score);
+                printf("Bot 1: %d to ",team2Score);
             }
             else{
-                printf("%d to Player 1: %d at the ",team1Score, team2Score);
+                printf("Player 1: %d to ",team2Score);
             }
+            if(bot != 0){
+                printf("Bot 2: %d at the ",team1Score);
+            }
+            else{
+                printf("Player 2: %d at the ",team1Score);
+            }
+
             
             inningCheck();
             Sleep(750);
@@ -561,17 +559,17 @@ void hit(){
         }
         Sleep(1000);
         printf("The score is ");
-        if(bot != 0){
-            printf("Bot 1: ");
-        }
-        else{
-            printf("Player 2: ");
-        }
         if(bot == 2){
-            printf("%d to Bot 2: %d at the ",team1Score, team2Score);
+            printf("Bot 1: %d to ",team2Score);
         }
         else{
-            printf("%d to Player 1: %d at the ",team1Score, team2Score);
+            printf("Player 1: %d to ",team2Score);
+        }
+        if(bot != 0){
+            printf("Bot 2: %d at the ",team1Score);
+        }
+        else{
+            printf("Player 2: %d at the ",team1Score);
         }
         inningCheck();
         Sleep(1000);
@@ -1041,6 +1039,10 @@ void tutorial(){
     Sleep(500);
     printf("or Press p to pause the game.\n");
     Sleep(1000);
+    printf("Don't press the key more than once, ");
+    Sleep(500);
+    printf("or it'll carry over into the next bat.\n");
+    Sleep(1000);
     printf("This game is based on timing,");
     Sleep(1000);
     printf(" so don't swing too fast or too slow.\n");
@@ -1051,8 +1053,8 @@ void tutorial(){
     Sleep(500);
     printf(".\n");
     Sleep(500);
-    printf("Press 1 to continue...\n");
-    while(c != '1'){
+    printf("Press SPACE to continue...\n");
+    while(c != ' '){
         c = getch();
     }
     printf("\n\n");
@@ -1136,17 +1138,17 @@ void baseCheck(){
         }
         Sleep(1000);
         printf("The score is ");
-        if(bot != 0){
-            printf("Bot 1: ");
-        }
-        else{
-            printf("Player 2: ");
-        }
         if(bot == 2){
-            printf("%d to Bot 2: %d at the ",team1Score, team2Score);
+            printf("Bot 1: %d to ",team2Score);
         }
         else{
-            printf("%d to Player 1: %d at the ",team1Score, team2Score);
+            printf("Player 1: %d to ",team2Score);
+        }
+        if(bot != 0){
+            printf("Bot 2: %d at the ",team1Score);
+        }
+        else{
+            printf("Player 2: %d at the ",team1Score);
         }
         inningCheck();
         Sleep(1000);
@@ -1188,16 +1190,16 @@ void inningCheck(){
         endGame = 1;
         printf("And thats the ballgame!\n\n");
         Sleep(1000);
-        if (team1Score>team2Score && bot == 1){
-            printf("Bot 1 wins the game!\n");
+        if (team1Score>team2Score && bot == 2){
+            printf("Bot 2 wins the game!\n");
             Sleep(500);
         }
         else if (team1Score>team2Score && bot == 0){
             printf("Player 2 wins the game!\n");
             Sleep(500);
         }
-        else if(team2Score>team1Score && bot == 2){
-            printf("Bot 2 wins the game!\n");
+        else if(team2Score>team1Score && bot == 1){
+            printf("Bot 1 wins the game!\n");
             Sleep(500);
         }
         else {
@@ -1207,7 +1209,7 @@ void inningCheck(){
         printf("With the final score being %d to %d.\n",team1Score, team2Score);
         Sleep(1000);
         printf("Thanks for playing!\n\n\n");
-        exit(0);
+        //exit(0);
     }
 }
 
@@ -1217,16 +1219,16 @@ void gameEndCheck(){
             endGame = 1;
             printf("And thats the ballgame!\n\n");
             Sleep(1000);
-            if (team1Score>team2Score && bot == 1){
-                printf("Bot 1 wins the game!\n");
+            if (team1Score>team2Score && bot == 2){
+                printf("Bot 2 wins the game!\n");
                 Sleep(500);
             }
             else if (team1Score>team2Score && bot == 0){
                 printf("Player 2 wins the game!\n");
                 Sleep(500);
             }
-            else if(team2Score>team1Score && bot == 2){
-                printf("Bot 2 wins the game!\n");
+            else if(team2Score>team1Score && bot == 1){
+                printf("Bot 1 wins the game!\n");
                 Sleep(500);
             }
             else {
@@ -1236,22 +1238,22 @@ void gameEndCheck(){
             printf("With the final score being %d to %d.\n",team1Score, team2Score);
             Sleep(1000);
             printf("Thanks for playing!\n\n\n");
-            exit(0);
+            //exit(0);
         }
         else if(inningNum == 16 && team1Score > team2Score){
             endGame = 1;
             printf("And thats the ballgame!\n\n");
             Sleep(1000);
-            if (team1Score>team2Score && bot == 1){
-                printf("Bot 1 wins the game!\n");
+            if (team1Score>team2Score && bot == 2){
+                printf("Bot 2 wins the game!\n");
                 Sleep(500);
             }
             else if (team1Score>team2Score && bot == 0){
                 printf("Player 2 wins the game!\n");
                 Sleep(500);
             }
-            else if(team2Score>team1Score && bot == 2){
-                printf("Bot 2 wins the game!\n");
+            else if(team2Score>team1Score && bot == 1){
+                printf("Bot 1 wins the game!\n");
                 Sleep(500);
             }
             else {
@@ -1261,7 +1263,7 @@ void gameEndCheck(){
             printf("With the final score being %d to %d.\n",team1Score, team2Score);
             Sleep(1000);
             printf("Thanks for playing!\n\n\n");
-            exit(0);
+            //exit(0);
         }
     }
     else{
@@ -1269,16 +1271,16 @@ void gameEndCheck(){
             endGame = 1;
             printf("And thats the ballgame!\n\n");
             Sleep(1000);
-            if (team1Score>team2Score && bot == 1){
-                printf("Bot 1 wins the game!\n");
+            if (team1Score>team2Score && bot == 2){
+                printf("Bot 2 wins the game!\n");
                 Sleep(500);
             }
             else if (team1Score>team2Score && bot == 0){
                 printf("Player 2 wins the game!\n");
                 Sleep(500);
             }
-            else if(team2Score>team1Score && bot == 2){
-                printf("Bot 2 wins the game!\n");
+            else if(team2Score>team1Score && bot == 1){
+                printf("Bot 1 wins the game!\n");
                 Sleep(500);
             }
             else {
@@ -1288,7 +1290,7 @@ void gameEndCheck(){
             printf("With the final score being %d to %d.\n",team1Score, team2Score);
             Sleep(1000);
             printf("Thanks for playing!\n\n\n");
-            exit(0);
+            //exit(0);
         }
     }
 }
@@ -1299,6 +1301,7 @@ void count(){
         Sleep(1000);
     }
     printf("The count is %d-%d.\n\n",ballCount,strikeCount);
+    Sleep(1000);
 }
 
 void reset(){
