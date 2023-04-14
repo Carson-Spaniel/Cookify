@@ -321,7 +321,6 @@ void playBall(){
             Sleep(1000);
         }
     }
-    fflush(stdout);
     if (endGame != 1){
         tutorial();
     }
