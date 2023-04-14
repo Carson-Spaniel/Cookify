@@ -215,12 +215,12 @@ void userDif(){
                 Sleep(1000);
                 break;
             case '3':
-                user1 = 325;
-                user2 = 350;
-                user3 = 400;
-                user4 = 500;
-                user5 = 650;
-                user6 = 675;
+                user1 = 200;
+                user2 = 300;
+                user3 = 350;
+                user4 = 450;
+                user5 = 600;
+                user6 = 700;
                 printf("User Difficulty: ");
                 printf("Hard\n\n");
                 Sleep(1000);
