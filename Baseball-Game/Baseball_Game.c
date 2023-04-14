@@ -311,6 +311,7 @@ void playBall(){
         }
         else if(player == '3'){
             bot = 2;
+            startGame = 1;
         }
         else if(player == '4'){
             endGame = 1;
@@ -320,10 +321,10 @@ void playBall(){
             Sleep(1000);
         }
     }
+    tutorial();
     //inningNum = 17; //16 sets the inning to top of the 9th
     while(endGame != 1){
         if(startGame == 0){
-            tutorial();
             charge();
             printf("Play ball!\n\n");
             Sleep(2000);
