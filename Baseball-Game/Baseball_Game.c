@@ -209,7 +209,7 @@ void playBall(){
         }
         
         printf("Hit it!\n");
-        printf("\033[0m");
+        //printf("\033[0m");
         
         
         int c = 0;
