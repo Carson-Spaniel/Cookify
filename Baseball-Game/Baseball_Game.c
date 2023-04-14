@@ -12,11 +12,14 @@
 #include <math.h> // needed for ceil()
 #include <Windows.h> // needed for Sleep()
 
-#include <sys/timeb.h>
+#include <sys/timeb.h>// needed for timing stuff
 
 #include <conio.h> // needed for getch()
 
 /* Global Variables */
+int sound = 1;
+int pause = 0;
+
 int bot = 0;
 int inningNum = 0;
 int inning = 0;
@@ -32,9 +35,24 @@ int endGame = 0;
 int onBase = 0;
 int swing = 0;
 
+/* User Difficulty */
+int user1 = 150;
+int user2 = 250;
+int user3 = 300;
+int user4 = 500;
+int user5 = 700;
+int user6 = 1000;
+
+/* Bot Difficulty */
+int bot1 = 250;
+int bot2 = 500;
+
 /* Defines functions */
 void menu();
 void settings();
+void userDif();
+void botDif();
+void soundSet();
 void playBall();
 void tutorial();
 void strike();
@@ -67,49 +85,211 @@ int main(){
     //printf("\033[1;31m");
     printf("\nWelcome to Big League Slugger!\n\n");
     //printf("\033[0m");
-    
-    //charge();
 
-    //rally();
-    //inningChange();
     menu();
-    
-
 }
 
 void menu(){
-    printf("------- Menu ------- \n\n");
-    printf("1.\t");
-    //printf("\033[1;31m");
-    printf("Play ball!\n");
-    //printf("\033[0m");
-    printf("2.\tSettings\n");
-    printf("3.\tQuit game\n\n");
-    char choice = getch();
-    switch(choice){
-        case '1':
-            playBall();
-            break;
-        case '2':
-            printf("Setting menu\n");
-            break;
-        case '3':
-            printf("Until next time Slugger!\n");
-            Sleep(500);
-            printf("Wait! ");
-            Sleep(1000);
-            printf("One last thing before you go. ");
-            Sleep(2000);
-            printf("Don't forget your glove!\n");
-            Sleep(1000);
-            printf("\nSee you later!");
-            Sleep(1000);
-            exit(0);
-            break;
-        default:
-            printf("Invalid option\n");
-            menu();
-            break;
+    int settings1 = 1;
+    while (settings1){
+        if(pause == 1){
+            printf("------- Pause ------- \n\n");
+        }
+        else{
+            printf("------- Menu ------- \n\n");
+        }
+        printf("1.\t");
+        if(pause == 1){
+            printf("Resume\n");
+        }
+        else{
+            //printf("\033[1;31m");
+            printf("Play ball!\n");
+            //printf("\033[0m");
+        }
+        printf("2.\tSettings\n");
+        printf("3.\tQuit game\n\n");
+        char choice = getch();
+        switch(choice){
+            case '1':
+                if (pause == 1){
+                    settings1 = 0;
+                }
+                else{
+                    playBall();
+                }
+                break;
+            case '2':
+                settings();
+                break;
+            case '3':
+                printf("Until next time Slugger!\n");
+                Sleep(500);
+                printf("Wait! ");
+                Sleep(1000);
+                printf("One last thing before you go. ");
+                Sleep(2000);
+                printf("Don't forget your glove!\n");
+                Sleep(1000);
+                printf("\nSee you later!");
+                Sleep(1000);
+                exit(0);
+            default:
+                printf("Invalid option\n");
+                break;
+        }
+    }
+}
+
+void botDif(){
+    int settings = 1;
+    while(settings){
+        printf("------- Bot Difficulty ------- \n\n");
+        printf("1.\tEasy\n");
+        printf("2.\tNormal\n");
+        printf("3.\tHard\n");
+        printf("4.\tBack\n\n");
+        char choice = getch();
+        switch(choice){
+            case '1':
+                bot1 = 0;
+                bot2 = 1100;
+                printf("Bot Difficulty: ");
+                printf("Easy\n\n");
+                Sleep(1000);
+                break;
+            case '2':
+                bot1 = 250;
+                bot2 = 500;
+                printf("Bot Difficulty: ");
+                printf("Normal\n\n");
+                Sleep(1000);
+                break;
+            case '3':
+                bot1 = 300;
+                bot2 = 500;
+                printf("Bot Difficulty: ");
+                printf("Hard\n\n");
+                Sleep(1000);
+                break;
+            case '4':
+                settings = 0;
+                break;
+            default:
+                printf("Invalid option\n");
+                break;
+        }
+    }
+}
+
+void userDif(){
+    int settings = 1;
+    while(settings){
+        printf("------- User Difficulty ------- \n\n");
+        printf("1.\tEasy\n");
+        printf("2.\tNormal\n");
+        printf("3.\tHard\n");
+        printf("4.\tBack\n\n");
+        char choice = getch();
+        switch(choice){
+            case '1':
+                user1 = 100;
+                user2 = 150;
+                user3 = 200;
+                user4 = 550;
+                user5 = 800;
+                user6 = 1100;
+                printf("User Difficulty: ");
+                printf("Easy\n\n");
+                Sleep(1000);
+                break;
+            case '2':
+                user1 = 150;
+                user2 = 250;
+                user3 = 300;
+                user4 = 500;
+                user5 = 700;
+                user6 = 1000;
+                printf("User Difficulty: ");
+                printf("Normal\n\n");
+                Sleep(1000);
+                break;
+            case '3':
+                user1 = 325;
+                user2 = 350;
+                user3 = 400;
+                user4 = 500;
+                user5 = 650;
+                user6 = 675;
+                printf("User Difficulty: ");
+                printf("Hard\n\n");
+                Sleep(1000);
+                break;
+            case '4':
+                settings = 0;
+                break;
+            default:
+                printf("Invalid option\n");
+                break;
+        }
+    }
+}
+
+void soundSet(){
+    int settings = 1;
+    while(settings){
+        printf("------- Sound Settings ------- \n\n");
+        printf("1.\tOn\n");
+        printf("2.\tOff\n");
+        printf("3.\tBack\n\n");
+        char choice = getch();
+        switch(choice){
+            case '1':
+                sound = 1;
+                printf("Sound On\n\n");
+                Sleep(1000);
+                break;
+            case '2':
+                sound = 0;
+                printf("Sound Off\n\n");
+                Sleep(1000);
+                break;
+            case '3':
+                settings = 0;
+                break;
+            default:
+                printf("Invalid option\n");
+                break;
+        }
+    }
+}
+
+void settings(){
+    int settings = 1;
+    while(settings){
+        printf("------- Settings ------- \n\n");
+        printf("1.\tUser Difficulty\n");
+        printf("2.\tBot Difficulty\n");
+        printf("3.\tSounds\n");
+        printf("4.\tBack\n\n");
+        char choice = getch();
+        switch(choice){
+            case '1':
+                userDif();
+                break;
+            case '2':
+                botDif();
+                break;
+            case '3':
+                soundSet();
+                break;
+            case '4':
+                settings = 0;
+                break;
+            default:
+                printf("Invalid option\n");
+                break;
+        }
     }
 }
 
@@ -232,61 +412,70 @@ void playBall(){
             _ftime(&end);
         }
         if(c == 'p' || c == 'P'){
-            printf("\nQuit game?\n1. Yes\n2. No\n");
-            c = getch();
-            if(c == '1'){
-                printf("\nUntil next time Slugger!\n");
-                Sleep(500);
-                printf("Wait! ");
-                Sleep(1000);
-                printf("One last thing before you go. ");
-                Sleep(2000);
-                printf("Don't forget your glove!\n");
-                Sleep(1000);
-                printf("\nSee you later!");
-                Sleep(1000);
-                exit(0);
+            pause = 1;
+            menu();
+            if (bot == 1 && ToB == 1){
+                Sleep(25);
+            }
+            else if (bot == 2){
+                Sleep(25);
             }
             else{
-                printf("Press any key to hit it!\n");
+                int wait = (((int)rand()));
+                wait = wait % 1500;
+                Sleep(wait);
+            }
+        
+            printf("Hit it!\n");
+            _ftime(&start);
+
+            if(bot == 1 && inningHalf == 1){
+                cbot = (((int)rand()));
+                cbot = cbot % 4;
+            }
+            else if(bot == 2){
+                cbot = (((int)rand()));
+                cbot = cbot % 4;
+            }
+            else{
                 c = getch();
                 _ftime(&end);
             }
         }
         int diff;
         if(bot == 1 && inningHalf == 1){
-            diff = rand() % (500 - 250 + 1) + 250;
+            diff = rand() % (bot2 - bot1 + 1) + bot1;
         }
         else if (bot == 2){
-            diff = rand() % (500 - 250 + 1) + 250;
+            diff = rand() % (bot2 - bot1 + 1) + bot1;
         }
         else{
             diff = (int) (1000.0 * (end.time - start.time) + (end.millitm - start.millitm));
             //printf("\nThis is the time it took to swing: %d\n",diff);
         }
         
-        if(diff < 150){
+        if(diff < user1){
             printf("He was way out in front of that one.\n");
             Sleep(500);
             strike();
         }
-        else if(diff >= 150 && diff < 250){
+        else if(diff >= user1 && diff < user2){
             printf("A little early on that one.\n");
             Sleep(500);
             foul();
         }
-        else if(diff >= 250 && diff < 300){
+        else if(diff >= user2 && diff < user3){
             strike();
         }
-        else if (diff >= 300 && diff < 500){
+        else if (diff >= user3 && diff < user4){
             hit();
         }
-        else if(diff >= 500 && diff < 700){
+        else if(diff >= user4 && diff < user5){
             printf("A little late on that one.\n");
             Sleep(500);
             foul();
         }
-        else if (diff >= 700 && diff < 1000){
+        else if (diff >= user5 && diff < user6){
             noSwing();
         }
         else{
@@ -1122,122 +1311,140 @@ void reset(){
 }
 
 void charge(){
-    Beep(440, 200);
-    Beep(587.33, 250);
-    Beep(739.989, 250);
-    Beep(880, 225);
-    Beep(739.989, 200);
-    Beep(880, 700);
-    Sleep(50);
+    if(sound){
+        Beep(440, 200);
+        Beep(587.33, 250);
+        Beep(739.989, 250);
+        Beep(880, 225);
+        Beep(739.989, 200);
+        Beep(880, 700);
+        Sleep(50);
+    }
+    
 }
 
 void rally(){
-    Beep(587.33, 250);
-    Beep(587.33, 250);
-    Beep(523.251, 175);
-    Beep(523.251, 175);
-    Beep(587.33, 250);
+    if(sound){
+        Beep(587.33, 250);
+        Beep(587.33, 250);
+        Beep(523.251, 175);
+        Beep(523.251, 175);
+        Beep(587.33, 250);
+    }
 }
 
 void inningChange(){
-    Beep(440, 400);
-    Beep(587.33, 300);
-    Beep(440, 400);
+    if(sound){
+        Beep(440, 400);
+        Beep(587.33, 300);
+        Beep(440, 400);
+    }
 }
 
 void BallGame(){
-    Beep(523.251, 250);
-    Beep(1046.502, 250);
-    Beep(880, 250);
-    Beep(783.991, 250);
-    Beep(659.255, 250);
-    Beep(783.991, 700);
-    Beep(587.33, 400);
-    Sleep(250);
-    Beep(523.251, 250);
-    Beep(1046.502, 250);
-    Beep(880, 300);
-    Beep(783.991, 250);
-    Beep(659.255, 250);
-    Beep(783.991, 700);
-    Sleep(250);
-    Beep(880, 250);
-    Beep(932.328, 250);
-    Beep(880, 250);
-    Beep(659.255, 250);
-    Beep(698.456, 250);
-    Beep(783.991, 250);
-    Beep(880, 500);
-    Beep(698.456, 250);
-    Beep(587.33, 700);
-    Sleep(250);
-    Beep(880, 400);
-    Beep(880, 250);
-    Beep(880, 250);
-    Beep(987.767, 250);
-    Beep(1046.502, 250);
-    Beep(1174.659, 250);
-    Beep(987.767, 250);
-    Beep(880, 250);
-    Beep(783.991, 250);
-    Beep(659.255, 250);
-    Beep(587.33, 250);
-    Beep(523.251, 500);
-    Sleep(250);
-    Beep(1046.502, 250);
-    Beep(880, 250);
-    Beep(783.991, 250);
-    Beep(659.255, 250);
-    Beep(783.991, 700);
-    Beep(587.33, 250);
-    Sleep(100);
-    Beep(587.33, 250);
-    Beep(523.251, 250);
-    Beep(587.33, 250);
-    Beep(659.255, 250);
-    Beep(698.456, 250);
-    Beep(783.991, 250);
-    Beep(880, 700);
-    Sleep(250);
-    Beep(880, 250);
-    Beep(987.767, 250);
-    Beep(1046.502, 500);
-    Sleep(300);
-    Beep(1046.502, 500);
-    Sleep(300);
-    Beep(1046.502, 400);
-    Beep(987.767, 250);
-    Beep(880, 250);
-    Beep(783.991, 250);
-    Beep(739.989, 250);
-    Beep(783.991, 250);
-    Beep(880, 500);
-    Beep(987.767, 700);
-    Beep(1046.502, 900);
+    if(sound){
+        Beep(523.251, 250);
+        Beep(1046.502, 250);
+        Beep(880, 250);
+        Beep(783.991, 250);
+        Beep(659.255, 250);
+        Beep(783.991, 700);
+        Beep(587.33, 400);
+        Sleep(250);
+        Beep(523.251, 250);
+        Beep(1046.502, 250);
+        Beep(880, 300);
+        Beep(783.991, 250);
+        Beep(659.255, 250);
+        Beep(783.991, 700);
+        Sleep(250);
+        Beep(880, 250);
+        Beep(932.328, 250);
+        Beep(880, 250);
+        Beep(659.255, 250);
+        Beep(698.456, 250);
+        Beep(783.991, 250);
+        Beep(880, 500);
+        Beep(698.456, 250);
+        Beep(587.33, 700);
+        Sleep(250);
+        Beep(880, 400);
+        Beep(880, 250);
+        Beep(880, 250);
+        Beep(987.767, 250);
+        Beep(1046.502, 250);
+        Beep(1174.659, 250);
+        Beep(987.767, 250);
+        Beep(880, 250);
+        Beep(783.991, 250);
+        Beep(659.255, 250);
+        Beep(587.33, 250);
+        Beep(523.251, 500);
+        Sleep(250);
+        Beep(1046.502, 250);
+        Beep(880, 250);
+        Beep(783.991, 250);
+        Beep(659.255, 250);
+        Beep(783.991, 700);
+        Beep(587.33, 250);
+        Sleep(100);
+        Beep(587.33, 250);
+        Beep(523.251, 250);
+        Beep(587.33, 250);
+        Beep(659.255, 250);
+        Beep(698.456, 250);
+        Beep(783.991, 250);
+        Beep(880, 700);
+        Sleep(250);
+        Beep(880, 250);
+        Beep(987.767, 250);
+        Beep(1046.502, 500);
+        Sleep(300);
+        Beep(1046.502, 500);
+        Sleep(300);
+        Beep(1046.502, 400);
+        Beep(987.767, 250);
+        Beep(880, 250);
+        Beep(783.991, 250);
+        Beep(739.989, 250);
+        Beep(783.991, 250);
+        Beep(880, 500);
+        Beep(987.767, 700);
+        Beep(1046.502, 900);
+    }
 }
 
 void HomeRun(){
-    Beep(659.255, 200);
-    Beep(659.255, 125);
-    Beep(659.255, 125);
-
-    Beep(880, 700);
+    if(sound){
+        Beep(659.255, 200);
+        Beep(659.255, 125);
+        Beep(659.255, 125);
+        Beep(880, 700);
+    }
 }
 
 void onBaseSound(){
-    Beep(783.991, 250);
-    Beep(880, 500);
+    if(sound){
+        Beep(783.991, 250);
+        Beep(880, 500);
+    }
 }
 
 void strikeSound(){
-    Beep(587.33, 500);
+    if(sound){
+        Beep(587.33, 500);
+    }
 }
 
 void ballSound(){
-    Beep(698.456, 500);
+    if(sound){
+        Beep(698.456, 500);
+    }
 }
 
 void foulSound(){
-    Beep(698.456, 250);
-    Beep(587.33, 500);
+    if(sound){
+        Beep(698.456, 250);
+        Beep(587.33, 500);
+    }
 }
