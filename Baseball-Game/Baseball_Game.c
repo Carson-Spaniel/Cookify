@@ -93,7 +93,7 @@ void menu(){
     int settings1 = 1;
     while (settings1){
         if(pause == 1){
-            printf("------- Pause ------- \n\n");
+            printf("\n------- Pause ------- \n\n");
         }
         else{
             printf("------- Menu ------- \n\n");
@@ -414,6 +414,14 @@ void playBall(){
         if(c == 'p' || c == 'P'){
             pause = 1;
             menu();
+            printf("Here comes the pitch");
+            Sleep(250);
+            printf(".");
+            Sleep(250);
+            printf(".");
+            Sleep(250);
+            printf(".\n");
+            Sleep(500);
             if (bot == 1 && ToB == 1){
                 Sleep(25);
             }
