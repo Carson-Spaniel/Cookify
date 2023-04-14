@@ -57,9 +57,9 @@ void foulSound();
 int main(){
     srand((unsigned int)time(NULL));
 
-    printf("\033[1;31m");
+    //printf("\033[1;31m");
     printf("\nWelcome to Big League Slugger!\n\n");
-    printf("\033[0m");
+    //printf("\033[0m");
     
     //charge();
 
@@ -73,9 +73,9 @@ int main(){
 void menu(){
     printf("------- Menu ------- \n\n");
     printf("1.\t");
-    printf("\033[1;31m");
+    //printf("\033[1;31m");
     printf("Play ball!\n");
-    printf("\033[0m");
+    //printf("\033[0m");
     printf("2.\tSettings\n");
     printf("3.\tQuit game\n\n");
     char choice = getch();
@@ -184,10 +184,10 @@ void playBall(){
         Sleep(500);
         int ToB = inningNum % 2;
         if(ToB == 0){
-            printf("\033[1;31m");
+            //printf("\033[1;31m");
         }
         else{
-            printf("\033[1;34m");
+            //printf("\033[1;34m");
         }
         if (bot == 1 && ToB == 1){
             Sleep(25);
@@ -314,35 +314,35 @@ void hit(){
         if (onBase == 3){
             int ToB = inningNum % 2;
             if(ToB == 0){
-                printf("\033[1;31m");
+                //printf("\033[1;31m");
             }
             else{
-                printf("\033[1;34m");
+                //printf("\033[1;34m");
             }
             printf("Its a Grand Slam!\n\n");
-            printf("\033[0m");
+            //printf("\033[0m");
         }
         else if(onBase > 0){
             int ToB = inningNum % 2;
             if(ToB == 0){
-                printf("\033[1;31m");
+                //printf("\033[1;31m");
             }
             else{
-                printf("\033[1;34m");
+                //printf("\033[1;34m");
             }
             printf("Its a %d run homerun!\n\n",onBase+1);
-            printf("\033[0m");
+            //printf("\033[0m");
         }
         else{
             int ToB = inningNum % 2;
             if(ToB == 0){
-                printf("\033[1;31m");
+                //printf("\033[1;31m");
             }
             else{
-                printf("\033[1;34m");
+                //printf("\033[1;34m");
             }
             printf("Homerun!\n\n");
-            printf("\033[0m");
+            //printf("\033[0m");
         }
         if(inningNum % 2 == 0){
             team2Score += 1 + onBase;
