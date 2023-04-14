@@ -295,15 +295,29 @@ void settings(){
 
 void playBall(){
     reset();
-    printf("1. Single Player\n");
-    printf("2. Two Player\n");
-    printf("3. Simulation\n\n");
-    char player = getch();
-    if (player == '1'){
-        bot = 1;
-    }
-    else if(player == '3'){
-        bot = 2;
+    char player;
+    while(player != '1' && player != '2' && player != '3' && player != '4'){
+        printf("1. Single Player\n");
+        printf("2. Two Player\n");
+        printf("3. Simulation\n");
+        printf("4. Back\n\n");
+        player = getch();
+        if (player == '1'){
+            bot = 1;
+        }
+        else if(player == '2'){
+            bot = 0;
+        }
+        else if(player == '3'){
+            bot = 2;
+        }
+        else if(player == '4'){
+            endGame = 1;
+        }
+        else{
+            printf("Invalid Input.\n\n");
+            Sleep(1000);
+        }
     }
     //inningNum = 17; //16 sets the inning to top of the 9th
     while(endGame != 1){
