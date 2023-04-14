@@ -321,7 +321,10 @@ void playBall(){
             Sleep(1000);
         }
     }
-    tutorial();
+    fflush(stdout);
+    if (endGame != 1){
+        tutorial();
+    }
     //inningNum = 17; //16 sets the inning to top of the 9th
     while(endGame != 1){
         if(startGame == 0){
