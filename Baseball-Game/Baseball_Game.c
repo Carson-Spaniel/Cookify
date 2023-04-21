@@ -507,7 +507,7 @@ void playBall(){
         }
 
     }
-    menu();
+    pause = 0;
 }
 
 void hit(){
