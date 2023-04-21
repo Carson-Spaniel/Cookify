@@ -583,7 +583,10 @@ void hit(){
         else{
             printf("Player 1: %d to ",team2Score);
         }
-        if(bot != 0){
+        if(bot == 1){
+            printf("Bot: %d at the ",team1Score);
+        }
+        else if(bot == 2){
             printf("Bot 2: %d at the ",team1Score);
         }
         else{
@@ -1162,8 +1165,11 @@ void baseCheck(){
         else{
             printf("Player 1: %d to ",team2Score);
         }
-        if(bot != 0){
+        if(bot == 2){
             printf("Bot 2: %d at the ",team1Score);
+        }
+        if(bot == 1){
+            printf("Bot: %d at the ",team1Score);
         }
         else{
             printf("Player 2: %d at the ",team1Score);
@@ -1212,11 +1218,15 @@ void inningCheck(){
             printf("Bot 2 wins the game!\n");
             Sleep(500);
         }
+        else if (team1Score>team2Score && bot == 1){
+            printf("Bot wins the game!\n");
+            Sleep(500);
+        }
         else if (team1Score>team2Score && bot == 0){
             printf("Player 2 wins the game!\n");
             Sleep(500);
         }
-        else if(team2Score>team1Score && bot == 1){
+        else if(team2Score>team1Score && bot == 2){
             printf("Bot 1 wins the game!\n");
             Sleep(500);
         }
@@ -1241,11 +1251,15 @@ void gameEndCheck(){
                 printf("Bot 2 wins the game!\n");
                 Sleep(500);
             }
+            else if (team1Score>team2Score && bot == 1){
+                printf("Bot wins the game!\n");
+                Sleep(500);
+            }
             else if (team1Score>team2Score && bot == 0){
                 printf("Player 2 wins the game!\n");
                 Sleep(500);
             }
-            else if(team2Score>team1Score && bot == 1){
+            else if(team2Score>team1Score && bot == 2){
                 printf("Bot 1 wins the game!\n");
                 Sleep(500);
             }
@@ -1266,11 +1280,15 @@ void gameEndCheck(){
                 printf("Bot 2 wins the game!\n");
                 Sleep(500);
             }
+            else if (team1Score>team2Score && bot == 1){
+                printf("Bot wins the game!\n");
+                Sleep(500);
+            }
             else if (team1Score>team2Score && bot == 0){
                 printf("Player 2 wins the game!\n");
                 Sleep(500);
             }
-            else if(team2Score>team1Score && bot == 1){
+            else if(team2Score>team1Score && bot == 2){
                 printf("Bot 1 wins the game!\n");
                 Sleep(500);
             }
@@ -1293,11 +1311,15 @@ void gameEndCheck(){
                 printf("Bot 2 wins the game!\n");
                 Sleep(500);
             }
+            else if (team1Score>team2Score && bot == 1){
+                printf("Bot wins the game!\n");
+                Sleep(500);
+            }
             else if (team1Score>team2Score && bot == 0){
                 printf("Player 2 wins the game!\n");
                 Sleep(500);
             }
-            else if(team2Score>team1Score && bot == 1){
+            else if(team2Score>team1Score && bot == 2){
                 printf("Bot 1 wins the game!\n");
                 Sleep(500);
             }
