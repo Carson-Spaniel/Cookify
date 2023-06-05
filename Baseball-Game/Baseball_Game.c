@@ -45,7 +45,7 @@ int user6 = 1000;
 
 /* Bot Difficulty */
 int bot1 = 250;
-int bot2 = 500;
+int bot2 = 600;
 
 /* Defines functions */
 void menu();
@@ -161,7 +161,7 @@ void botDif(){
                 break;
             case '2':
                 bot1 = 250;
-                bot2 = 500;
+                bot2 = 600;
                 printf("Bot Difficulty: ");
                 printf("Normal\n\n");
                 Sleep(1000);
@@ -216,12 +216,12 @@ void userDif(){
                 Sleep(1000);
                 break;
             case '3':
-                user1 = 325;
-                user2 = 350;
-                user3 = 400;
-                user4 = 500;
-                user5 = 650;
-                user6 = 675;
+                user1 = 200;
+                user2 = 300;
+                user3 = 350;
+                user4 = 450;
+                user5 = 600;
+                user6 = 700;
                 printf("User Difficulty: ");
                 printf("Hard\n\n");
                 Sleep(1000);
@@ -512,7 +512,7 @@ void playBall(){
         }
 
     }
-    menu();
+    pause = 0;
 }
 
 void hit(){
@@ -1193,6 +1193,9 @@ void baseCheck(){
         }
         else if(bot == 2){
             printf("Bot 2: %d at the ",team1Score);
+        }
+        if(bot == 1){
+            printf("Bot: %d at the ",team1Score);
         }
         else{
             printf("Player 2: %d at the ",team1Score);
