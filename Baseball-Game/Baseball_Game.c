@@ -61,6 +61,7 @@ void outCheck();
 void baseCheck();
 void inningCheck();
 void gameEndCheck();
+void scorePrint();
 void hit();
 void foul();
 void noSwing();
@@ -321,8 +322,10 @@ void playBall(){
             Sleep(1000);
         }
     }
-    tutorial();
-    //inningNum = 17; //16 sets the inning to top of the 9th
+    if (player != '4' && bot != 2){
+        tutorial();
+    }
+    //inningNum = 18; //16 sets the inning to top of the 9th
     while(endGame != 1){
         if(startGame == 0){
             charge();
@@ -361,7 +364,10 @@ void playBall(){
             else{
                 printf("Player 1: %d to ",team2Score);
             }
-            if(bot != 0){
+            if(bot == 1){
+                printf("Bot: %d at the ",team1Score);
+            }
+            else if(bot == 2){
                 printf("Bot 2: %d at the ",team1Score);
             }
             else{
@@ -463,6 +469,7 @@ void playBall(){
                 c = getch();
                 _ftime(&end);
             }
+            pause = 0;
         }
         int diff;
         if(bot == 1 && inningHalf == 1){
@@ -509,12 +516,12 @@ void playBall(){
 }
 
 void hit(){
-    int b = 20;
+    int b = 40;
     if (inningNum > 18){
-        b = 15;
+        b = 30;
     }
     else if(inningNum == 17 && ballCount == 3 && strikeCount == 2 && outCount == 2 && onBase == 3 && team1Score <= team2Score){
-        b = 5;
+        b = 2;
     }
     int hrChance = (((int)rand()));
     hrChance = hrChance % b;
@@ -581,7 +588,10 @@ void hit(){
         else{
             printf("Player 1: %d to ",team2Score);
         }
-        if(bot != 0){
+        if(bot == 1){
+            printf("Bot: %d at the ",team1Score);
+        }
+        else if(bot == 2){
             printf("Bot 2: %d at the ",team1Score);
         }
         else{
@@ -591,395 +601,411 @@ void hit(){
         Sleep(1000);
     }
     else{
-        int dropC = 8;
-        if (inningNum > 18){
-            dropC = 5;
-        }
-        int hitR = ((int)rand());
-        hitR = hitR % 5;
-        if (hitR == 0){
-            int catchC = ((int)rand());
-            catchC = catchC % dropC;
-            ballCount = 0;
-            strikeCount = 0;
-            printf("Thats a pop fly.\n");
-            Sleep(1000);
-            printf("And he");
+        int dropC = 15;
+        int ballC = 4;
+        
+        // if (inningNum >= 9){
+        //     dropC = 5;
+        //     ballC = 4;
+        // }
+        // if (inningNum >= 18){
+        //     dropC = 5;
+        //     ballC = 4;
+        // }
+        int ballR = ((int)rand());
+        ballR = ballR % ballC;
+        if (ballR == 0){
+            printf("Just outside for Ball %d.\n", ballCount+1);
             Sleep(500);
-            printf(".");
-            Sleep(250);
-            printf(".");
-            Sleep(250);
-            printf(".");
-            Sleep(500);
-            if (catchC == 0){
-                printf(" drops it!\n");
-                Sleep(1000);
-                printf("And the runner is safe.\n\n");
-                baseCheck();
-            }
-            else{
-                printf(" makes the catch!\n");
-                Sleep(1000);
-                printf("And the runner is out.\n");
-
-                outCount += 1;
-                rally();
-                outCheck();
-            }                
-            Sleep(1000);
+            ball();
         }
-        else if(hitR == 1){
-            int catchC = ((int)rand());
-            catchC = catchC % dropC;
-            ballCount = 0;
-            strikeCount = 0;
-            printf("Thats a hit!\n");
-            Sleep(500);
-            printf("The outfielder is under it.\n");
-            Sleep(1000);
-            printf("And he");
-            Sleep(250);
-            printf(".");
-            Sleep(250);
-            printf(".");
-            Sleep(250);
-            printf(".");
-            Sleep(1000);
-            if (catchC == 0){
-                printf(" drops it!\n");
+        else{
+            int hitR = ((int)rand());
+            hitR = hitR % 5;
+            if (hitR == 0){
+                int catchC = ((int)rand());
+                catchC = catchC % (dropC*2);
+                ballCount = 0;
+                strikeCount = 0;
+                printf("Thats a pop fly.\n");
                 Sleep(1000);
-                printf("And the runner is safe.\n\n");
-                baseCheck();
-            }
-            else{
-                printf(" makes the catch!\n");
-                Sleep(1000);
-                printf("And the runner is out.\n");
-
-                outCount += 1;
-                rally();
-                outCheck();
-            }          
-        }
-        else if(hitR == 2){
-            int baseman = (((int)rand()));
-            baseman = baseman % 3;
-            ballCount = 0;
-            strikeCount = 0;
-            printf("Ground ball to the");
-            if(baseman == 0){
-                printf(" 1st baseman.\n");
+                printf("And he");
                 Sleep(500);
-                printf("And he makes the tag.\n");
-                printf("The runner is out.\n");
-                outCount += 1;
-                rally();
-                outCheck();
-                if (outCount >= 3){
-                    goto end;
-                }
-            }
-            else{
-                int doubleP = 0;
-                int tripleP = 0;
-                int a = 2;
-                if(baseman == 1){
-                    printf(" 3rd baseman.\n");
-                    if(onBase == 1){
-                        Sleep(1000);
-                        printf("And he throws to second.\n");
-                        Sleep(250);
-                        printf("He gets that out.\n");
-                        outCount +=1;
-                        onBase -= 1;
-                        doubleP = 1;
-                        a = 3;
-                        rally();
-                        outCheck();
-                        if (outCount >= 3){
-                            goto end;
-                        }
-                        Sleep(500);
-                        printf("2nd baseman throws to first and its");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(1000);
-                        int safe = (((int)rand()));
-                        safe = safe % a;
-                        if(safe == 0){
-                            printf(" in time!\n");
-                            printf("The runner is out.\n");
-                            outCount += 1;
-                            if(doubleP == 1){
-                                printf("Its a Double play!\n");
-                            }
-                            rally();
-                            outCheck();
-                            if (outCount >= 3){
-                                goto end;
-                            }
-                        }
-                        else{
-                            printf(" not in time!\n");
-                            printf("The runner is safe at first!\n\n");
-                            baseCheck();
-                        }   
-                    }
-                    else if(onBase >= 2){
-                        Sleep(1000);
-                        printf("And he makes the tag.\n");
-                        Sleep(250);
-                        printf("He gets that out.\n");
-                        outCount +=1;
-                        onBase -= 1;
-                        doubleP = 1;
-                        a = 3;
-                        rally();
-                        outCheck();
-                        if (outCount >= 3){
-                            goto end;
-                        }
-                        Sleep(500);
-                        printf("3rd baseman throws to second and its");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(1000);
-                        int safe = (((int)rand()));
-                        safe = safe % a;
-                        if(safe == 0){
-                            printf(" in time!\n");
-                            Sleep(250);
-                            printf("The runner is out.\n");
-                            Sleep(250);
-                            outCount += 1;
-                            onBase -= 1;
-                            tripleP = 1;
-                            doubleP = 0;
-                            printf("Its a Double play!\n");
-                            rally();
-                            outCheck();
-                            if (outCount >= 3){
-                                goto end;
-                            }
-                        }
-                        else{
-                            printf(" not in time!\n");
-                            Sleep(250);
-                            printf("The runner is safe!\n\n");
-                            baseCheck();
-                        }
-                        Sleep(500);
-                        a = 4;
-                        printf("2nd baseman throws to first and its");
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(1000);
-                        int tripleC = (((int)rand()));
-                        tripleC = tripleC % a;
-                        if(tripleC == 0){
-                            printf(" in time!\n");
-                            printf("The runner is out.\n");
-                            outCount += 1;
-                            onBase -= 1;
-                            if(tripleP == 1){
-                                printf("Its a Triple play!\n");
-                            }
-                            else if(doubleP == 1){
-                                printf("Its a Double play!\n");
-                            }
-                            rally();
-                            outCheck();
-                            if (outCount >= 3){
-                                goto end;
-                            }
-                        }
-                        else{
-                            printf(" not in time!\n");
-                            printf("The runner is safe!\n\n");
-                            baseCheck();
-                        }
-                    }
-                    else{
-                        Sleep(1000);
-                        printf("And the throw to first is");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(1000);
-                        int safe = (((int)rand()));
-                        safe = safe % a;
-                        if(safe == 0){
-                            printf(" in time!\n");
-                            printf("The runner is out.\n");
-                            outCount += 1;
-                            rally();
-                            outCheck();
-                        }
-                        else{
-                            printf(" not in time!\n");
-                            printf("The runner is safe!\n\n");
-                            baseCheck();
-                        }   
-                    }
-                }
-                else if (baseman == 2){
-                    printf(" shortstop.\n");
-                    if (onBase >= 1){
-                        Sleep(1000);
-                        printf("And he tosses the ball to second.\n");
-                        Sleep(250);
-                        printf("He gets that out.\n");
-                        outCount +=1;
-                        doubleP = 1;
-                        a = 3;
-                        rally();
-                        outCheck();
-                        if (outCount >= 3){
-                            goto end;
-                        }
-                        Sleep(500);
-                        printf("2nd baseman throws to first and its");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(1000);
-                        int doubleC = (((int)rand()));
-                        doubleC = doubleC % a;
-                        if(doubleC == 0){
-                            printf(" in time!\n");
-                            printf("The runner is out.\n");
-                            outCount += 1;
-                            if(doubleP == 1){
-                                printf("Its a Double play!\n");
-                            }
-                            rally();
-                            outCheck();
-                            if (outCount >= 3){
-                                goto end;
-                            }
-                        }
-                        else{
-                            printf(" not in time!\n");
-                            printf("The runner is safe!\n\n");
-                            baseCheck();
-                        }
-                    }
-                    else{
-                        Sleep(1000);
-                        printf("And the throw to first is");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(250);
-                        printf(".");
-                        Sleep(1000);
-                        int safe = (((int)rand()));
-                        safe = safe % a;
-                        if(safe == 0){
-                            printf(" in time!\n");
-                            printf("The runner is out.\n");
-                            outCount += 1;
-                            rally();
-                            outCheck();
-                        }
-                        else{
-                            printf(" not in time!\n");
-                            printf("The runner is safe!\n\n");
-                            baseCheck();
-                        }   
-                    }
-                    
+                printf(".");
+                Sleep(250);
+                printf(".");
+                Sleep(250);
+                printf(".");
+                Sleep(500);
+                if (catchC == 0){
+                    printf(" drops it!\n");
+                    Sleep(1000);
+                    printf("And the runner is safe.\n\n");
+                    baseCheck();
                 }
                 else{
+                    printf(" makes the catch!\n");
                     Sleep(1000);
-                    printf("And the throw to first is");
-                    Sleep(250);
-                    printf(".");
-                    Sleep(250);
-                    printf(".");
-                    Sleep(250);
-                    printf(".");
+                    printf("And the runner is out.\n");
+
+                    outCount += 1;
+                    rally();
+                    outCheck();
+                }                
+                Sleep(1000);
+            }
+            else if(hitR == 1){
+                int catchC = ((int)rand());
+                catchC = catchC % dropC;
+                ballCount = 0;
+                strikeCount = 0;
+                printf("Thats a hit!\n");
+                Sleep(500);
+                printf("The outfielder is under it.\n");
+                Sleep(1000);
+                printf("And he");
+                Sleep(250);
+                printf(".");
+                Sleep(250);
+                printf(".");
+                Sleep(250);
+                printf(".");
+                Sleep(1000);
+                if (catchC == 0){
+                    printf(" drops it!\n");
                     Sleep(1000);
-                    int safe = (((int)rand()));
-                    safe = safe % a;
-                    if(safe == 0){
-                        printf(" in time!\n");
-                        printf("The runner is out.\n");
-                        outCount += 1;
-                        rally();
-                        outCheck();
+                    printf("And the runner is safe.\n\n");
+                    baseCheck();
+                }
+                else{
+                    printf(" makes the catch!\n");
+                    Sleep(1000);
+                    printf("And the runner is out.\n");
+
+                    outCount += 1;
+                    rally();
+                    outCheck();
+                }          
+            }
+            else if(hitR == 2){
+                int baseman = (((int)rand()));
+                baseman = baseman % 3;
+                ballCount = 0;
+                strikeCount = 0;
+                printf("Ground ball to the");
+                if(baseman == 0){
+                    printf(" 1st baseman.\n");
+                    Sleep(500);
+                    printf("And he makes the tag.\n");
+                    printf("The runner is out.\n");
+                    outCount += 1;
+                    rally();
+                    outCheck();
+                    if (outCount >= 3){
+                        goto end;
+                    }
+                }
+                else{
+                    int doubleP = 0;
+                    int tripleP = 0;
+                    int a = 2;
+                    if(baseman == 1){
+                        printf(" 3rd baseman.\n");
+                        if(onBase == 1){
+                            Sleep(1000);
+                            printf("And he throws to second.\n");
+                            Sleep(250);
+                            printf("He gets that out.\n");
+                            outCount +=1;
+                            onBase -= 1;
+                            doubleP = 1;
+                            a = 3;
+                            rally();
+                            outCheck();
+                            if (outCount >= 3){
+                                goto end;
+                            }
+                            Sleep(500);
+                            printf("2nd baseman throws to first and its");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(1000);
+                            int safe = (((int)rand()));
+                            safe = safe % a;
+                            if(safe == 0){
+                                printf(" in time!\n");
+                                printf("The runner is out.\n");
+                                outCount += 1;
+                                if(doubleP == 1){
+                                    printf("Its a Double play!\n");
+                                }
+                                rally();
+                                outCheck();
+                                if (outCount >= 3){
+                                    goto end;
+                                }
+                            }
+                            else{
+                                printf(" not in time!\n");
+                                printf("The runner is safe at first!\n\n");
+                                baseCheck();
+                            }   
+                        }
+                        else if(onBase >= 2){
+                            Sleep(1000);
+                            printf("And he makes the tag.\n");
+                            Sleep(250);
+                            printf("He gets that out.\n");
+                            outCount +=1;
+                            onBase -= 1;
+                            doubleP = 1;
+                            a = 3;
+                            rally();
+                            outCheck();
+                            if (outCount >= 3){
+                                goto end;
+                            }
+                            Sleep(500);
+                            printf("3rd baseman throws to second and its");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(1000);
+                            int safe = (((int)rand()));
+                            safe = safe % a;
+                            if(safe == 0){
+                                printf(" in time!\n");
+                                Sleep(250);
+                                printf("The runner is out.\n");
+                                Sleep(250);
+                                outCount += 1;
+                                onBase -= 1;
+                                tripleP = 1;
+                                doubleP = 0;
+                                printf("Its a Double play!\n");
+                                rally();
+                                outCheck();
+                                if (outCount >= 3){
+                                    goto end;
+                                }
+                            }
+                            else{
+                                printf(" not in time!\n");
+                                Sleep(250);
+                                printf("The runner is safe!\n\n");
+                                baseCheck();
+                            }
+                            Sleep(500);
+                            a = 4;
+                            printf("2nd baseman throws to first and its");
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(1000);
+                            int tripleC = (((int)rand()));
+                            tripleC = tripleC % a;
+                            if(tripleC == 0){
+                                printf(" in time!\n");
+                                printf("The runner is out.\n");
+                                outCount += 1;
+                                onBase -= 1;
+                                if(tripleP == 1){
+                                    printf("Its a Triple play!\n");
+                                }
+                                else if(doubleP == 1){
+                                    printf("Its a Double play!\n");
+                                }
+                                rally();
+                                outCheck();
+                                if (outCount >= 3){
+                                    goto end;
+                                }
+                            }
+                            else{
+                                printf(" not in time!\n");
+                                printf("The runner is safe!\n\n");
+                                baseCheck();
+                            }
+                        }
+                        else{
+                            Sleep(1000);
+                            printf("And the throw to first is");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(1000);
+                            int safe = (((int)rand()));
+                            safe = safe % a;
+                            if(safe == 0){
+                                printf(" in time!\n");
+                                printf("The runner is out.\n");
+                                outCount += 1;
+                                rally();
+                                outCheck();
+                            }
+                            else{
+                                printf(" not in time!\n");
+                                printf("The runner is safe!\n\n");
+                                baseCheck();
+                            }   
+                        }
+                    }
+                    else if (baseman == 2){
+                        printf(" shortstop.\n");
+                        if (onBase >= 1){
+                            Sleep(1000);
+                            printf("And he tosses the ball to second.\n");
+                            Sleep(250);
+                            printf("He gets that out.\n");
+                            outCount +=1;
+                            doubleP = 1;
+                            a = 3;
+                            rally();
+                            outCheck();
+                            if (outCount >= 3){
+                                goto end;
+                            }
+                            Sleep(500);
+                            printf("2nd baseman throws to first and its");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(1000);
+                            int doubleC = (((int)rand()));
+                            doubleC = doubleC % a;
+                            if(doubleC == 0){
+                                printf(" in time!\n");
+                                printf("The runner is out.\n");
+                                outCount += 1;
+                                if(doubleP == 1){
+                                    printf("Its a Double play!\n");
+                                }
+                                rally();
+                                outCheck();
+                                if (outCount >= 3){
+                                    goto end;
+                                }
+                            }
+                            else{
+                                printf(" not in time!\n");
+                                printf("The runner is safe!\n\n");
+                                baseCheck();
+                            }
+                        }
+                        else{
+                            Sleep(1000);
+                            printf("And the throw to first is");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(250);
+                            printf(".");
+                            Sleep(1000);
+                            int safe = (((int)rand()));
+                            safe = safe % a;
+                            if(safe == 0){
+                                printf(" in time!\n");
+                                printf("The runner is out.\n");
+                                outCount += 1;
+                                rally();
+                                outCheck();
+                            }
+                            else{
+                                printf(" not in time!\n");
+                                printf("The runner is safe!\n\n");
+                                baseCheck();
+                            }   
+                        }
+                        
                     }
                     else{
-                        printf(" not in time!\n");
-                        printf("The runner is safe!\n\n");
-                        baseCheck();
-                    }   
-                }
-                end: 
-                    printf("");
-            }  
-        }
-        else if(hitR == 3){
-            printf("Thats a hit!\n");
-            Sleep(1000);
-            foul();
-        }
-        else {
-            ballCount = 0;
-            strikeCount = 0;
-            printf("Thats a hit!\n");
-            Sleep(1000);
-            printf("Looks like its going to be");
-            Sleep(250);
-            printf(".");
-            Sleep(250);
-            printf(".");
-            Sleep(250);
-            printf(".");
-            Sleep(1000);
-            printf(" fair!\n");
-            Sleep(500);
-            printf("Its going to be close!\n");
-            Sleep(1000);
-            printf("And the runner is");
-            Sleep(250);
-            printf(".");
-            Sleep(250);
-            printf(".");
-            Sleep(250);
-            printf(".");
-            Sleep(1000);
-            int safe = (((int)rand()));
-            safe = safe % 4;
-            if(safe == 0){
-                printf(" out!\n");
-                outCount += 1;
-                rally();
-                outCheck();
+                        Sleep(1000);
+                        printf("And the throw to first is");
+                        Sleep(250);
+                        printf(".");
+                        Sleep(250);
+                        printf(".");
+                        Sleep(250);
+                        printf(".");
+                        Sleep(1000);
+                        int safe = (((int)rand()));
+                        safe = safe % a;
+                        if(safe == 0){
+                            printf(" in time!\n");
+                            printf("The runner is out.\n");
+                            outCount += 1;
+                            rally();
+                            outCheck();
+                        }
+                        else{
+                            printf(" not in time!\n");
+                            printf("The runner is safe!\n\n");
+                            baseCheck();
+                        }   
+                    }
+                    end: 
+                        printf("");
+                }  
             }
-            else{
-                printf(" safe!\n\n");
-                baseCheck();
-            }            
+            else if(hitR == 3){
+                printf("Thats a hit!\n");
+                Sleep(1000);
+                foul();
+            }
+            else {
+                ballCount = 0;
+                strikeCount = 0;
+                printf("Thats a hit!\n");
+                Sleep(1000);
+                printf("Looks like its going to be");
+                Sleep(250);
+                printf(".");
+                Sleep(250);
+                printf(".");
+                Sleep(250);
+                printf(".");
+                Sleep(1000);
+                printf(" fair!\n");
+                Sleep(500);
+                printf("Its going to be close!\n");
+                Sleep(1000);
+                printf("And the runner is");
+                Sleep(250);
+                printf(".");
+                Sleep(250);
+                printf(".");
+                Sleep(250);
+                printf(".");
+                Sleep(1000);
+                int safe = (((int)rand()));
+                safe = safe % 4;
+                if(safe == 0){
+                    printf(" out!\n");
+                    outCount += 1;
+                    rally();
+                    outCheck();
+                }
+                else{
+                    printf(" safe!\n\n");
+                    baseCheck();
+                }            
+            }
         }
     }
 }
@@ -1034,13 +1060,13 @@ void noSwing(){
         int strikeZone = (((int)rand()));
         strikeZone = strikeZone % 3;
         if (strikeZone == 0){
+            printf(" ball.\n");
+            ball();
+        }
+        else{
             printf(" strike!\n");
             swing = 1;
             strike();
-        }
-        else{
-            printf(" ball.\n");
-            ball();
         }
     }
 }
@@ -1106,7 +1132,9 @@ void ball(){
     ballSound();
     if (ballCount == 4){
         Sleep(1000);
-        printf("Runner take your base!\n\n");
+        printf("And that's ball 4.\n");
+        Sleep(500);
+        printf("Batter take your base!\n\n");
         baseCheck();
     }
     else{
@@ -1160,7 +1188,10 @@ void baseCheck(){
         else{
             printf("Player 1: %d to ",team2Score);
         }
-        if(bot != 0){
+        if(bot == 1){
+            printf("Bot: %d at the ",team1Score);
+        }
+        else if(bot == 2){
             printf("Bot 2: %d at the ",team1Score);
         }
         else{
@@ -1204,28 +1235,7 @@ void inningCheck(){
     }
     else if ( inningNum >= 17 && inningNum % 2 == 1 && team1Score > team2Score){
         endGame = 1;
-        printf("And thats the ballgame!\n\n");
-        Sleep(1000);
-        if (team1Score>team2Score && bot == 2){
-            printf("Bot 2 wins the game!\n");
-            Sleep(500);
-        }
-        else if (team1Score>team2Score && bot == 0){
-            printf("Player 2 wins the game!\n");
-            Sleep(500);
-        }
-        else if(team2Score>team1Score && bot == 1){
-            printf("Bot 1 wins the game!\n");
-            Sleep(500);
-        }
-        else {
-            printf("Player 1 wins the game!\n");
-            Sleep(500);
-        }
-        printf("With the final score being %d to %d.\n",team1Score, team2Score);
-        Sleep(1000);
-        printf("Thanks for playing!\n\n\n");
-        //exit(0);
+        scorePrint();
     }
 }
 
@@ -1233,82 +1243,47 @@ void gameEndCheck(){
     if (inningNum < 18){
         if (inningNum == 17 && team1Score != team2Score){
             endGame = 1;
-            printf("And thats the ballgame!\n\n");
-            Sleep(1000);
-            if (team1Score>team2Score && bot == 2){
-                printf("Bot 2 wins the game!\n");
-                Sleep(500);
-            }
-            else if (team1Score>team2Score && bot == 0){
-                printf("Player 2 wins the game!\n");
-                Sleep(500);
-            }
-            else if(team2Score>team1Score && bot == 1){
-                printf("Bot 1 wins the game!\n");
-                Sleep(500);
-            }
-            else {
-                printf("Player 1 wins the game!\n");
-                Sleep(500);
-            }
-            printf("With the final score being %d to %d.\n",team1Score, team2Score);
-            Sleep(1000);
-            printf("Thanks for playing!\n\n\n");
-            //exit(0);
+            scorePrint();
         }
         else if(inningNum == 16 && team1Score > team2Score){
             endGame = 1;
-            printf("And thats the ballgame!\n\n");
-            Sleep(1000);
-            if (team1Score>team2Score && bot == 2){
-                printf("Bot 2 wins the game!\n");
-                Sleep(500);
-            }
-            else if (team1Score>team2Score && bot == 0){
-                printf("Player 2 wins the game!\n");
-                Sleep(500);
-            }
-            else if(team2Score>team1Score && bot == 1){
-                printf("Bot 1 wins the game!\n");
-                Sleep(500);
-            }
-            else {
-                printf("Player 1 wins the game!\n");
-                Sleep(500);
-            }
-            printf("With the final score being %d to %d.\n",team1Score, team2Score);
-            Sleep(1000);
-            printf("Thanks for playing!\n\n\n");
-            //exit(0);
+            scorePrint();
         }
     }
     else{
         if (inningNum % 2 == 1 && team1Score != team2Score){
             endGame = 1;
-            printf("And thats the ballgame!\n\n");
-            Sleep(1000);
-            if (team1Score>team2Score && bot == 2){
-                printf("Bot 2 wins the game!\n");
-                Sleep(500);
-            }
-            else if (team1Score>team2Score && bot == 0){
-                printf("Player 2 wins the game!\n");
-                Sleep(500);
-            }
-            else if(team2Score>team1Score && bot == 1){
-                printf("Bot 1 wins the game!\n");
-                Sleep(500);
-            }
-            else {
-                printf("Player 1 wins the game!\n");
-                Sleep(500);
-            }
-            printf("With the final score being %d to %d.\n",team1Score, team2Score);
-            Sleep(1000);
-            printf("Thanks for playing!\n\n\n");
-            //exit(0);
+            scorePrint();
         }
     }
+}
+
+void scorePrint(){
+    printf("And thats the ballgame!\n\n");
+    Sleep(1000);
+    if (team1Score>team2Score && bot == 2){
+        printf("Bot 2 wins the game!\n");
+        Sleep(500);
+    }
+    else if (team1Score>team2Score && bot == 0){
+        printf("Player 2 wins the game!\n");
+        Sleep(500);
+    }
+    else if (team1Score>team2Score && bot == 1){
+        printf("Bot wins the game!\n");
+        Sleep(500);
+    }
+    else if(team2Score>team1Score && bot == 2){
+        printf("Bot 1 wins the game!\n");
+        Sleep(500);
+    }
+    else {
+        printf("Player 1 wins the game!\n");
+        Sleep(500);
+    }
+    printf("With the final score being %d to %d.\n",team2Score, team1Score);
+    Sleep(1000);
+    printf("Thanks for playing!\n\n\n");
 }
 
 void count(){
