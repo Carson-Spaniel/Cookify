@@ -27,5 +27,11 @@ def process_string(request):
         }
         return JsonResponse(response_data, content_type='application/json')
 
-def index(request):
-    return render(request, "main/index.html",)
+def library(request):
+    return render(request, "main/library.html",)
+
+def login(request):
+    return render(request, "registration/login.html",)
+
+def home(request):
+    return render(request, "main/home.html",)
