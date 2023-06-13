@@ -39,5 +39,8 @@ def forgotpassword(request):
 def signup(request):
     return render(request, "registration/signup.html",)
 
+def terms(request):
+    return render(request, "registration/terms.html",)
+
 def home(request):
     return render(request, "main/home.html",)

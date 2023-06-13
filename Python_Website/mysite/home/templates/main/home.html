@@ -129,6 +129,80 @@
             body {
                 min-height: 200vh;
             }
+
+            .container{
+                display: grid;
+                grid-template-areas: "wtp wtp wtpVisual" "htu htu htu";
+                margin: 10px auto;
+                width: 90%;
+                max-width: 1000px;
+            }
+
+            .wtp{
+                padding: 1.3em 3em;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 2.5px;
+                font-weight: 500;
+                color: #000;
+                background-color: #ededed;
+                border: none;
+                border-radius: 10px;
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+                transition: all 0.3s ease 0s;
+                outline: none;
+                grid-area: wtp;
+                margin:auto 10px auto 50px;
+            }
+            .wtp-h4{
+                margin: auto;
+                text-align: center;
+            }
+
+            .wtpVisual{
+                margin: auto;
+                text-align: center;
+                grid-area: wtpVisual;
+                margin-right: 50px;
+                background-color: #36e4e7;
+                height: 250px;
+                width: 250px;
+                border-radius: 175px;
+                box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.4);
+                
+            }
+
+            .htu{
+                grid-area: htu;
+                
+            }
+            .htu-h2{
+                margin: auto;
+                text-align: center;
+            }
+            .ss{
+                height: 500px;
+                outline: 1px solid black;
+                margin: auto;
+                text-align:center;
+            }
+
+            .steps{
+                padding: 1.3em 3em;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 2.5px;
+                font-weight: 500;
+                color: #000;
+                background-color: #ededed;
+                border: none;
+                border-radius: 10px;
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+                transition: all 0.3s ease 0s;
+                outline: none;
+                margin: 50px auto;
+                width: 92%;
+            }
         </style>
 
         <meta charset="utf-8">
@@ -168,9 +242,62 @@
                 );
             </script>
 
-            <h1>
-                This is the home page.
-            </h1>
+            <div class="container">
+                <div class="wtp">
+                    <h4 class="wtp-h4">
+                        Whats the point?
+                    </h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                        ut labore et dolore magna aliqua. Sed risus pretium quam vulputate dignissim suspendisse 
+                        in est. Non consectetur a erat nam. Posuere urna nec tincidunt praesent semper feugiat nibh 
+                        sed pulvinar. Massa id neque aliquam vestibulum morbi blandit. Auctor eu augue ut lectus 
+                        arcu bibendum. Lobortis mattis aliquam faucibus purus in massa tempor nec feugiat. Aliquet 
+                        eget sit amet tellus cras adipiscing enim. Fames ac turpis egestas sed tempus. A arcu cursus 
+                        vitae congue mauris. Neque aliquam vestibulum morbi blandit cursus risus. Amet mattis 
+                        vulputate enim nulla aliquet porttitor lacus luctus. Sit amet nisl suscipit adipiscing 
+                        bibendum est ultricies. Tempus egestas sed sed risus pretium quam vulputate dignissim. 
+                        Egestas integer eget aliquet nibh praesent tristique magna sit. Aliquam purus sit amet 
+                        luctus venenatis lectus. Cursus sit amet dictum sit amet justo. Ut sem nulla pharetra 
+                        diam sit amet nisl. Sem fringilla ut morbi tincidunt augue interdum.
+                    </p>
+                </div>
+                <div class="wtpVisual">
+                    <p>INSERT PICTURE HERE</p>
+                </div>
+
+                <div class="htu">
+                    <div class="steps">
+                        <h2 class="htu-h2">
+                            <u>How to Use</u>
+                        </h2>
+                        <h3 class="steps-h3">Step 1</h3>
+                        <div class="ss">
+                            <p>Screen Shot Here</p>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                            ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan. Faucibus et 
+                            molestie ac feugiat. Risus in hendrerit gravida rutrum quisque non tellus orci. Augue 
+                            interdum velit euismod in pellentesque.
+                        </p>
+                    </div>
+
+                    <div class="steps">
+                        <h3 class="steps-h3">Step 2</h3>
+                        <div class="ss">
+                            <p>Screen Shot Here</p>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                            ut labore et dolore magna aliqua. Risus commodo viverra maecenas accumsan. Faucibus et 
+                            molestie ac feugiat. Risus in hendrerit gravida rutrum quisque non tellus orci. Augue 
+                            interdum velit euismod in pellentesque.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
 
             
 
