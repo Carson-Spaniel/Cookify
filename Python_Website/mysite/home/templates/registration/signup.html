@@ -14,35 +14,46 @@
             }
 
             header {
-                padding: 5px 0;
+                z-index: 1000;
+                position: fixed;
+                display: grid;
+                grid-template-areas: "title . . nav-bar";
+                padding: 5px;
+                border-radius: 40px;
                 text-align: center;
                 font-size: medium;
-                color: #595959;
-                width: 100%;
-                margin: 0 auto;
+                color: #d4d4d460;
+                width: 98.5%;
+                background-color: #dcdcdc;
+                box-shadow: 0px 0px 10px rgba(44, 234, 255, 1);
             }
 
-            h1{
+            .title{
+                margin: 0px auto;
+                padding: 10px;
+                grid-area: title;
+            }
+
+            .h1{
                 margin: 0;
+                color: #000;
             }
 
-            h5{
+            .h5{
                 margin: 0;
-            }
-
-            footer {
-                text-align: center;
-                font-size: large;
-                color: #453c35;
-                width: 100%;
-                height: 120px;
-                margin: 0 auto;
-                margin-top: 10px;
+                color: #000;
             }
 
             body {
                 padding: 0;
                 margin: 0;
+            }
+
+            .container{
+                padding-top: 85px;
+                margin: 10px auto;
+                width: 70%;
+                max-width: 500px;
             }
 
             footer{
@@ -52,26 +63,23 @@
 
             nav {
                 background-image: linear-gradient(180deg, #aa876c00, var(--color-shelf-bottom-panel-front));
-                padding: 5px 0 20px 0;
                 text-align: center;
                 font-size: large;
                 color: #616161;
                 width: 100%;
-                margin: 0 auto;
             }
 
             .navbar{
+                grid-area: nav-bar;
                 border: none;
-                padding: 16px 32px;
+                padding: 5px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;
-                margin: 4px 2px;
                 transition-duration: 0.25s;
                 color: #616161;
                 width: 100%;
-                margin: 0 auto;
             }
 
             button {
@@ -136,6 +144,7 @@
             }
 
             .terms{
+                text-align: center;
                 grid-area: terms;
                 padding: 1.3em;
                 font-size: 12px;
@@ -167,8 +176,6 @@
             grid-template-areas: "firstname lastname" "email email" "remail remail" "password password" "repeatpassword repeatpassword" "remember remember" "terms terms" "submit submit" "account account";
             justify-items: center;
             gap: 1rem;
-            width: 70%;
-            max-width: 500px;
             }
 
             .form .input-span {
@@ -245,45 +252,50 @@
     <div class="content">
         <div class="title">
             <header>
-                <h1 id="BookStacker">
-                    BookStacker
-                </h1>
-                <h5>
-                  <i>
-                    Your online book tracker.
-                  </i>
-                </h5>
-            </header>
-        </div>
+                <div class="title">
+                    <h2 id="BookStacker" class="h1">
+                        BookStacker
+                    </h2>
+    
+                    <h6 class="h5">
+                      <i>
+                        Your online book tracker.
+                      </i>
+                    </h6>
+                </div>
 
-        <nav class="navbar">
-          <a class = "nav-link" href="/home"><button class="button right-nav">Home</button></a>
-          <a class = "nav-link" href="/library"><button class="button left-nav">Library</button></a>
-        </nav>
+                <nav class="navbar">
+                    <a class = "nav-link" href="/home"><button class="button right-nav">Home</button></a>
+                    <a class = "nav-link" href="/library"><button class="button left-nav">Library</button></a>
+                </nav>
+            </header>
+        </div>        
 
         <body>
-            <form class="form">
-                <input class="firstname" type="text" name="firstname" id="firstname" placeholder="First Name" required></span>
+            <div class="container">
+                <form class="form">
+                    <input class="firstname" type="text" name="firstname" id="firstname" placeholder="First Name" required></span>
+                    
+                    <input class="lastname" type="text" name="lastname" id="lastname" placeholder="Last Name" required></span>
+                    
+                    <input class="email" type="email" name="email" id="email" placeholder="Email" required></span>
+                    <input class="remail" type="email" name="remail" id="remail" placeholder="Confirm Email" required></span>
+                    
+                    <input class="password" type="password" name="password" id="password" placeholder="Password" required></span>
+                    <input class="repeatpassword" type="password" name="repeatpassword" id="repeatpassword" placeholder="Confirm Password" required></span>
+                    
+                    <label class="remember">
+                        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                    </label>
                 
-                <input class="lastname" type="text" name="lastname" id="lastname" placeholder="Last Name" required></span>
-                
-                <input class="email" type="email" name="email" id="email" placeholder="Email" required></span>
-                <input class="remail" type="email" name="remail" id="remail" placeholder="Repeat Email" required></span>
-                
-                <input class="password" type="password" name="password" id="password" placeholder="Password" required></span>
-                <input class="repeatpassword" type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat Password" required></span>
-                
-                <label class="remember">
-                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                </label>
-            
-                <label class="terms">
-                    <input type="checkbox" required>I accept the <a href="" id="myBtn" style="color:dodgerblue" onclick="window.open('/terms','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;">Terms & Conditions</a>.
-                </label>
+                    <label class="terms">
+                        <input type="checkbox" required>  I accept the <a href="" id="myBtn" style="color: #36e4e7" onclick="window.open('/terms','popup','width=600,height=600,scrollbars=no,resizable=no'); return false;">Terms & Conditions</a>.
+                    </label>
 
-                <input class="submit" type="submit" value="Sign up">
-                <span class="span">Have an account? <a href="/login">Login</a></span>
-            </form>
+                    <input class="submit" type="submit" value="Sign up">
+                    <span class="span">Have an account? <a href="/login">Login</a></span>
+                </form>
+            </div>
         </body>
 
         <nav style="background-image: linear-gradient(0deg, #aa876c00, var(--color-shelf-bottom-panel-front)); ">

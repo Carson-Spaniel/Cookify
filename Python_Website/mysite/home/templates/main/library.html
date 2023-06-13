@@ -14,20 +14,34 @@
             }
 
             header {
-              padding: 5px 0;
-              text-align: center;
-              font-size: medium;
-              color: #595959;
-              width: 100%;
-              margin: 0 auto;
+                position:fixed;
+                display: grid;
+                grid-template-areas: "title . . nav-bar";
+                padding: 5px;
+                border-radius: 40px;
+                text-align: center;
+                font-size: medium;
+                color: #d4d4d460;
+                width: 98.5%;
+                background-color: #dcdcdc;
+                box-shadow: 0px 0px 10px rgba(44, 234, 255, 1);
+                z-index: 1000;
             }
 
-            h1{
-              margin: 0;
+            .title{
+                margin: 0px auto;
+                padding: 10px;
+                grid-area: title;
             }
 
-            h5{
-              margin: 0;
+            .h1{
+                margin: 0;
+                color: #000;
+            }
+
+            .h5{
+                margin: 0;
+                color: #000;
             }
 
             footer {
@@ -52,8 +66,15 @@
             }
 
             body {
+              background: var(--color-shelf-bottom-panel-front);
               padding: 0;
               margin: 0;
+            }
+
+            .container{
+              padding-top: 85px;
+              margin: 10px auto;
+
             }
 
             footer{
@@ -66,68 +87,27 @@
               margin: 0;
             }
 
-            .container {
-              width: var(--width);
-              height: var(--height);
-              perspective: 500px;
-              overflow: hidden;
-              background-color: var(--color-shelf-side-panel);
-              position: absolute;
-            }
-
-            .cuboid {
-              position: relative;
-              width: var(--width);
-              height: var(--height);
-              transform-style: preserve-3d;
-            }
-
-            .cuboid__face {
-              width: var(--width);
-              height: var(--height);
-              position: absolute;
-              opacity: 0.5;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-family: Arial, sans-serif;
-              font-size: 2rem;
-              box-shadow: 0 1px 3px 0 black, 0 1px 2px -1px black;
-            }
-
-            .cuboid__face--front {
-              background: transparent;
-            }
-
-            .cuboid__face--back {
-              --extra-height: 3rem;
-              transform: translateY(calc(var(--extra-height) * -1)) translateZ(calc(var(--depth) * -1)) rotateY(180deg);
-              height: calc(var(--height) + var(--extra-height));
-              background: var(--color-shelf-back-panel);
-            }
-
-            .cuboid__face--top {
-              transform: translateZ(calc(var(--depth) * -0.5)) translateY(calc(var(--height) * -0.5)) rotateX(90deg);
-              height: var(--depth);
-            }
-
-            .cuboid__face--bottom {
-              transform: translateZ(calc(var(--depth) * -0.5)) translateY(calc(var(--height) * 0.5)) rotateX(-90deg);
-              height: var(--depth);
-              background: var(--color-shelf-bottom-panel);
+            .shelf{
+              margin: auto;
+              width: 90%;
+              max-width: 1000px;
             }
 
             .books-container {
+              border-radius: 20px;
+              background-color: var(--color-shelf-side-panel);
               display: flex;
               justify-content: center;
               align-items: flex-end;
-              gap: 20px;
+              flex-wrap: wrap;
+              gap: 10px;
               position: relative;
-              height: var(--height);
+              /* height: var(--height); */
+              padding-top: 0.8rem;
               padding-bottom: 0.8rem;
               box-sizing: border-box;
-              padding-left: 20px;
-              padding-right: 20px;
+              padding-left: 10px;
+              padding-right: 10px;
               box-shadow: inset 0 10px 10px 0 var(--shadow-color, var(--color-shelf-shadow));
             }
 
@@ -139,7 +119,7 @@
               resize: both;
               font-weight: bolder;
               height: calc(var(--height) - 3rem);
-              width: 7rem;
+              width: 20px;
               background: rgba(255, 255, 255, 0.209);
               display: flex;
               justify-content: center;
@@ -163,7 +143,6 @@
             }
 
             nav {
-              background-image: linear-gradient(180deg, #aa876c00, var(--color-shelf-bottom-panel-front));
               padding: 5px 0 20px 0;
               text-align: center;
               font-size: large;
@@ -173,8 +152,9 @@
             }
 
             .navbar{
+              grid-area: nav-bar;
               border: none;
-              padding: 16px 32px;
+              padding: 5px;
               text-align: center;
               text-decoration: none;
               display: inline-block;
@@ -182,7 +162,6 @@
               transition-duration: 0.25s;
               color: #616161;
               width: 100%;
-              margin: 0 auto;
             }
 
             button {
@@ -220,164 +199,146 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
-    <div class="content">
-        <div class="title">
-            <header>
-                <h1 id="BookStacker">
+      <div class="title">
+        <header>
+            <div class="title">
+                <h2 id="BookStacker" class="h1">
                     BookStacker
-                </h1>
-                <h5>
+                </h2>
+
+                <h6 class="h5">
                   <i>
                     Your online book tracker.
                   </i>
-                </h5>
-            </header>
-        </div>
+                </h6>
+            </div>
 
-        <nav class="navbar">
-          <a class = "nav-link" href="/login"><button class="button right-nav">Login</button></a>
-          <a class = "nav-link" href="/home"><button class="button left-nav">Home</button></a>
-        </nav>
+            <nav class="navbar">
+                <a class = "nav-link" href="/login"><button class="button right-nav">Login</button></a>
+                <a class = "nav-link" href="/home"><button class="button left-nav">Home</button></a>
+            </nav>
+        </header>
 
         <body>
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-          <form id="myForm" method="POST">
-            {% csrf_token %}
-          </form>
-          <script>
-            // Function to retrieve the CSRF token value from the cookie
-            function getCookie(name) {
-              var cookieValue = null;
-              if (document.cookie && document.cookie !== '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                  var cookie = cookies[i].trim();
-                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
+          <div class="container">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+            <form id="myForm" method="POST">
+              {% csrf_token %}
+            </form>
+            <script>
+              // Function to retrieve the CSRF token value from the cookie
+              function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                  var cookies = document.cookie.split(';');
+                  for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                    }
                   }
                 }
+                return cookieValue;
               }
-              return cookieValue;
-            }
-          
-            function replaceLabel(buttonName) {
-              var userInput = prompt("Enter book name.");
-          
-              // Get the CSRF token value from the cookie
-              var csrftoken = getCookie('csrftoken');
-          
-              // Send the CSRF token with the AJAX request
-              $.ajax({
-                type: "POST",
-                url: "/process_string/",
-                data: { input: userInput },
-                dataType: 'json',
-                headers: {
-                  'X-CSRFToken': csrftoken
-                },
-                success: function(response) {
-                  console.log("Success:", response.coverIMG);
-                  console.log("Book Name:", response.name);
-                  console.log("Author:", response.author);
-                  console.log("Published:", response.published);
-          
-                  // Display the response in the HTML
-                  // var nameElement = document.getElementById("name");
-                  // nameElement.innerHTML = "Book title: " + response.name;
+            
+              function replaceLabel(buttonName) {
+                var userInput = prompt("Enter book name.");
+            
+                // Get the CSRF token value from the cookie
+                var csrftoken = getCookie('csrftoken');
+            
+                // Send the CSRF token with the AJAX request
+                $.ajax({
+                  type: "POST",
+                  url: "/process_string/",
+                  data: { input: userInput },
+                  dataType: 'json',
+                  headers: {
+                    'X-CSRFToken': csrftoken
+                  },
+                  success: function(response) {
+                    console.log("Success:", response.coverIMG);
+                    console.log("Book Name:", response.name);
+                    console.log("Author:", response.author);
+                    console.log("Published:", response.published);
+            
+                    // Display the response in the HTML
+                    // var nameElement = document.getElementById("name");
+                    // nameElement.innerHTML = "Book title: " + response.name;
 
-                  // var authorElement = document.getElementById("author");
-                  // authorElement.innerHTML = "Author: " + response.author;
+                    // var authorElement = document.getElementById("author");
+                    // authorElement.innerHTML = "Author: " + response.author;
 
-                  // var pubElement = document.getElementById("published");
-                  // pubElement.innerHTML = "Published: " + response.published;
+                    // var pubElement = document.getElementById("published");
+                    // pubElement.innerHTML = "Published: " + response.published;
 
-                  // var imgElement = document.getElementById("image");
-                  // imgElement.innerHTML = "Image link: "+response.coverIMG;
+                    // var imgElement = document.getElementById("image");
+                    // imgElement.innerHTML = "Image link: "+response.coverIMG;
 
-                  var button = document.getElementById(buttonName);
-                  button.innerHTML = response.name+"<br>"+"<br>"+response.author;
-                  button.style.backgroundImage = "url('" + response.coverIMG + "')";
-                  button.style.color = "rgb(0, 0, 0)";
-                },
-                error: function(xhr, status, error) {
-                  var button = document.getElementById(buttonName);
-                  var authorInput = prompt("Enter author.")
-                  button.innerHTML = userInput+"<br>"+"<br>"+authorInput;
-                  
-                  var inputColor = prompt("Enter the background color in hexadecimal format (e.g., #FF0000):");
-                  button.style.backgroundColor = inputColor;
-                }
-              });
-            }
-          </script>
-          <section>
-            <!-- <div class="floor-thickness"></div> -->
-            <div class="container">
-              <div class="cuboid">
-                <div class="cuboid__face cuboid__face--bottom"></div>
-                <div class="cuboid__face cuboid__face--front"></div>
-                <div class="cuboid__face cuboid__face--back"></div>
-              </div>
+                    var button = document.getElementById(buttonName);
+                    button.innerHTML = response.name+"<br>"+"<br>"+response.author;
+                    button.style.backgroundImage = "url('" + response.coverIMG + "')";
+                    button.style.color = "rgb(0, 0, 0)";
+                  },
+                  error: function(xhr, status, error) {
+                    var button = document.getElementById(buttonName);
+                    var authorInput = prompt("Enter author.")
+                    button.innerHTML = userInput+"<br>"+"<br>"+authorInput;
+                    
+                    var inputColor = prompt("Enter the background color in hexadecimal format (e.g., #FF0000):");
+                    button.style.backgroundColor = inputColor;
+                  }
+                });
+              }
+            </script>
+
+            <div class="shelf">
+
+              <section>
+                <div class="books-container">
+                  <button id="book1" class="book" onclick="replaceLabel('book1')">+</button>
+                  <button id="book2" class="book" onclick="replaceLabel('book2')">+</button>
+                  <button id="book3" class="book" onclick="replaceLabel('book3')">+</button>
+                  <button id="book4" class="book" onclick="replaceLabel('book4')">+</button>
+                  <button id="book5" class="book" onclick="replaceLabel('book5')">+</button>
+                  <button id="book6" class="book" onclick="replaceLabel('book6')">+</button>
+                  <button id="book7" class="book" onclick="replaceLabel('book7')">+</button>
+                  <button id="book8" class="book" onclick="replaceLabel('book8')">+</button>
+                </div>
+                <div class="floor-thickness"></div>
+              </section>
+
+              <section>
+                <div class="books-container">
+                  <button id="booka1" class="book" onclick="replaceLabel('booka1')">+</button>
+                  <button id="booka2" class="book" onclick="replaceLabel('booka2')">+</button>
+                  <button id="booka3" class="book" onclick="replaceLabel('booka3')">+</button>
+                  <button id="booka4" class="book" onclick="replaceLabel('booka4')">+</button>
+                  <button id="booka5" class="book" onclick="replaceLabel('booka5')">+</button>
+                  <button id="booka6" class="book" onclick="replaceLabel('booka6')">+</button>
+                  <button id="booka7" class="book" onclick="replaceLabel('booka7')">+</button>
+                  <button id="booka8" class="book" onclick="replaceLabel('booka8')">+</button>
+                </div>
+                <div class="floor-thickness"></div>
+              </section>
+
+              <section>
+                <div class="books-container">
+                  <button id="bookb1" class="book" onclick="replaceLabel('bookb1')">+</button>
+                  <button id="bookb2" class="book" onclick="replaceLabel('bookb2')">+</button>
+                  <button id="bookb3" class="book" onclick="replaceLabel('bookb3')">+</button>
+                  <button id="bookb4" class="book" onclick="replaceLabel('bookb4')">+</button>
+                  <button id="bookb5" class="book" onclick="replaceLabel('bookb5')">+</button>
+                  <button id="bookb6" class="book" onclick="replaceLabel('bookb6')">+</button>
+                  <button id="bookb7" class="book" onclick="replaceLabel('bookb7')">+</button>
+                  <button id="bookb8" class="book" onclick="replaceLabel('bookb8')">+</button>
+                </div>
+                <div class="floor-thickness"></div>
+              </section>
+
             </div>
-            <div class="books-container">
-              <button id="book1" class="book" onclick="replaceLabel('book1')">+</button>
-              <button id="book2" class="book" onclick="replaceLabel('book2')">+</button>
-              <button id="book3" class="book" onclick="replaceLabel('book3')">+</button>
-              <button id="book4" class="book" onclick="replaceLabel('book4')">+</button>
-              <button id="book5" class="book" onclick="replaceLabel('book5')">+</button>
-              <button id="book6" class="book" onclick="replaceLabel('book6')">+</button>
-              <button id="book7" class="book" onclick="replaceLabel('book7')">+</button>
-              <button id="book8" class="book" onclick="replaceLabel('book8')">+</button>
-              <button id="book9" class="book" onclick="replaceLabel('book9')">+</button>
-              <button id="book10" class="book" onclick="replaceLabel('book10')">+</button>
-            </div>
-            <div class="floor-thickness"></div>
-          </section>
-          <section>
-            <div class="container">
-              <div class="cuboid">
-                <div class="cuboid__face cuboid__face--bottom"></div>
-                <div class="cuboid__face cuboid__face--front"></div>
-                <div class="cuboid__face cuboid__face--back"></div>
-              </div>
-            </div>
-            <div class="books-container">
-              <button id="booka1" class="book" onclick="replaceLabel('booka1')">+</button>
-              <button id="booka2" class="book" onclick="replaceLabel('booka2')">+</button>
-              <button id="booka3" class="book" onclick="replaceLabel('booka3')">+</button>
-              <button id="booka4" class="book" onclick="replaceLabel('booka4')">+</button>
-              <button id="booka5" class="book" onclick="replaceLabel('booka5')">+</button>
-              <button id="booka6" class="book" onclick="replaceLabel('booka6')">+</button>
-              <button id="booka7" class="book" onclick="replaceLabel('booka7')">+</button>
-              <button id="booka8" class="book" onclick="replaceLabel('booka8')">+</button>
-              <button id="booka9" class="book" onclick="replaceLabel('booka9')">+</button>
-              <button id="booka10" class="book" onclick="replaceLabel('booka10')">+</button>
-            </div>
-            <div class="floor-thickness"></div>
-          </section>
-          <section>
-            <div class="container">
-              <div class="cuboid">
-                <div class="cuboid__face cuboid__face--bottom"></div>
-                <div class="cuboid__face cuboid__face--front"></div>
-                <div class="cuboid__face cuboid__face--back"></div>
-              </div>
-            </div>
-            <div class="books-container">
-              <button id="bookb1" class="book" onclick="replaceLabel('bookb1')">+</button>
-              <button id="bookb2" class="book" onclick="replaceLabel('bookb2')">+</button>
-              <button id="bookb3" class="book" onclick="replaceLabel('bookb3')">+</button>
-              <button id="bookb4" class="book" onclick="replaceLabel('bookb4')">+</button>
-              <button id="bookb5" class="book" onclick="replaceLabel('bookb5')">+</button>
-              <button id="bookb6" class="book" onclick="replaceLabel('bookb6')">+</button>
-              <button id="bookb7" class="book" onclick="replaceLabel('bookb7')">+</button>
-              <button id="bookb8" class="book" onclick="replaceLabel('bookb8')">+</button>
-              <button id="bookb9" class="book" onclick="replaceLabel('bookb9')">+</button>
-              <button id="bookb10" class="book" onclick="replaceLabel('bookb10')">+</button>
-            </div>
-            <div class="floor-thickness"></div>
-          </section>
+          </div>
         </body>
         
         <nav style="background-image: linear-gradient(0deg, #aa876c00, var(--color-shelf-bottom-panel-front)); ">

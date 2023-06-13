@@ -14,35 +14,46 @@
             }
 
             header {
-                padding: 5px 0;
+                z-index: 1000;
+                position: fixed;
+                display: grid;
+                grid-template-areas: "title . . nav-bar";
+                padding: 5px;
+                border-radius: 40px;
                 text-align: center;
                 font-size: medium;
-                color: #595959;
-                width: 100%;
-                margin: 0 auto;
+                color: #d4d4d460;
+                width: 98.5%;
+                background-color: #dcdcdc;
+                box-shadow: 0px 0px 10px rgba(44, 234, 255, 1);
             }
 
-            h1{
+            .title{
+                margin: 0px auto;
+                padding: 10px;
+                grid-area: title;
+            }
+
+            .h1{
                 margin: 0;
+                color: #000;
             }
 
-            h5{
+            .h5{
                 margin: 0;
-            }
-
-            footer {
-                text-align: center;
-                font-size: large;
-                color: #453c35;
-                width: 100%;
-                height: 120px;
-                margin: 0 auto;
-                margin-top: 10px;
+                color: #000;
             }
 
             body {
                 padding: 0;
                 margin: 0;
+            }
+
+            .container{
+                padding-top: 85px;
+                margin: 10px auto;
+                width: 70%;
+                max-width: 500px;
             }
 
             footer{
@@ -61,17 +72,16 @@
             }
 
             .navbar{
+                grid-area: nav-bar;
                 border: none;
-                padding: 16px 32px;
+                padding: 5px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
                 font-size: 16px;
-                margin: 4px 2px;
                 transition-duration: 0.25s;
                 color: #616161;
                 width: 100%;
-                margin: 0 auto;
             }
 
             button {
@@ -194,30 +204,35 @@
     <div class="content">
         <div class="title">
             <header>
-                <h1 id="BookStacker">
-                    BookStacker
-                </h1>
-                <h5>
-                  <i>
-                    Your online book tracker.
-                  </i>
-                </h5>
+                <div class="title">
+                    <h2 id="BookStacker" class="h1">
+                        BookStacker
+                    </h2>
+    
+                    <h6 class="h5">
+                      <i>
+                        Your online book tracker.
+                      </i>
+                    </h6>
+                </div>
+
+                <nav class="navbar">
+                    <a class = "nav-link" href="/home"><button class="button right-nav">Home</button></a>
+                    <a class = "nav-link" href="/library"><button class="button left-nav">Library</button></a>
+                </nav>
             </header>
         </div>
 
-        <nav class="navbar">
-          <a class = "nav-link" href="/home"><button class="button right-nav">Home</button></a>
-          <a class = "nav-link" href="/library"><button class="button left-nav">Library</button></a>
-        </nav>
-
         <body>
-            <form class="form">
-                <input type="email" name="email" id="email" placeholder="Email" required></span>
-                <input type="password" name="password" id="password" placeholder="Password" required></span>
-                <span class="span"><a href="/forgotpassword">Forgot password?</a></span>
-                <input class="submit" type="submit" value="Log in">
-                <span class="span">Don't have an account? <a href="/signup">Sign up</a></span>
-            </form>
+            <div class="container">
+                <form class="form">
+                    <input type="email" name="email" id="email" placeholder="Email" required></span>
+                    <input type="password" name="password" id="password" placeholder="Password" required></span>
+                    <span class="span"><a href="/forgotpassword">Forgot password?</a></span>
+                    <input class="submit" type="submit" value="Log in">
+                    <span class="span">Don't have an account? <a href="/signup">Sign up</a></span>
+                </form>
+            </div>
         </body>
 
         <nav style="background-image: linear-gradient(0deg, #aa876c00, var(--color-shelf-bottom-panel-front)); ">
