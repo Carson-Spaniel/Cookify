@@ -23,7 +23,11 @@
             }
 
             h1{
-                margin: 0;
+                margin: auto;
+            }
+
+            p{
+                margin-bottom: 10px;
             }
 
             h5{
@@ -43,6 +47,7 @@
             body {
                 padding: 0;
                 margin: 0;
+                text-align: center;
             }
 
             footer{
@@ -104,86 +109,8 @@
                 transform: translateY(-1px);
             }
 
-            form {
-            margin: 50px auto 100px auto;
-            padding: 5px;
-            --bg-light: #efefef;
-            --bg-dark: #000000;
-            --clr: #36e4e7;
-            --clr-alpha: #d4d4d460;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            width: 20%;
-            }
-
-            .form .input-span {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: .5rem;
-            }
-
-            form input[type="text"],
-            form input[type="email"],
-            form input[type="password"] {
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 0.5rem;
-            padding: 1rem 0.75rem;
-            width: 100%;
-            border: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: var(--clr-alpha);
-            outline: 2px solid var(--bg-dark);
-            }
-
-            form input[type="text"]:focus,
-            form input[type="email"]:focus,
-            form input[type="password"]:focus {
-            box-shadow: 0px 15px 20px rgba(44, 234, 255, 0.4);
-            outline: 2px solid var(--clr);
-            }
-
-            .label {
-            align-self: flex-start;
-            color: var(--clr);
-            font-weight: 600;
-            }
-
-            form .submit {
-            padding: 1rem 0.75rem;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-radius: 3rem;
-            background-color: var(--bg-dark);
-            color: var(--bg-light);
-            border: none;
-            cursor: pointer;
-            transition: all 300ms;
-            font-weight: 600;
-            font-size: .9rem;
-            }
-
-            form .submit:hover {
-            box-shadow: 0px 15px 20px rgba(44, 234, 255, 0.4);
-            background-color: var(--clr);
-            color: var(--bg-dark);
-            }
-
-            .span {
-            text-decoration: none;
-            color: var(--bg-dark);
-            grid-area: account;
-            margin: auto;
-            }
-
-            .span a {
-            color: var(--clr);
+            body {
+                min-height: 200vh;
             }
         </style>
 
@@ -206,18 +133,20 @@
         </div>
 
         <nav class="navbar">
-          <a class = "nav-link" href="/home"><button class="button right-nav">Home</button></a>
+          <a class = "nav-link" href="/login"><button class="button right-nav">Login</button></a>
+          <a class = "nav-link" href="/home"><button class="button left-nav">Home</button></a>
           <a class = "nav-link" href="/library"><button class="button left-nav">Library</button></a>
         </nav>
 
         <body>
-            <form class="form">
-                <input type="email" name="email" id="email" placeholder="Email" required></span>
-                <input type="password" name="password" id="password" placeholder="Password" required></span>
-                <span class="span"><a href="/forgotpassword">Forgot password?</a></span>
-                <input class="submit" type="submit" value="Log in">
-                <span class="span">Don't have an account? <a href="/signup">Sign up</a></span>
-            </form>
+
+            <h1>
+                Forgot Password?
+            </h1>
+            <p>
+                Dang. That sucks.
+            </p>
+
         </body>
 
         <nav style="background-image: linear-gradient(0deg, #aa876c00, var(--color-shelf-bottom-panel-front)); ">

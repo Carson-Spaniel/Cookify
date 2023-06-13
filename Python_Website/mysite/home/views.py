@@ -33,6 +33,9 @@ def library(request):
 def login(request):
     return render(request, "registration/login.html",)
 
+def forgotpassword(request):
+    return render(request, "registration/forgotpass.html",)
+
 def signup(request):
     return render(request, "registration/signup.html",)
 

@@ -10,6 +10,7 @@
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
                 box-sizing:border-box;
+                font-family: 'Helvetica';
             }
 
             header {
@@ -87,10 +88,10 @@
                 transition: all 0.3s ease 0s;
                 cursor: pointer;
                 outline: none;
+                margin: 5px;
             }
 
             button:hover {
-                /* background-color: #28b2b5; */
                 background-color: #36e4e7;
                 box-shadow: 0px 15px 20px rgba(44, 234, 255, 0.4);
                 color: #fff;
@@ -135,6 +136,19 @@
 
             .terms{
                 grid-area: terms;
+                padding: 1.3em 3em;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 2.5px;
+                font-weight: 500;
+                color: #000;
+                background-color: #fff;
+                border: none;
+                border-radius: 10px;
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease 0s;
+                outline: none;
+                margin: 5px;
             }
 
             .submit{
@@ -165,6 +179,7 @@
             form input[type="text"],
             form input[type="email"],
             form input[type="password"] {
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
             border-radius: 0.5rem;
             padding: 1rem 0.75rem;
             width: 100%;
@@ -179,6 +194,7 @@
             form input[type="text"]:focus,
             form input[type="email"]:focus,
             form input[type="password"]:focus {
+            box-shadow: 0px 15px 20px rgba(44, 234, 255, 0.4);
             outline: 2px solid var(--clr);
             }
 
@@ -205,6 +221,7 @@
             }
 
             form .submit:hover {
+            box-shadow: 0px 15px 20px rgba(44, 234, 255, 0.4);
             background-color: var(--clr);
             color: var(--bg-dark);
             }
@@ -254,11 +271,13 @@
                 
                 <input class="password" type="password" name="password" id="password" placeholder="Password" required></span>
                 <input class="repeatpassword" type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat Password" required></span>
+                
                 <label class="remember">
                     <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
                 </label>
             
-                <p class="terms">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+                <p class="terms">By creating an account you agree to our <a href="#" id="myBtn" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
                 <input class="submit" type="submit" value="Sign up">
                 <span class="span">Have an account? <a href="/login">Login</a></span>
             </form>
