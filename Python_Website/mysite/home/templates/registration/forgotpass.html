@@ -53,6 +53,15 @@
                 text-align: center;
             }
 
+            .container{
+                padding-top: 85px;
+                display: grid;
+                grid-template-areas: "wtp wtp wtpVisual" "htu htu htu";
+                margin: 10px auto;
+                width: 90%;
+                max-width: 1000px;
+            }
+
             footer{
                 padding: 0;
                 margin: 0;
@@ -110,17 +119,12 @@
             button:active {
                 transform: translateY(-1px);
             }
-
-            body {
-                min-height: 200vh;
-            }
         </style>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 
-    <div class="content">
         <div class="title">
             <header>
                 <div class="title">
@@ -143,19 +147,21 @@
             </header>
         </div>
 
-        <body>
+        <div class="container">
+            <body>
+                </div>
 
-            <h1>
-                Forgot Password?
-            </h1>
-            <p>
-                Dang. That sucks.
-            </p>
+                <h1>
+                    Forgot Password?
+                </h1>
+                <p>
+                    Dang. That sucks.
+                </p>
 
-        </body>
+            </body>
+        </div>
 
         <nav style="background-image: linear-gradient(0deg, #aa876c00, var(--color-shelf-bottom-panel-front)); ">
             <a class = "nav-link" href="#BookStacker"><button class="button left-nav">Top</button></a>
         </nav>
-    </div>
 </html>
