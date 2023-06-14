@@ -14,23 +14,23 @@
             }
 
             header {
-                position:fixed;
-                display: grid;
-                grid-template-areas: "title . . nav-bar";
-                padding: 5px;
-                border-radius: 40px;
-                text-align: center;
-                font-size: medium;
-                color: #d4d4d460;
-                width: 98.5%;
-                background-color: #dcdcdc;
-                box-shadow: 0px 0px 10px rgba(44, 234, 255, 1);
-                z-index: 1000;
+              align-items: center;
+              position:fixed;
+              display: grid;
+              grid-template-areas: "title . . nav-bar";
+              border-radius: 40px;
+              text-align: center;
+              font-size: medium;
+              color: #d4d4d460;
+              width: 98.5%;
+              background-color: #dcdcdc;
+              box-shadow: 0px 0px 10px rgba(44, 234, 255, 1);
+              z-index: 1000;
             }
 
             .title{
                 margin: 0px auto;
-                padding: 10px;
+                padding: 5px;
                 grid-area: title;
             }
 
@@ -58,10 +58,8 @@
               --height: 200px;
               --width: 100%;
               --depth: 200px;
-              --color-shelf-back-panel: #e1e1e1;
-              --color-shelf-bottom-panel: #9d9d9d;
-              --color-shelf-bottom-panel-front: #dbdbdb;
-              --color-shelf-side-panel: #b9b9b9;
+              --color-shelf-bottom-panel-front: #ffffff;
+              --color-shelf-side-panel: #d4d4d460;
               --color-shelf-shadow: #7b7b7b;
             }
 
@@ -74,7 +72,6 @@
             .container{
               padding-top: 85px;
               margin: 10px auto;
-
             }
 
             footer{
@@ -94,7 +91,7 @@
             }
 
             .books-container {
-              border-radius: 20px;
+              border-radius: 10px;
               background-color: var(--color-shelf-side-panel);
               display: flex;
               justify-content: center;
@@ -112,27 +109,30 @@
             }
 
             .book {
-              background-size: cover; /* or "contain" depending on what you want */
+              background-size: cover;
               background-position: center center;
               background-repeat: no-repeat;
               text-align:center;
               resize: both;
               font-weight: bolder;
               height: calc(var(--height) - 3rem);
-              width: 20px;
-              background: rgba(255, 255, 255, 0.209);
+              width: 95px;
+              background: rgba(255, 255, 255, 0.4);
               display: flex;
               justify-content: center;
               align-items: center;
-              box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+              box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.1);
               border: none;
               font-size: 15px;
               color: rgba(0, 0, 0, 0.518);
               text-align: center;
+              border-radius: 2px;
             }
 
             .book:hover {
-              background: rgba(255, 255, 255, 0.209);
+              color: rgba(0, 0, 0, 0.518);
+              background: rgba(255, 255, 255, 0.4);
+              box-shadow: 0px 15px 20px rgba(44, 234, 255, 0.4);
             }
 
             .floor-thickness {
@@ -262,24 +262,14 @@
                     console.log("Book Name:", response.name);
                     console.log("Author:", response.author);
                     console.log("Published:", response.published);
-            
-                    // Display the response in the HTML
-                    // var nameElement = document.getElementById("name");
-                    // nameElement.innerHTML = "Book title: " + response.name;
-
-                    // var authorElement = document.getElementById("author");
-                    // authorElement.innerHTML = "Author: " + response.author;
-
-                    // var pubElement = document.getElementById("published");
-                    // pubElement.innerHTML = "Published: " + response.published;
-
-                    // var imgElement = document.getElementById("image");
-                    // imgElement.innerHTML = "Image link: "+response.coverIMG;
 
                     var button = document.getElementById(buttonName);
-                    button.innerHTML = response.name+"<br>"+"<br>"+response.author;
+                    // button.innerHTML = response.name+"<br>"+"<br>"+response.author;
+                    button.innerHTML = ""
                     button.style.backgroundImage = "url('" + response.coverIMG + "')";
                     button.style.color = "rgb(0, 0, 0)";
+                    button.style.backgroundSize = "95px"
+                    button.style.boxShadow = "0px 5px 15px rgba(0, 0, 0, 1)";
                   },
                   error: function(xhr, status, error) {
                     var button = document.getElementById(buttonName);
@@ -288,6 +278,11 @@
                     
                     var inputColor = prompt("Enter the background color in hexadecimal format (e.g., #FF0000):");
                     button.style.backgroundColor = inputColor;
+
+                    button.style.color = "rgb(0, 0, 0)";
+                    button.style.zIndex = "500";
+                    button.style.backgroundSize = "95px"
+                    button.style.boxShadow = "0px 5px 10px rgba(0, 0, 0, 0.8)";
                   }
                 });
               }
