@@ -24,6 +24,7 @@
                 font-size: medium;
                 color: #d4d4d460;
                 width: 98.5%;
+                
                 background-color: #dcdcdc;
                 box-shadow: 0px 0px 10px rgba(44, 234, 255, 1);
             }
@@ -115,7 +116,7 @@
             }
 
             form {
-            margin: 50px auto 100px auto;
+            margin: 50px auto auto auto;
             padding: 5px;
             --bg-light: #efefef;
             --bg-dark: #000000;
@@ -224,19 +225,72 @@
         </div>
 
         <body>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+            <form id="myForm" method="POST">
+              {% csrf_token %}
+            </form>
+            <script>
+              // Function to retrieve the CSRF token value from the cookie
+              function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                  var cookies = document.cookie.split(';');
+                  for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                    }
+                  }
+                }
+                return cookieValue;
+              }
+            
+              function login(email,password) {
+                // Get the CSRF token value from the cookie
+                var csrftoken = getCookie('csrftoken');
+            
+                // Send the CSRF token with the AJAX request
+                $.ajax({
+                  type: "POST",
+                  url: "/login_info/",
+                  data: { input: email,password },
+                  dataType: 'json',
+                  headers: {
+                    'X-CSRFToken': csrftoken
+                  },
+                  success: function(response) {
+                    if (response.return == "good"){
+                        window.location.replace("/library");
+                    }
+                    else{
+                        var message = document.getElementById('failed');
+                        message.innerHTML = "Login Failed.";
+                        message.style.color = "red";
+                    }
+                  },
+                  error: function(xhr, status, error) {
+                        var message = document.getElementById('failed');
+                        message.innerHTML = "Login Failed.";
+                        message.style.color = "red";
+                  }
+                });
+              }
+            </script>
             <div class="container">
-                <form class="form">
+                <form class="form" onsubmit="login(email,password)">
                     <input type="email" name="email" id="email" placeholder="Email" required></span>
                     <input type="password" name="password" id="password" placeholder="Password" required></span>
                     <span class="span"><a href="/forgotpassword">Forgot password?</a></span>
                     <input class="submit" type="submit" value="Log in">
+                    <p id="failed"></p>
                     <span class="span">Don't have an account? <a href="/signup">Sign up</a></span>
                 </form>
             </div>
         </body>
 
         <nav style="background-image: linear-gradient(0deg, #aa876c00, var(--color-shelf-bottom-panel-front)); ">
-            <a class = "nav-link" href="#BookStacker"><button class="button left-nav">Top</button></a>
+            <a class = "nav-link" href="#"><button class="button left-nav">Top</button></a>
         </nav>
     </div>
 </html>
