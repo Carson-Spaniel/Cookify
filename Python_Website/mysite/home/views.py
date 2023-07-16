@@ -6,14 +6,6 @@ from .userFunctions.loginCheck import check
 TEMPLATE_DIRS = (
     'os.path.join(BASE_DIR, "templates"),'
 )
-
-# def process_string(request):
-#     if request.method == 'POST':
-#         user_input = request.POST.get('input')
-
-#         # Return the processed input as JSON response
-#         response_data = {'reversed_input': user_input}
-#         return JsonResponse(response_data)
     
 def process_string(request):
     if request.method == 'POST':
