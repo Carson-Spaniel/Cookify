@@ -222,9 +222,11 @@
         <body>
           <div class="container">
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
             <form id="myForm" method="POST">
               {% csrf_token %}
             </form>
+
             <script>
               // Function to retrieve the CSRF token value from the cookie
               function getCookie(name) {
@@ -272,6 +274,12 @@
                     button.style.color = "rgb(0, 0, 0)";
                     button.style.backgroundSize = "95px"
                     button.style.boxShadow = "0px 5px 15px rgba(0, 0, 0, 1)";
+
+                    localStorage.setItem('buttoninnerHTML', button.innerHTML);
+                    localStorage.setItem('buttonbackgroundImage', button.style.backgroundImage);
+                    localStorage.setItem('button', button.style.backgroundImage);
+                    localStorage.setItem('button', button.style.backgroundImage);
+                    localStorage.setItem('button', button.style.backgroundImage);
                   },
                   error: function(xhr, status, error) {
                     var button = document.getElementById(buttonName);
@@ -289,48 +297,58 @@
                   }
                 });
               }
+
+              function handleButtonClick(event) {
+                const target = event.target;
+                if (target.classList.contains('book')) {
+                  const buttonId = target.id;
+                  replaceLabel(buttonId); // Call your desired function with the buttonId
+                }
+              }
             </script>
+
 
             <div class="shelf">
 
               <section>
-                <div class="books-container">
-                  <button id="book1" class="book" onclick="replaceLabel('book1')">+</button>
-                  <button id="book2" class="book" onclick="replaceLabel('book2')">+</button>
-                  <button id="book3" class="book" onclick="replaceLabel('book3')">+</button>
-                  <button id="book4" class="book" onclick="replaceLabel('book4')">+</button>
-                  <button id="book5" class="book" onclick="replaceLabel('book5')">+</button>
-                  <button id="book6" class="book" onclick="replaceLabel('book6')">+</button>
-                  <button id="book7" class="book" onclick="replaceLabel('book7')">+</button>
-                  <button id="book8" class="book" onclick="replaceLabel('book8')">+</button>
+                <div class="books-container" onclick="handleButtonClick(event)">
+                  <button id="book1" class="book">+</button>
+                  <button id="book2" class="book">+</button>
+                  <button id="book3" class="book">+</button>
+                  <button id="book4" class="book">+</button>
+                  <button id="book5" class="book">+</button>
+                  <button id="book6" class="book">+</button>
+                  <button id="book7" class="book">+</button>
+                  <button id="book8" class="book">+</button>
+                </div>
+                <div class="floor-thickness"></div>
+              </section>
+              
+
+              <section>
+                <div class="books-container" onclick="handleButtonClick(event)">
+                  <button id="book1a" class="book">+</button>
+                  <button id="book2a" class="book">+</button>
+                  <button id="book3a" class="book">+</button>
+                  <button id="book4a" class="book">+</button>
+                  <button id="book5a" class="book">+</button>
+                  <button id="book6a" class="book">+</button>
+                  <button id="book7a" class="book">+</button>
+                  <button id="book8a" class="book">+</button>
                 </div>
                 <div class="floor-thickness"></div>
               </section>
 
               <section>
-                <div class="books-container">
-                  <button id="booka1" class="book" onclick="replaceLabel('booka1')">+</button>
-                  <button id="booka2" class="book" onclick="replaceLabel('booka2')">+</button>
-                  <button id="booka3" class="book" onclick="replaceLabel('booka3')">+</button>
-                  <button id="booka4" class="book" onclick="replaceLabel('booka4')">+</button>
-                  <button id="booka5" class="book" onclick="replaceLabel('booka5')">+</button>
-                  <button id="booka6" class="book" onclick="replaceLabel('booka6')">+</button>
-                  <button id="booka7" class="book" onclick="replaceLabel('booka7')">+</button>
-                  <button id="booka8" class="book" onclick="replaceLabel('booka8')">+</button>
-                </div>
-                <div class="floor-thickness"></div>
-              </section>
-
-              <section>
-                <div class="books-container">
-                  <button id="bookb1" class="book" onclick="replaceLabel('bookb1')">+</button>
-                  <button id="bookb2" class="book" onclick="replaceLabel('bookb2')">+</button>
-                  <button id="bookb3" class="book" onclick="replaceLabel('bookb3')">+</button>
-                  <button id="bookb4" class="book" onclick="replaceLabel('bookb4')">+</button>
-                  <button id="bookb5" class="book" onclick="replaceLabel('bookb5')">+</button>
-                  <button id="bookb6" class="book" onclick="replaceLabel('bookb6')">+</button>
-                  <button id="bookb7" class="book" onclick="replaceLabel('bookb7')">+</button>
-                  <button id="bookb8" class="book" onclick="replaceLabel('bookb8')">+</button>
+                <div class="books-container" onclick="handleButtonClick(event)">
+                  <button id="book1b" class="book">+</button>
+                  <button id="book2b" class="book">+</button>
+                  <button id="book3b" class="book">+</button>
+                  <button id="book4b" class="book">+</button>
+                  <button id="book5b" class="book">+</button>
+                  <button id="book6b" class="book">+</button>
+                  <button id="book7b" class="book">+</button>
+                  <button id="book8b" class="book">+</button>
                 </div>
                 <div class="floor-thickness"></div>
               </section>
