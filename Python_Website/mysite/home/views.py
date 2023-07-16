@@ -2,11 +2,13 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .functions.apiGrab import bookURL
 from .userFunctions.loginCheck import check
+from django.views.decorators.cache import cache_page
 
 TEMPLATE_DIRS = (
     'os.path.join(BASE_DIR, "templates"),'
 )
-    
+
+@cache_page(60 * 15)
 def process_string(request):
     if request.method == 'POST':
         user_input = request.POST.get('input')
@@ -20,7 +22,8 @@ def process_string(request):
             'pages': pages
         }
         return JsonResponse(response_data, content_type='application/json')
-    
+
+@cache_page(60 * 15)
 def login_info(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -36,6 +39,7 @@ def login_info(request):
         }
         return JsonResponse(response_data, content_type='application/json')
 
+@cache_page(60 * 15)
 def library(request):
     return render(request, "main/library.html",)
 
