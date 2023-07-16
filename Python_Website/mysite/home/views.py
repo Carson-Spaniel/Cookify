@@ -43,17 +43,22 @@ def login_info(request):
 def library(request):
     return render(request, "main/library.html",)
 
+@cache_page(60 * 15)
 def login(request):
     return render(request, "registration/login.html",)
 
+@cache_page(60 * 15)
 def forgotpassword(request):
     return render(request, "registration/forgotpass.html",)
 
+@cache_page(60 * 15)
 def signup(request):
     return render(request, "registration/signup.html",)
 
+@cache_page(60 * 15)
 def terms(request):
     return render(request, "registration/terms.html",)
 
+@cache_page(60 * 15)
 def home(request):
     return render(request, "main/home.html",)
