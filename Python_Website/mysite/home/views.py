@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .functions.autoSearch import webScrape,bookURL
+from .functions.apiGrab import bookURL
 from .userFunctions.loginCheck import check
 
 TEMPLATE_DIRS = (
@@ -18,13 +18,14 @@ TEMPLATE_DIRS = (
 def process_string(request):
     if request.method == 'POST':
         user_input = request.POST.get('input')
-        book,input = bookURL(user_input)
-        coverIMG, name, author, published = webScrape(book,input)
+        title, imageLink, synopsis, subjects, authors, msrp, pages = bookURL(user_input)
         response_data = {
-            'coverIMG': coverIMG,
-            'name': name,
-            'author': author,
-            'published': published
+            'title': title,
+            'imageLink': imageLink,
+            'synopsis': synopsis,
+            'authors': authors[0],
+            'msrp': msrp,
+            'pages': pages
         }
         return JsonResponse(response_data, content_type='application/json')
     

@@ -258,15 +258,17 @@
                     'X-CSRFToken': csrftoken
                   },
                   success: function(response) {
-                    console.log("Success:", response.coverIMG);
-                    console.log("Book Name:", response.name);
-                    console.log("Author:", response.author);
-                    console.log("Published:", response.published);
+                    console.log("title:", response.title);
+                    console.log("imageLink:", response.imageLink);
+                    console.log("synopsis:", response.synopsis);
+                    console.log("authors:", response.authors);
+                    console.log("msrp:", response.msrp);
+                    console.log("pages:", response.pages);
 
                     var button = document.getElementById(buttonName);
                     // button.innerHTML = response.name+"<br>"+"<br>"+response.author;
                     button.innerHTML = ""
-                    button.style.backgroundImage = "url('" + response.coverIMG + "')";
+                    button.style.backgroundImage = "url('" + response.imageLink + "')";
                     button.style.color = "rgb(0, 0, 0)";
                     button.style.backgroundSize = "95px"
                     button.style.boxShadow = "0px 5px 15px rgba(0, 0, 0, 1)";
