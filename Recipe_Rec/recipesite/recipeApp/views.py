@@ -23,6 +23,15 @@ def lunch(request):
 def dinner(request):
     return render(request, "recipePages/dinner.html",)
 
+def beef(request):
+    return render(request, "recipePages/beef.html",)
+
+def chicken(request):
+    return render(request, "recipePages/chicken.html",)
+
+def pork(request):
+    return render(request, "recipePages/pork.html",)
+
 def snacks(request):
     return render(request, "recipePages/snacks.html",)
 

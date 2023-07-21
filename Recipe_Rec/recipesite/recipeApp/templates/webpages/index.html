@@ -12,7 +12,6 @@
             header{
                 overflow: hidden;
                 width: 100%;
-                height: 75px;
                 background-color: aliceblue;
                 position: fixed;
                 text-align: center;
@@ -25,13 +24,20 @@
 
             body{
                 margin: 0px;
-                height: 3000px;
+                height: 1000px;
             }
 
             nav{
+                margin: 0 auto;
                 margin-top: 20px;
-                margin-left: 20px;
+
+                width: 100%;
+                background-color: aliceblue;
                 position: fixed;
+                text-align: center;
+                
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+                z-index: 10;
             }
 
             .main{
@@ -50,39 +56,15 @@
             .recipe{
                 height: 42px;
                 border: none;
-                overflow: hidden;
                 background-color: aliceblue;
                 text-align: center;
                 cursor: pointer;
                 min-width: 100px;
+                border-radius: 5px;
             }
 
-            .find{
-                box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
-                text-align: center;
-                margin: 0 auto;
-                width: 100%;
-                height: 300px;
-                background-color: rgba(0, 0, 255, 0.15);
-                background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc9JUH6bGtSw6Yq75A3itX2Cp79DLkgUVxIubXY4SfQi7KD8OXROe4fPeGIsVVXMsPG0foFzJ0OTL7TAnjrQmkAHCkXF6N3OmOWyPLXnx_vD47wFfUo=w2400');
-                background-size: cover;
-                background-repeat: no-repeat;
-                padding-top: 70px;
-                font-size: 30px;
-                z-index: -1;
-            }
-
-            .find .search-container button {
-                padding: 10px 10px;
-                margin-right: 16px;
-                background: #c7c7c7;
-                font-size: 17px;
-                border: none;
-                cursor: pointer;
-            }
-
-            .find .search-container button:hover {
-                background: #ccc;
+            .recipe:hover{
+                background-color: rgb(226, 242, 255);
             }
 
             .dropdown {
@@ -91,7 +73,8 @@
             }
 
             .dropdown-content {
-                border-radius: 10px;
+                margin-top: 1px;
+                border-radius: 5px;
                 display: none;
                 position: absolute;
                 background-color: #ffffff;
@@ -101,7 +84,7 @@
             }
 
             .dropdown-content a {
-                border-radius: 10px;
+                border-radius: 5px;
                 color: black;
                 padding: 12px 16px;
                 text-decoration: none;
@@ -116,67 +99,120 @@
                 display: block;
             }
 
+            .find{
+                position: relative;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+                text-align: center;
+                margin: 0 auto;
+                width: 100%;
+
+                background-color: rgba(0, 0, 255, 0.15);
+                background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc9JUH6bGtSw6Yq75A3itX2Cp79DLkgUVxIubXY4SfQi7KD8OXROe4fPeGIsVVXMsPG0foFzJ0OTL7TAnjrQmkAHCkXF6N3OmOWyPLXnx_vD47wFfUo=w2400');
+                background-size: cover;
+                background-repeat: no-repeat;
+                padding-top: 100px;
+                font-size: 150%;
+                z-index: 0;
+            }
+
+            .search-container{
+                opacity: 70%;
+                padding-bottom: 80px;
+            }
+
+            .find .search-container button {
+                padding: 0px 5px;
+                background: #e9e9e9;
+                font-size: 17px;
+                border: none;
+                cursor: pointer;
+                height: 20px;
+                width: 80px;
+                border-radius: 10px;
+                color: rgb(0, 0, 0);
+                opacity: 100%;
+            }
+
+            .find .search-container button:hover {
+                background: #f9f9f9;
+            }
+
+            .findTitle{
+                margin-bottom: 0px;
+            }
+
         </style>
     </head>
 
     <body>
         <div class="content">
             <header>
+                <script>
+                    // Function to update the padding of the "main" element based on the height of the "nav" element
+                    function updateMainPadding() {
+                      const navElement = document.querySelector("nav");
+                      const mainElement = document.querySelector(".main");
+                      mainElement.style.paddingTop = `${navElement.clientHeight}px`;
+                    }
+              
+                    // Initial update when the DOM is ready
+                    document.addEventListener("DOMContentLoaded", updateMainPadding);
+              
+                    // Update padding on window resize
+                    window.addEventListener("resize", updateMainPadding);
+                </script>
                 <nav>
                     <a href="/index"><button class="nameButton"><h1>Cookify</h1></button></a>
 
                     <div class="dropdown">
-                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
+                        <a href="/recipes-page"><button class="recipe">Recipes</button></a>
                         <div class="dropdown-content">
-                            <a href="/recipesPage">Breakfast</a>
-                            <a href="/recipesPage">Lunch</a>
-                            <a href="/recipesPage">Dinner</a>
-                            <a href="/recipesPage">Snacks</a>
-                            <a href="/recipesPage">Desserts</a>
+                            <a href="/breakfast">Breakfast</a>
+                            <a href="/lunch">Lunch</a>
+                            <a href="/dinner">Dinner</a>
+                            <a href="/snacks">Snacks</a>
+                            <a href="/dessert">Desserts</a>
                         </div>
                     </div>
 
                     <div class="dropdown">
-                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
+                        <a href="/breakfast"><button class="recipe">Breakfast</button></a>
                         <div class="dropdown-content">
-                            <a href="/recipesPage">Breakfast</a>
-                            <a href="/recipesPage">Lunch</a>
-                            <a href="/recipesPage">Dinner</a>
-                            <a href="/recipesPage">Snacks</a>
-                            <a href="/recipesPage">Desserts</a>
+                            <a href="/breakfast">Breakfast Casserole</a>
                         </div>
                     </div>
 
                     <div class="dropdown">
-                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
+                        <a href="/lunch"><button class="recipe">Lunch</button></a>
                         <div class="dropdown-content">
-                            <a href="/recipesPage">Breakfast</a>
-                            <a href="/recipesPage">Lunch</a>
-                            <a href="/recipesPage">Dinner</a>
-                            <a href="/recipesPage">Snacks</a>
-                            <a href="/recipesPage">Desserts</a>
+                            <a href="/breakfast">Mac and Cheese</a>
                         </div>
                     </div>
 
                     <div class="dropdown">
-                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
+                        <a href="/dinner"><button class="recipe">Dinner</button></a>
                         <div class="dropdown-content">
-                            <a href="/recipesPage">Breakfast</a>
-                            <a href="/recipesPage">Lunch</a>
-                            <a href="/recipesPage">Dinner</a>
-                            <a href="/recipesPage">Snacks</a>
-                            <a href="/recipesPage">Desserts</a>
+                            <a href="/beef">Beef</a>
+                            <a href="/chicken">Chicken</a>
                         </div>
                     </div>
 
                     <div class="dropdown">
-                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
+                        <a href="/snacks"><button class="recipe">Snacks</button></a>
                         <div class="dropdown-content">
-                            <a href="/recipesPage">Breakfast</a>
-                            <a href="/recipesPage">Lunch</a>
-                            <a href="/recipesPage">Dinner</a>
-                            <a href="/recipesPage">Snacks</a>
-                            <a href="/recipesPage">Desserts</a>
+                            <a href="/breakfast">Breakfast</a>
+                            <a href="/lunch">Lunch</a>
+                            <a href="/dinner">Dinner</a>
+                            <a href="/snacks">Snacks</a>
+                            <a href="/dessert">Desserts</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="/dessert"><button class="recipe">Desserts</button></a>
+                        <div class="dropdown-content">
+                            <a href="/breakfast">Kitchen Sink Cookies</a>
+                            <a href="/lunch">Reese's Cheesecake Brownies</a>
                         </div>
                     </div>
                 </nav>
@@ -225,13 +261,13 @@
                             });
                         }
                     </script>
-                    <h1>
+                    <h1 class="findTitle">
                         Find a Recipe
                     </h1>
                     <div class="search-container">
                         <form onsubmit="submitsearch(); return false;">
-                            <input type="text" placeholder="Search.." name="search">
-                            <button type="submit"><i class="fa fa-search"></i></button>
+                            <input type="text" placeholder="Chicken Alfredo Pasta" name="search">
+                            <button class="find search-container button" type="submit">Search</button>
                         </form>
                     </div>
                 </div>
