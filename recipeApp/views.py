@@ -31,26 +31,26 @@ def chicken(request):
 def italianSausage(request):
     return render(request, "webpages/italianSausage.html",)
 
-def snacks(request):
-    return render(request, "webpages/snacks.html",)
+# def snacks(request):
+#     return render(request, "webpages/snacks.html",)
 
 def dessert(request):
     return render(request, "webpages/dessert.html",)
 
 # ------------- requests -------------
-@csrf_exempt
-def searchRecipe(request):
-    print("Entering post")
-    if request.method == 'POST':
-        input_data = request.POST.get('input', '')
-        text = searchRecipes(input_data)
-        print("text recieved:",text)
-        response_data = {'text': f'Recieved text: "{text}"'}
-        print("Exiting post")
-        return JsonResponse(response_data)
-    else:
-        print("Exiting post with error")
-        return JsonResponse({'error': 'Invalid request method'}, status=400)
+# @csrf_exempt
+# def searchRecipe(request):
+#     print("Entering post")
+#     if request.method == 'POST':
+#         input_data = request.POST.get('input', '')
+#         text = searchRecipes(input_data)
+#         print("text recieved:",text)
+#         response_data = {'text': f'Recieved text: "{text}"'}
+#         print("Exiting post")
+#         return JsonResponse(response_data)
+#     else:
+#         print("Exiting post with error")
+#         return JsonResponse({'error': 'Invalid request method'}, status=400)
     
 # ------------- breakfast pages -------------
 def breakfastCasserole(request):

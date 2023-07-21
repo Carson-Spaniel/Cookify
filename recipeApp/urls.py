@@ -12,7 +12,7 @@ urlpatterns = [
     path('beef/',views.beef, name='beef'),
     path('chicken/',views.chicken, name='chicken'),
     path('italianSausage/',views.italianSausage, name='italianSausage'),
-    path('snacks/',views.snacks, name='snacks'),
+    # path('snacks/',views.snacks, name='snacks'),
     path('dessert/',views.dessert, name='dessert'),
 
     #----------------requests----------------
