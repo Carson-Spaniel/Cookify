@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Recipes{% endblock %}
+{% block content %}
+<head>
+    <style>
+        .a{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc8Plg95SyMebduwfSGp3V3fkp-oxDjbb8i3eoSJFgZkDQ8DI0L4BsPRcqKG3YR08RI5ZzrTXN-VHRLAdveplmHvSOnGOOjrnsogvOxr9mtwoUuUrcI=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .b{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc8TR9h2E8YH9BsQQDz7dncForij8fPgE_Ke-z0VdC-SSK3aFl9ul6KOO5UPiu4iF5_5d3x6Uzc1xXJSMkXKmNKNi_EOd41s1AXIqA2fyr2J4JCKnyg=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .c{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc8yhG6CRjQ49Wv0GkHLiCltaqt92CGVedNk8suV2v6_p93way3UopyVcc-Pa6JMcE4aljxU5rfBHNetmjfQjZqSnqN5xvzEdOrgdBZoXdviV_bkk5E=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .d{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc--NoPJrpeHDGIJYjnmmGT_4wpKIUJqoEHy20iXLqFyVdrPMwdqXEcPG8Aw0ZfFZNEXs9V_SaYAENU-UeuJ0ceTba6sTFpmCB22Q_M6HSbxzyQ7AJs=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .e{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc_BilyvyuE_J2EG7CT22pv99Td1-S4wPPNG_Vzr-9vfhP4tx1w5PzRb3jIzEj3T4cvtSRcUSgdqc7ojNrKBSBhl-uqx-lal17CrSJ2FNTyoTwjvEDQ=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1 class="top">Recipes</h1>
+        <div class="flex-container">
+            <a class="box a" href="/breakfast">
+                <div class="title">
+                    Breakfast
+                </div>
+            </a>
+            <a class="box b" href="/lunch">
+                <div class="title">
+                    Lunch
+                </div>
+            </a>
+            <a class="box c" href="/dinner">
+                <div class="title">
+                    Dinner
+                </div>
+            </a>
+            <!-- <a class="box d" href="/snacks">
+                <div class="title">
+                    Snacks
+                </div>
+            </a> -->
+            <a class="box e" href="/dessert">
+                <div class="title">
+                    Desserts
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+{% endblock %}

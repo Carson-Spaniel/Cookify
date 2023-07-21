@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Dessert Recipes{% endblock %}
+{% block content %}
+<head>
+    <style>
+
+        .a{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc_7ljoqj-p30PG5t707_LD0YkQBiecky5RrIOoORLjzizaJJz34jPAe09TBMxWiaLolGqPefuB48ax2XTCNCjtdxA7UvXvQWFlAzMZD6TKo4RFxasA=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .b{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc_AOdMkYhteSdjg3SQ_MTNxCIEi_mhSZrCzBKldIXXQBN1b5LuSu7nzQrzi7gUmfgfuH7YbHpmvNbjMHx8VRDfcFf4pD79ufMSYNYhr5ylob3WfgqY=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .c{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc_npaAUAURztIT9ERIf-kpveW9zd-NohISCIK7wYKnu6OnLBQs6wU4XGsfocCShOdmQrpV0JI0dsnwab9Thiq1cF3gMajaz9JzYWwYURG1DBAA-KyY=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="top">Dessert Recipes</h1>
+        <div class="flex-container">
+            <a class="box a" href="/kSC">
+                <div class="title">
+                    Kitchen Sink Cookies
+                </div>
+            </a>
+            <a class="box b" href="/rCB">
+                <div class="title">
+                    Reese's Cheesecake Brownies
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+{% endblock %}

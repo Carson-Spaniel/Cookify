@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Dinner Recipes{% endblock %}
+{% block content %}
+<head>
+    <style>
+
+        .a{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc9TnH8h98oA9VsL-1zTzUjGUPRqunXVtxhOuhw3tQWwDnxw2J5I8Ls5NCteRGGxAEjkzUw1fVnqjjA7R7mMSo8oQ7Qa1MIbSRAIMOn_ad-Wa5gj7UA=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .b{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc93tiuVgiF4kj3WnVAhsfeAwJVu3HspAzvxZ4wT8jKlzwQG8a1YZS8Ibz--KsyKZEStrphvY4c1QzjwXYIha4Y14RlNXGhSkshm3Prrl1v3_veLmCE=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .c{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc9e3qIeVCKgquoketAokiI_QjRyOZvivEReXaW68_50fDaiC0i24PwVbiwzgZU9vxpXgvnC0oC6cvbqhygT9fr84PjTDnAFCtYetMhOqa71ifqH3WE=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .d{
+            background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc_npaAUAURztIT9ERIf-kpveW9zd-NohISCIK7wYKnu6OnLBQs6wU4XGsfocCShOdmQrpV0JI0dsnwab9Thiq1cF3gMajaz9JzYWwYURG1DBAA-KyY=w2400');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="top">Dinner Recipes</h1>
+        <div class="flex-container">
+            <a class="box a" href="/beef">
+                <div class="title">
+                    Beef
+                </div>
+            </a>
+            <a class="box b" href="/chicken">
+                <div class="title">
+                    Chicken
+                </div>
+            </a>
+            <a class="box c" href="/italianSausage">
+                <div class="title">
+                    Italian Sausage
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+{% endblock %}

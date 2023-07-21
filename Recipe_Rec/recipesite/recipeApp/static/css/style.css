@@ -1,0 +1,189 @@
+:root {
+    --primary-color: #ecedda; /*Main color*/
+    --secondary-color: #DDE7C7; /*Selection color*/
+    --background-color: white;  /*Background color*/
+    --font-color: #477463; /*Font color*/
+    --box-font-color: white; /*Box title color*/
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.content{
+    background-color: var(--background-color);
+}
+
+header{
+    overflow: hidden;
+    width: 100%;
+    background-color: var(--primary-color);
+    position: fixed;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -21.44px;
+    margin-bottom: -21.44px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+body{
+    margin: 0px;
+    height: 1000px;
+}
+
+nav{
+    margin: 0 auto;
+    margin-top: 20px;
+
+    width: 100%;
+    background-color: var(--primary-color);
+    position: fixed;
+    text-align: center;
+    
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.main{
+    padding-top: 40px;
+    max-width: 1615px;
+    margin: auto;
+}
+
+.nameButton{
+    color: var(--font-color);
+    height: 42px;
+    border: none;
+    overflow: hidden;
+    background-color: var(--primary-color);
+    text-align: center;
+    cursor: pointer;
+}
+
+.recipe{
+    color: var(--font-color);
+    height: 42px;
+    border: none;
+    background-color: var(--primary-color);
+    text-align: center;
+    cursor: pointer;
+    min-width: 100px;
+    border-radius: 5px;
+}
+
+.recipe:hover{
+    background-color: var(--secondary-color);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    margin-top: 1px;
+    border-radius: 5px;
+    display: none;
+    position: absolute;
+    background-color: var(--primary-color);
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    border-radius: 5px;
+    color: var(--font-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--secondary-color);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.top{
+    margin: auto;
+    margin-top: 30px;
+    font-size: 30px;
+    color: var(--font-color);
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 150%;
+    
+    width: 40%;
+    background-color: var(--primary-color);
+    min-width: 140px;
+}
+
+.flex-container {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-container > a {
+    background-color: var(--primary-color);
+    height: 500px;
+    width: 500px;
+    margin: 20px;
+    padding: 20px;
+    font-size: 30px;
+}
+
+.box {
+    /* Remove min-width */
+    opacity: 0;
+    transform: translateY(20px);
+    box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+    background-color: var(--primary-color);
+    color: var(--font-color);
+    border-radius: 30px;
+    padding: 20px;
+    font-size: 150%;
+    text-align: center;
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
+}
+
+.box.visible {
+    opacity: 1;
+    transform: translateY(0);
+
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
+}
+
+.box:hover{
+    transform: translateY(-7px);
+    box-shadow: rgba(0, 0, 0, 0.40) 5px 10px 8px;
+}
+
+.box:active {
+    transform: translateY(-1px);
+    box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+}
+
+.title{
+    /* background-color: #000000;
+    opacity: 50%; */
+    color: var(--box-font-color);
+    height: 100px;
+    width: 200px;
+    margin: auto;
+    border-radius: 20px;
+    margin-top: 175px;
+    padding-top: 30px;
+}
+
+.ingredient-divider {
+    border: none;
+    border-top: 2px solid var(--font-color); /* Set the desired color for the hr */
+    margin: 5px 0; /* Add some margin above and below the hr to separate the items */
+}

@@ -7,37 +7,38 @@ TEMPLATE_DIRS = (
     'os.path.join(BASE_DIR, "templates"),'
 )
 
-# Create your views here.
+# ------------- main pages -------------
 def index(request):
     return render(request, "webpages/index.html",)
 
 def recipesPage(request):
-    return render(request, "recipePages/recipesPage.html",)
+    return render(request, "webpages/recipesPage.html",)
 
 def breakfast(request):
-    return render(request, "recipePages/breakfast.html",)
+    return render(request, "webpages/breakfast.html",)
 
 def lunch(request):
-    return render(request, "recipePages/lunch.html",)
+    return render(request, "webpages/lunch.html",)
 
 def dinner(request):
-    return render(request, "recipePages/dinner.html",)
+    return render(request, "webpages/dinner.html",)
 
 def beef(request):
-    return render(request, "recipePages/beef.html",)
+    return render(request, "webpages/beef.html",)
 
 def chicken(request):
-    return render(request, "recipePages/chicken.html",)
+    return render(request, "webpages/chicken.html",)
 
-def pork(request):
-    return render(request, "recipePages/pork.html",)
+def italianSausage(request):
+    return render(request, "webpages/italianSausage.html",)
 
 def snacks(request):
-    return render(request, "recipePages/snacks.html",)
+    return render(request, "webpages/snacks.html",)
 
 def dessert(request):
-    return render(request, "recipePages/dessert.html",)
+    return render(request, "webpages/dessert.html",)
 
+# ------------- requests -------------
 @csrf_exempt
 def searchRecipe(request):
     print("Entering post")
@@ -46,6 +47,51 @@ def searchRecipe(request):
         text = searchRecipes(input_data)
         print("text recieved:",text)
         response_data = {'text': f'Recieved text: "{text}"'}
+        print("Exiting post")
         return JsonResponse(response_data)
     else:
+        print("Exiting post with error")
         return JsonResponse({'error': 'Invalid request method'}, status=400)
+    
+# ------------- breakfast pages -------------
+def breakfastCasserole(request):
+    return render(request, "recipePages/breakfast/breakfastCasserole.html",)
+
+# ------------- lunch pages -------------
+def macAndCheese(request):
+    return render(request, "recipePages/lunch/macAndCheese.html",)
+
+# ------------- beef pages -------------
+def tacoSoup(request):
+    return render(request, "recipePages/dinner/beef/tacoSoup.html",)
+
+# ------------- chicken pages -------------
+def tuscChick(request):
+    return render(request, "recipePages/dinner/chicken/tuscChick.html",)
+
+def chickTortel(request):
+    return render(request, "recipePages/dinner/chicken/chickTortel.html",)
+
+def kRC(request):
+    return render(request, "recipePages/dinner/chicken/kRC.html",)
+
+def teriakiChick(request):
+    return render(request, "recipePages/dinner/chicken/teriakiChick.html",)
+
+def hGC(request):
+    return render(request, "recipePages/dinner/chicken/hGC.html",)
+
+# ------------- italian sausage pages -------------
+def mendicino(request):
+    return render(request, "recipePages/dinner/italianSausage/mendicino.html",)
+
+# ------------- snack pages -------------
+
+
+# ------------- dessert pages -------------
+def kSC(request):
+    return render(request, "recipePages/dessert/kSC.html",)
+
+def rCB(request):
+    return render(request, "recipePages/dessert/rCB.html",)
+

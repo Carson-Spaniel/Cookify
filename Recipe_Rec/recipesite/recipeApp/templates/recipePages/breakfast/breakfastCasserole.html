@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Breakfast Casserole{% endblock %}
+{% block content %}
+<head>
+    <style>
+
+        .flex-container > div {
+            margin: 20px;
+        }
+
+        .box{
+            width: 100%;
+        }
+
+        .box:hover {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+
+        ul {
+            text-align: left;
+            list-style: none; /* Remove default bullet points from the list */
+            padding-left: 0; /* Remove default padding from the list */
+        }
+
+        /* Style the checkbox */
+        ul li input[type="checkbox"] {
+            margin-right: 10px;
+
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--font-color);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer; /* Change cursor to a pointer when hovering over the checkbox */
+            position: relative; /* Add relative positioning for pseudo-elements */
+            padding-left: 25px; /* Add some padding to the left side of the checkbox to center it on the check mark */
+            padding-top: 25px;
+        }
+
+        /* Style the custom checkbox when it's checked */
+        ul li input[type="checkbox"]:checked {
+            background-color: var(--primary-color); /* Set the background color of the checked checkbox */
+        }
+
+        /* Style the check mark inside the checkbox */
+        ul li input[type="checkbox"]::before {
+            content: "\2713"; /* Unicode character for check mark */
+            position: absolute; /* Position the check mark */
+            top: 1px; /* Adjust vertical position */
+            left: 5px; /* Adjust horizontal position */
+            font-size: 18px; /* Adjust the size of the check mark */
+            color: var(--font-color); /* Set the color of the check mark */
+            visibility: hidden; /* Hide the check mark by default */
+        }
+
+        /* Show the check mark when the checkbox is checked */
+        ul li input[type="checkbox"]:checked::before {
+            visibility: visible;
+        }
+
+        /* Style the checked checkbox to show a line through the text */
+        ul li input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="top">Breakfast Casserole</h1>
+        <div class="flex-container">
+            <div class="box a">
+                <h3 style="margin-top: 0px;">
+                    Ingredients
+                </h3>
+                <ul>
+                    <!-- Add input elements with type checkbox and labels for each list item -->
+                    <li><input type="checkbox" id="ingredient1"><label for="ingredient1">2 pounds pork sausage</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient2"><label for="ingredient2">12 eggs</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient3"><label for="ingredient3">1 cup sour cream (light or regular)</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient4"><label for="ingredient4">1/4 cup milk</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient5"><label for="ingredient5">salt and pepper</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient6"><label for="ingredient6">4 green onions</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient7"><label for="ingredient7">1/2 green bell pepper, diced</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient8"><label for="ingredient8">1/2 red bell pepper, diced</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient9"><label for="ingredient9">2 cups shredded cheddar cheese</label></li>
+                </ul>
+            </div>
+            <div class="box b">
+                <p>
+                    Preheat oven to 350 degrees. Spray a 9x13 pan with cooking spray. Combine the eggs, sour cream, milk, cheese and salt and pepper in a large bowl. Mix on low speed with electric mixers, just until combined. Heat a large skillet over medium heat. Add sausage and cook until browned, breaking it into small pieces with a wooden spoon as it cooks. Drain most of the grease and add the sausage to the bowl with the egg mixture. Add the bell peppers and onion to the same skillet the sausage was cooked in and sauté for 2- 3 minutes. Add to the bowl with the eggs and stir everything to combine. Pour mixture into greased 9x13 pan and bake for 35-50 minutes or until the edges are set and the center is just barely jiggly. Leftover egg casserole can be stored in the fridge and enjoyed within 3-4 days. Leftovers are delicious
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
