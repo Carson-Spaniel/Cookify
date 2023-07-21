@@ -7,13 +7,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
 </head>
     <div class="content">
         <header>
             <script src="{% static 'js/script.js' %}"></script>
             <nav>
-                <a href="/index"><button class="nameButton"><h1>Cookify</h1></button></a>
+                <a href="/recipes-page"><button class="nameButton"><h1>Cookify</h1></button></a>
 
                 <div class="dropdown">
                     <a href="/recipes-page"><button class="recipe">Recipes</button></a>
@@ -21,7 +22,7 @@
                         <a href="/breakfast">Breakfast</a>
                         <a href="/lunch">Lunch</a>
                         <a href="/dinner">Dinner</a>
-                        <a href="/snacks">Snacks</a>
+                        <!-- <a href="/snacks">Snacks</a> -->
                         <a href="/dessert">Desserts</a>
                     </div>
                 </div>
@@ -45,6 +46,7 @@
                     <div class="dropdown-content">
                         <a href="/beef">Beef</a>
                         <a href="/chicken">Chicken</a>
+                        <a href="/italianSausage">Italian Sausage</a>
                     </div>
                 </div>
 

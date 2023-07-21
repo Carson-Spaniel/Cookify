@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Tuscan Chicken{% endblock %}
+{% block content %}
+<head>
+    <style>
+
+        .flex-container > div {
+            margin: 20px;
+        }
+
+        .box:hover {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="top">Tuscan Chicken</h1>
+        <div class="flex-container">
+            <div class="box a" style="max-width: 600px;">
+                <h3 style="margin-top: 0px;">
+                    Ingredients
+                </h3>
+                <ul>
+                    <!-- Add input elements with type checkbox and labels for each list item -->
+                    <li><input type="checkbox" id="ingredient1"><label for="ingredient1">Lemon Pepper</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient2"><label for="ingredient2">Chicken</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient3"><label for="ingredient3">1/2 Cup Chopped Red Onion</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient4"><label for="ingredient4">1 Tablespoon Minced Garlic</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient5"><label for="ingredient5">1 Cup Chicken Broth</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient6"><label for="ingredient6">1 1/2 Cup Heavy Whipping Cream</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient7"><label for="ingredient7">1 Cup Parmesan Cheese</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient8"><label for="ingredient8">1 Package Tuscan Seasoning</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient9"><label for="ingredient9">Baby Spinach</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient10"><label for="ingredient10">Sun Dried Tomatoes</label></li>
+                </ul>
+            </div>
+            <div class="box b">
+                <h3 style="margin-top: 0px;">
+                    Instructions
+                </h3>
+                <ol>
+                    <li class="instruct">Season chicken with lemon pepper and cook. Set aside.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Cook onion and garlic.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Add chicken broth, heavy whipping cream, and parmesan cheese until all melted.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Then add Tuscan seasoning, sun-dried tomatoes, and baby spinach.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Serve with roasted Broccoli.</li>
+                    <br>
+                    <li class="instruct">Enjoy!</li>
+                    <br>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

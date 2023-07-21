@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Mac and Cheese{% endblock %}
+{% block content %}
+<head>
+    <style>
+
+        .flex-container > div {
+            margin: 20px;
+        }
+
+        .box:hover {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="top">Mac and Cheese</h1>
+        <div class="flex-container">
+            <div class="box a" style="max-width: 600px;">
+                <h3 style="margin-top: 0px;">
+                    Ingredients
+                </h3>
+                <ul>
+                    <li><input type="checkbox" id="ingredient1"><label for="ingredient1">1/2 lb rigatoni</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient2"><label for="ingredient2">1 cup sharp cheddar (extra for topping)</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient3"><label for="ingredient3">1/2 cup smoked Gouda</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient4"><label for="ingredient4">1/2 cup Gruyère</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient5"><label for="ingredient5">shredded asiago cheese for topping</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient6"><label for="ingredient6">3 tbsp all-purpose flour</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient7"><label for="ingredient7">3 1/2 tbsp salted butter</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient8"><label for="ingredient8">1 small diced shallot</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient9"><label for="ingredient9">3 minced garlic cloves</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient10"><label for="ingredient10">1 cup milk</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient11"><label for="ingredient11">1 cup heavy cream</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient12"><label for="ingredient12">1/2 tsp white pepper</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient13"><label for="ingredient13">1/2 tsp salt</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient14"><label for="ingredient14">1 tsp smoked paprika</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient15"><label for="ingredient15">1 can (4oz) diced green chiles</label></li>
+                </ul>
+            </div>
+            <div class="box b">
+                <h3 style="margin-top: 0px;">
+                    Instructions
+                </h3>
+                <ol>
+                    <li class="instruct">Preheat oven to 350°F.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Preheat a large pot of salted water to a boil and cook noodles as the package says, strain and set aside.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">In a large pot on medium heat, add butter, garlic, and shallots. Cook for a couple of minutes until shallots are tender.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Add flour and stir frequently until flour darkens and starts to bubble.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Slowly add in milk and cream while stirring. Stir regularly until the mixture is thick and can coat the back of a spoon (about 10 minutes). Remove from heat.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Add salt, pepper, paprika, cheddar, Gouda, and Gruyère. Mix until cheese is fully melted.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Add noodles and chiles. Pour into a greased or buttered 8x8 dish.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Top with shredded cheddar and asiago.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Bake for 20 minutes until cheese is melted.</li>
+                    <br>
+                    <li class="instruct">Enjoy!</li>
+                    <br>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

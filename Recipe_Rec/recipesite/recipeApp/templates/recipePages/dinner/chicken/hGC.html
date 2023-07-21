@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Honey Garlic Chicken{% endblock %}
+{% block content %}
+<head>
+    <style>
+
+        .flex-container > div {
+            margin: 20px;
+        }
+
+        .box:hover {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="top">Honey Garlic Chicken</h1>
+        <div class="flex-container">
+            <div class="box a" style="max-width: 600px;">
+                <h3 style="margin-top: 0px;">
+                    Ingredients
+                </h3>
+                <ul>
+                    <!-- Add input elements with type checkbox and labels for each list item -->
+                    <li><input type="checkbox" id="ingredient1"><label for="ingredient1">1 Pound Chicken Breast (Diced)</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient2"><label for="ingredient2">6-8 Cloves of Garlic (Crushed)</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient3"><label for="ingredient3">1/4 Cup of Honey</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient4"><label for="ingredient4">1/4 Cup of Olive Oil</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient5"><label for="ingredient5">1/4 Cup of Fresh Lemon Juice</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient6"><label for="ingredient6">1 tbsp. Soy Sauce</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient7"><label for="ingredient7">2 tbsp. Butter</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient8"><label for="ingredient8">Dash of Red Pepper Flakes</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient9"><label for="ingredient9">Sea Salt and Pepper to taste</label></li>
+                </ul>
+            </div>
+            <div class="box b">
+                <h3 style="margin-top: 0px;">
+                    Instructions
+                </h3>
+                <ol>
+                    <li class="instruct">In a large pan, heat two tablespoons of butter and add the diced chicken. Season with salt and pepper. Cook for 3-5 minutes on each side on medium to high heat to sear the chicken until it's no longer pink. Then remove the chicken from the pan.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">In a small bowl, whisk together the honey, lemon juice, soy sauce, olive oil, crushed garlic, and red pepper flakes.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Pour the honey garlic sauce over the cooked chicken and cook until the sauce thickens and the chicken is cooked through.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Serve the Honey Garlic Chicken over rice and with your favorite veggies for a delicious dinner any night of the week.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Enjoy!</li>
+                    <br>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

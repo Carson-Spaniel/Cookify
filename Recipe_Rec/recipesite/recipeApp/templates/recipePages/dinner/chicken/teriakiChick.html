@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Teriyaki Chicken{% endblock %}
+{% block content %}
+<head>
+    <style>
+
+        .flex-container > div {
+            margin: 20px;
+        }
+
+        .box:hover {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="top">Teriyaki Chicken</h1>
+        <div class="flex-container">
+            <div class="box a" style="max-width: 600px;">
+                <h3 style="margin-top: 0px;">
+                    Ingredients
+                </h3>
+                <ul>
+                    <!-- Add input elements with type checkbox and labels for each list item -->
+                    <li><input type="checkbox" id="ingredient1"><label for="ingredient1">Medium to Large Bag of Carrots</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient2"><label for="ingredient2">1 Red Onion (Chopped)</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient3"><label for="ingredient3">2 Cans of Pineapples (Drained)</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient4"><label for="ingredient4">4 Garlic Cloves (Minced)</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient5"><label for="ingredient5">4 Chicken Breasts (Marinated in Teriyaki Sauce)</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient5"><label for="ingredient5">1/4 Cup Teriyaki</label></li>
+                </ul>
+            </div>
+            <div class="box b">
+                <h3 style="margin-top: 0px;">
+                    Instructions
+                </h3>
+                <ol>
+                    <li class="instruct">Add all ingredients to the crockpot.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Cook on low for 8 hours or on high for 4 hours.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Serve over rice.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Enjoy!</li>
+                    <br>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

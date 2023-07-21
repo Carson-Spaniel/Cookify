@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Kitchen Sink Cookies{% endblock %}
+{% block content %}
+<head>
+    <style>
+
+        .flex-container > div {
+            margin: 20px;
+        }
+
+        .box:hover {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="top">Kitchen Sink Cookies</h1>
+        <div class="flex-container">
+            <div class="box a" style="max-width: 600px;">
+                <h3 style="margin-top: 0px;">
+                    Ingredients
+                </h3>
+                <ul>
+                    <!-- Add input elements with type checkbox and labels for each list item -->
+                    <li><input type="checkbox" id="ingredient1"><label for="ingredient1">1 Cup Butter (Softened)</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient2"><label for="ingredient2">1 Cup Packed Brown Sugar</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient3"><label for="ingredient3">1/2 Cup Sugar</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient4"><label for="ingredient4">1 Teaspoon Vanilla</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient5"><label for="ingredient5">1 Egg</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient6"><label for="ingredient6">2 1/4 Cups Flour</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient7"><label for="ingredient7">1 Teaspoon Baking Soda</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient8"><label for="ingredient8">1/2 Teaspoon Salt</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient9"><label for="ingredient9">3/4 Cup Semi-Sweet Chocolate Chips</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient10"><label for="ingredient10">3/4 Cup Milk Chocolate Chips</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient11"><label for="ingredient11">3/4 Cup Pretzels</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient12"><label for="ingredient12">1/2 Cup Toffee Bits</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient13"><label for="ingredient13">1/2 Teaspoon Flaky Sea Salt</label></li>
+                </ul>
+            </div>
+            <div class="box b">
+                <h3 style="margin-top: 0px;">
+                    Instructions
+                </h3>
+                <ol>
+                    <li class="instruct">Heat the oven to 350 degrees.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">In a large bowl, beat butter, sugar, vanilla, and egg with a mixer on medium speed.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Stir in flour, baking soda, and salt (dough will be stiff).</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Stir in semi-sweet and milk chocolate chips, pretzels, and toffee.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Drop 1/2 cup drop-fulls 4 inches apart, flatten slightly, and sprinkle a few salt flakes on top of each cookie.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Bake for 13-16 minutes or until light brown around the edges; the center will be soft.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Let cool for 5 minutes.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Enjoy!</li>
+                    <br>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

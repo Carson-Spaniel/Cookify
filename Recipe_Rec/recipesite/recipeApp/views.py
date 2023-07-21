@@ -8,8 +8,8 @@ TEMPLATE_DIRS = (
 )
 
 # ------------- main pages -------------
-def index(request):
-    return render(request, "webpages/index.html",)
+# def index(request):
+#     return render(request, "webpages/index.html",)
 
 def recipesPage(request):
     return render(request, "webpages/recipesPage.html",)
@@ -90,8 +90,8 @@ def mendicino(request):
 
 # ------------- dessert pages -------------
 def kSC(request):
-    return render(request, "recipePages/dessert/kSC.html",)
+    return render(request, "recipePages/desserts/kSC.html",)
 
 def rCB(request):
-    return render(request, "recipePages/dessert/rCB.html",)
+    return render(request, "recipePages/desserts/rCB.html",)
 

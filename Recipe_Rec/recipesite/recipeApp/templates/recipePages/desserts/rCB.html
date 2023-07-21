@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}Reese's Cheesecake Brownies{% endblock %}
+{% block content %}
+<head>
+    <style>
+
+        .flex-container > div {
+            margin: 20px;
+        }
+
+        .box:hover {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="top">Reese's Cheesecake Brownies</h1>
+        <div class="flex-container">
+            <div class="box a" style="max-width: 600px;">
+                <h3 style="margin-top: 0px;">
+                    Ingredients
+                </h3>
+                <ul>
+                    <!-- Add input elements with type checkbox and labels for each list item -->
+                    <li><input type="checkbox" id="ingredient1"><label for="ingredient1">1 Fudge Brownie Mix</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient2"><label for="ingredient2">1 (8 oz) Package Cream Cheese</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient3"><label for="ingredient3">1 (14 oz) Can Sweetened Condensed Milk</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient4"><label for="ingredient4">1/2 Cup Creamy Peanut Butter</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient5"><label for="ingredient5">1 (12 oz) Package Reese's Pieces</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient6"><label for="ingredient6">1 (12 oz) Package Milk Chocolate Chips</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient7"><label for="ingredient7">3 Tablespoons Whipping Cream</label></li>
+                    <hr class="ingredient-divider">
+                    <li><input type="checkbox" id="ingredient8"><label for="ingredient8">12 Large Reese's Peanut Butter Cups (Chopped)</label></li>
+                </ul>
+            </div>
+            <div class="box b">
+                <h3 style="margin-top: 0px;">
+                    Instructions
+                </h3>
+                <ol>
+                    <li class="instruct">Preheat the oven to 350 degrees. Lightly coat a 9x13 pan with cooking spray.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Prepare brownie batter according to its directions and pour batter into the 9x13 pan. Set aside.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">In a large bowl, beat softened cream cheese until light and fluffy. Add in sweetened condensed milk and peanut butter, and beat until smooth.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Stir in the bag of Reese's Pieces candies. Spoon the cheesecake mixture over the brownie batter evenly.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Bake at 350 degrees for 40 minutes or until the cheesecake layer is set and the edges are golden brown.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Let the brownies cool for 30 minutes, then refrigerate for another 30 minutes.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">In a microwave-safe bowl, add milk chocolate chips and whipping cream. Melt on high for 1 minute, checking and stirring throughout to avoid overcooking. Heat until melted and smooth.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Pour and spread the melted chocolate evenly over the top of the brownies and cheesecake.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Sprinkle the 12 large chopped Reese's Peanut Butter Cups over the top.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Store covered in the refrigerator.</li>
+                    <br>
+                    <hr class="ingredient-divider">
+                    <br>
+                    <li class="instruct">Enjoy!</li>
+                    <br>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
