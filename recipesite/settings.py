@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recipeApp.apps.RecipeappConfig',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
