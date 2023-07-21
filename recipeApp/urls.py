@@ -16,7 +16,7 @@ urlpatterns = [
     path('dessert/',views.dessert, name='dessert'),
 
     #----------------requests----------------
-    path('searchRecipe/', views.searchRecipe, name='searchRecipe'),
+    # path('searchRecipe/', views.searchRecipe, name='searchRecipe'),
     # path('login_info/', views.login_info, name='login_info'),
 
     # ------------- breakfast pages -------------
