@@ -42,6 +42,8 @@
 
             .main{
                 padding-top: 40px;
+                max-width: 2100px;
+                margin: auto;
             }
 
             .nameButton{
@@ -137,15 +139,17 @@
                 padding: 20px;
                 font-size: 150%;
                 text-align: center;
-                transition: transform 0.2s ease;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
             }
 
             .box:hover{
                 transform: translateY(-7px);
+                box-shadow: rgba(0, 0, 0, 0.40) 5px 10px 8px;
             }
             
             .box:active {
                 transform: translateY(-1px);
+                box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
             }
 
             .a{
