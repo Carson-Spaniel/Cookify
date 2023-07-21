@@ -18,38 +18,64 @@
                 text-align: center;
                 margin: 0 auto;
                 margin-top: -21.44px;
-                box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+                margin-bottom: -21.44px;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+                z-index: 10;
             }
+
             body{
                 margin: 0px;
+                height: 3000px;
             }
 
             nav{
-                display: block;
-                float: right;
+                margin-top: 20px;
+                margin-left: 20px;
+                position: fixed;
             }
 
             .main{
                 padding-top: 40px;
             }
 
+            .nameButton{
+                height: 42px;
+                border: none;
+                overflow: hidden;
+                background-color: aliceblue;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .recipe{
+                height: 42px;
+                border: none;
+                overflow: hidden;
+                background-color: aliceblue;
+                text-align: center;
+                cursor: pointer;
+                min-width: 100px;
+            }
+
             .find{
+                box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
                 text-align: center;
                 margin: 0 auto;
-                margin-left: -8px;
-                margin-top: -6px;
+                width: 100%;
                 height: 300px;
                 background-color: rgba(0, 0, 255, 0.15);
-                background-image: url('C:/Users/carso/Personal Projects/Personal-Projects/Recipe_Rec/recipesite/recipeApp/templates/webpages/images/food.jpg');
+                background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc9JUH6bGtSw6Yq75A3itX2Cp79DLkgUVxIubXY4SfQi7KD8OXROe4fPeGIsVVXMsPG0foFzJ0OTL7TAnjrQmkAHCkXF6N3OmOWyPLXnx_vD47wFfUo=w2400');
+                background-size: cover;
+                background-repeat: no-repeat;
                 padding-top: 70px;
                 font-size: 30px;
+                z-index: -1;
             }
 
             .find .search-container button {
-                padding: 6px 10px;
-                margin-top: 8px;
+                padding: 10px 10px;
                 margin-right: 16px;
-                background: #ddd;
+                background: #c7c7c7;
                 font-size: 17px;
                 border: none;
                 cursor: pointer;
@@ -69,7 +95,7 @@
                 display: none;
                 position: absolute;
                 background-color: #ffffff;
-                min-width: 160px;
+                min-width: 100px;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
             }
@@ -83,7 +109,7 @@
             }
 
             .dropdown-content a:hover {
-                background-color: lavenderblush;
+                background-color: aliceblue;
             }
 
             .dropdown:hover .dropdown-content {
@@ -96,16 +122,61 @@
     <body>
         <div class="content">
             <header>
-                <h1>Cookify</h1>
                 <nav>
+                    <a href="/index"><button class="nameButton"><h1>Cookify</h1></button></a>
+
                     <div class="dropdown">
-                        <a href="./recipes.html"><button class="button button1">Recipes</button></a>
+                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
                         <div class="dropdown-content">
-                            <a href="./recipes.html#Yosemite">Yosemite National Park</a>
-                            <a href="./recipes.html#Hawaii">Hawaii</a>
-                            <a href="./recipes.html#Oregon">Oregon</a>
-                            <a href="./recipes.html#Greece">Greece</a>
-                            <a href="./recipes.html#Paris">Paris</a>
+                            <a href="/recipesPage">Breakfast</a>
+                            <a href="/recipesPage">Lunch</a>
+                            <a href="/recipesPage">Dinner</a>
+                            <a href="/recipesPage">Snacks</a>
+                            <a href="/recipesPage">Desserts</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
+                        <div class="dropdown-content">
+                            <a href="/recipesPage">Breakfast</a>
+                            <a href="/recipesPage">Lunch</a>
+                            <a href="/recipesPage">Dinner</a>
+                            <a href="/recipesPage">Snacks</a>
+                            <a href="/recipesPage">Desserts</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
+                        <div class="dropdown-content">
+                            <a href="/recipesPage">Breakfast</a>
+                            <a href="/recipesPage">Lunch</a>
+                            <a href="/recipesPage">Dinner</a>
+                            <a href="/recipesPage">Snacks</a>
+                            <a href="/recipesPage">Desserts</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
+                        <div class="dropdown-content">
+                            <a href="/recipesPage">Breakfast</a>
+                            <a href="/recipesPage">Lunch</a>
+                            <a href="/recipesPage">Dinner</a>
+                            <a href="/recipesPage">Snacks</a>
+                            <a href="/recipesPage">Desserts</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="/recipesPage"><button class="recipe">Recipes</button></a>
+                        <div class="dropdown-content">
+                            <a href="/recipesPage">Breakfast</a>
+                            <a href="/recipesPage">Lunch</a>
+                            <a href="/recipesPage">Dinner</a>
+                            <a href="/recipesPage">Snacks</a>
+                            <a href="/recipesPage">Desserts</a>
                         </div>
                     </div>
                 </nav>
@@ -139,7 +210,7 @@
                             var userInput = document.querySelector('input[name="search"]').value;
                             j.ajax({
                                 type: "POST",
-                                url: "/process_string/",
+                                url: "/searchRecipe/",
                                 data: { input: userInput },
                                 dataType: 'json',
                                 headers: {
