@@ -1,8 +1,8 @@
 :root {
     --primary-color: #ecedda;
-    --primary-faded-color: #ecedda7a;
+    --primary-faded-color: #eceddab5;
     --secondary-color: #DDE7C7;
-    --background-color: white;
+    --background-color: #fffff6;
     --font-color: #477463;
     --box-font-color: #ecedda;
 }
@@ -10,9 +10,9 @@
 :root.light-mode {
     /* Light color palette */
     --primary-color: #ecedda;
-    --primary-faded-color: #ecedda7a;
+    --primary-faded-color: #eceddab5;
     --secondary-color: #DDE7C7;
-    --background-color: white;
+    --background-color: #fffff6;
     --font-color: #477463;
     --box-font-color: #ecedda;
 }
@@ -20,7 +20,7 @@
 :root.dark-mode {
     /* Dark color palette */
     --primary-color: #477463;
-    --primary-faded-color: #4774637a;
+    --primary-faded-color: #477463b5;
     --secondary-color: #DDE7C7;
     --background-color: #1b2b25;
     --font-color: #ecedda;
