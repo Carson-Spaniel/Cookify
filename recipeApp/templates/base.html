@@ -19,8 +19,13 @@
                 const preferredColorMode = localStorage.getItem('colorMode');
                 console.log("Was in",preferredColorMode,"before")
 
+                if (!preferredColorMode){
+                    applyColorPalette('light-mode');
+                }
+                else{
+                    applyColorPalette(preferredColorMode);
+                }
                 // Set the initial color mode to light-mode
-                applyColorPalette(preferredColorMode);
 
                 const toggleButton = document.querySelector('.toggle-button');
                 if (preferredColorMode === 'dark-mode') {
