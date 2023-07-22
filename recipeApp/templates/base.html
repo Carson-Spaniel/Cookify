@@ -19,7 +19,7 @@
                 const preferredColorMode = localStorage.getItem('colorMode');
                 console.log("Was in",preferredColorMode,"before")
 
-                if (!preferredColorMode){
+                if (preferredColorMode == null){
                     applyColorPalette('light-mode');
                 }
                 else{
