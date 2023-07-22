@@ -11,7 +11,7 @@ urlpatterns = [
     path('dinner/',views.dinner, name='dinner'),
     path('beef/',views.beef, name='beef'),
     path('chicken/',views.chicken, name='chicken'),
-    path('italianSausage/',views.italianSausage, name='italianSausage'),
+    path('italian-sausage/',views.italianSausage, name='italianSausage'),
     # path('snacks/',views.snacks, name='snacks'),
     path('dessert/',views.dessert, name='dessert'),
 
@@ -20,29 +20,30 @@ urlpatterns = [
     # path('login_info/', views.login_info, name='login_info'),
 
     # ------------- breakfast pages -------------
-    path('breakfastCasserole/',views.breakfastCasserole, name='breakfastCasserole'),
+    path('Breakfast-Casserole/',views.breakfastCasserole, name='breakfast-casserole'),
 
     # ------------- lunch pages -------------
-    path('macAndCheese/',views.macAndCheese, name='macAndCheese'),
+    path('Mac-and-Cheese/',views.macAndCheese, name='mac-and-cheese'),
+    path('Buffalo-Chicken-Paninis/',views.bCP, name='buffalo-chicken-paninis'),
 
     # ------------- beef pages -------------
-    path('tacoSoup/',views.tacoSoup, name='tacoSoup'),
+    path("Granny's-Taco-Soup/",views.tacoSoup, name='grannys-taco-soup'),
 
     # ------------- chicken pages -------------
-    path('tuscChick/',views.tuscChick, name='tuscChick'),
-    path('chickTortel/',views.chickTortel, name='chickTortel'),
-    path('kRC/',views.kRC, name='kRC'),
-    path('teriakiChick/',views.teriakiChick, name='teriakiChick'),
-    path('hGC/',views.hGC, name='hGC'),
+    path('Tuscan-Chicken/',views.tuscChick, name='tuscan-chicken'),
+    path('Chicken-Tortellini/',views.chickTortel, name='chicken-tortellini'),
+    path("Mom's-King-Ranch-Casserole/",views.kRC, name='kRC'),
+    path('Teriyaki-Chicken/',views.teriakiChick, name='teriakiChick'),
+    path("Emily's-Honey-Garlic-Chicken/",views.hGC, name='hGC'),
 
     # ------------- italian sausage pages -------------
-    path('mendicino/',views.mendicino, name='mendicino'),
+    path('Mendicino-Pasta/',views.mendicino, name='mendicino'),
 
     # ------------- snack pages -------------
 
 
     # ------------- dessert pages -------------
-    path('kSC/',views.kSC, name='kSC'),
-    path('rCB/',views.rCB, name='rCB'),
+    path("Mom's-Kitchen-Sink-Cookies/",views.kSC, name='kSC'),
+    path("Reese's-Cheesecake-Brownies/",views.rCB, name='rCB'),
 
 ]

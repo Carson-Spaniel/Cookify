@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     // Function to check if an element is intersecting the viewport
     function isElementIntersecting(entry) {
@@ -29,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(box);
     });
 });
+
 
 // Function to update the padding of the "main" element based on the height of the "nav" element
 function updateMainPadding() {

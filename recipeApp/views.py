@@ -60,6 +60,9 @@ def breakfastCasserole(request):
 def macAndCheese(request):
     return render(request, "recipePages/lunch/macAndCheese.html",)
 
+def bCP(request):
+    return render(request, "recipePages/lunch/bCP.html",)
+
 # ------------- beef pages -------------
 def tacoSoup(request):
     return render(request, "recipePages/dinner/beef/tacoSoup.html",)

@@ -2,19 +2,72 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-    <title>{% block title %}{% endblock %}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
-</head>
+    <head>
+        <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
+    
+        <!-- Include script.js before the inline JavaScript code -->
+        <script src="{% static 'js/script.js' %}"></script>
+        
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const preferredColorMode = localStorage.getItem('colorMode');
+                // console.log("Was in",preferredColorMode,"before")
+
+                // Set the initial color mode to light-mode
+                applyColorPalette(preferredColorMode);
+
+                const toggleButton = document.querySelector('.toggle-button');
+                if (preferredColorMode === 'dark-mode') {
+                    toggleButton.style.transform = 'translate(0px, 0px)';
+                    toggleButton.style.setProperty('--indicator-translate', 'translate(7px, -2px)');
+                } else {
+                    toggleButton.style.transform = 'translate(0px, 0px)';
+                    toggleButton.style.setProperty('--indicator-translate', 'translate(0px, 0px)');
+                }
+            });
+
+            function toggleColorPalette() {
+                const root = document.documentElement;
+                const toggleButton = document.querySelector('.toggle-button');
+                const indicator = window.getComputedStyle(toggleButton, '::before');
+
+                if (root.classList.contains('dark-mode')) {
+                    applyColorPalette('light-mode');
+                    toggleButton.style.setProperty('--indicator-translate', 'translate(0px, 0px)');
+                } else {
+                    applyColorPalette('dark-mode');
+                    toggleButton.style.setProperty('--indicator-translate', 'translate(7px, -2px)');
+                }
+            }
+
+            // Move the applyColorPalette() function outside the window.addEventListener block
+            function applyColorPalette(palette) {
+                const root = document.documentElement;
+                // Remove both color palette classes
+                root.classList.remove('light-mode');
+                root.classList.remove('dark-mode');
+
+                // Add the specified color palette class
+                root.classList.add(palette);
+
+                // Store the user's preference in localStorage
+                localStorage.setItem('colorMode', palette);
+            }
+        </script>
+    </head>
     <div class="content">
         <header>
-            <script src="{% static 'js/script.js' %}"></script>
             <nav>
+                <div class="dark-mode-toggle">
+                    <input type="checkbox" id="darkModeToggle" onclick="toggleColorPalette()" />
+                    <label for="darkModeToggle" class="toggle-button"></label>
+                </div>
                 <a href="/recipes-page"><button class="nameButton"><h1>Cookify</h1></button></a>
 
                 <div class="dropdown">
@@ -31,14 +84,15 @@
                 <div class="dropdown">
                     <a href="/breakfast"><button class="recipe">Breakfast</button></a>
                     <div class="dropdown-content">
-                        <a href="/breakfastCasserole">Breakfast Casserole</a>
+                        <a href="/Breakfast-Casserole">Breakfast Casserole</a>
                     </div>
                 </div>
 
                 <div class="dropdown">
                     <a href="/lunch"><button class="recipe">Lunch</button></a>
                     <div class="dropdown-content">
-                        <a href="/macAndCheese">Mac and Cheese</a>
+                        <a href="/Mac-and-Cheese">Mac and Cheese</a>
+                        <!-- <a href="/Buffalo-Chicken-Paninis">Buffalo Chicken Paninis</a> -->
                     </div>
                 </div>
 
@@ -47,7 +101,7 @@
                     <div class="dropdown-content">
                         <a href="/beef">Beef</a>
                         <a href="/chicken">Chicken</a>
-                        <a href="/italianSausage">Italian Sausage</a>
+                        <a href="/italian-sausage">Italian Sausage</a>
                     </div>
                 </div>
 
@@ -65,10 +119,11 @@
                 <div class="dropdown">
                     <a href="/dessert"><button class="recipe">Desserts</button></a>
                     <div class="dropdown-content">
-                        <a href="/kSC">Kitchen Sink Cookies</a>
-                        <a href="/rCB">Reese's Cheesecake Brownies</a>
+                        <a href="/Mom's-Kitchen-Sink-Cookies">Mom's Kitchen Sink Cookies</a>
+                        <a href="/Reese's-Cheesecake-Brownies">Reese's Cheesecake Brownies</a>
                     </div>
                 </div>
+
             </nav>
         </header>
 

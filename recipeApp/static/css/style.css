@@ -1,9 +1,21 @@
-:root {
-    --primary-color: #ecedda; /*Main color*/
-    --secondary-color: #DDE7C7; /*Selection color*/
-    --background-color: white;  /*Background color*/
-    --font-color: #477463; /*Font color*/
-    --box-font-color: white; /*Box title color*/
+:root.light-mode {
+    /* Light color palette */
+    --primary-color: #ecedda;
+    --primary-faded-color: #ecedda7a;
+    --secondary-color: #DDE7C7;
+    --background-color: white;
+    --font-color: #477463;
+    --box-font-color: #ecedda;
+}
+
+:root.dark-mode {
+    /* Dark color palette */
+    --primary-color: #477463;
+    --primary-faded-color: #4774637a;
+    --secondary-color: #DDE7C7;
+    --background-color: #1b2b25;
+    --font-color: #ecedda;
+    --box-font-color: #ecedda;
 }
 
 * {
@@ -30,7 +42,7 @@ header{
 
 body{
     margin: 0px;
-    height: 1000px;
+    background-color: var(--background-color);
 }
 
 nav{
@@ -75,6 +87,7 @@ nav{
 
 .recipe:hover{
     background-color: var(--secondary-color);
+    color: #477463;
 }
 
 .dropdown {
@@ -103,6 +116,7 @@ nav{
 
 .dropdown-content a:hover {
     background-color: var(--secondary-color);
+    color: #477463;
 }
 
 .dropdown:hover .dropdown-content {
@@ -141,6 +155,9 @@ nav{
 }
 
 .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* Remove min-width */
     opacity: 0;
     transform: translateY(20px);
@@ -174,15 +191,12 @@ nav{
 }
 
 .title{
-    /* background-color: #000000;
-    opacity: 50%; */
-    color: var(--box-font-color);
-    height: 100px;
+    color: var(--font-color); 
     width: 200px;
     margin: auto;
-    border-radius: 20px;
-    margin-top: 175px;
-    padding-top: 30px;
+    border-radius: 15px;
+    background-color: var(--primary-faded-color);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .ingredient-divider {
@@ -270,4 +284,45 @@ ol {
     font-weight: bold;
     color: var(--primary-color);
     background-color: var(--font-color);
+}
+
+.dark-mode-toggle {
+    display: inline-block;
+    position: relative;
+}
+
+.dark-mode-toggle input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-button {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: var(--font-color);
+    border-radius: 15px;
+    cursor: pointer;
+    margin-bottom: -7px;
+}
+
+.toggle-button::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    transition: transform 0.3s ease-out;
+    transform: var(--indicator-translate, translate(0px, 0px)); 
+}
+
+.dark-mode-toggle input[type="checkbox"]:checked + .toggle-button {
+    background-color: var(--font-color);
+    /* Add this style to move the toggle to the other side when it's checked */
 }
