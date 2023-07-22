@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&$6rna)-gu36duh@u9hp#$p)0kjg@2$(_4*+a(rx57)eik2$-e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['cookify-16e5ae3525c7.herokuapp.com']
 
