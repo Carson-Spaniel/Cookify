@@ -1,3 +1,12 @@
+:root {
+    --primary-color: #ecedda;
+    --primary-faded-color: #ecedda7a;
+    --secondary-color: #DDE7C7;
+    --background-color: white;
+    --font-color: #477463;
+    --box-font-color: #ecedda;
+}
+
 :root.light-mode {
     /* Light color palette */
     --primary-color: #ecedda;
