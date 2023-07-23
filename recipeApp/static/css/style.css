@@ -335,3 +335,11 @@ ol {
     background-color: var(--font-color);
     /* Add this style to move the toggle to the other side when it's checked */
 }
+
+.diagonal-line {
+    position: absolute;
+    width: 3px;
+    height: 40px;
+    background-color: #477463;
+    border-radius: 5px;
+}
