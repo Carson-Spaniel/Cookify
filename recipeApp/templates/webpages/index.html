@@ -7,7 +7,7 @@
             position: relative;
             box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
             text-align: center;
-            margin: 0 auto;
+            margin: auto;
             width: 100%;
 
             background-color: rgba(0, 0, 255, 0.15);
@@ -15,34 +15,128 @@
             background-size: cover;
             background-repeat: no-repeat;
             padding-top: 100px;
+            padding-bottom: 100px;
             font-size: 150%;
             z-index: 0;
+
+            margin-top: -10px;
         }
 
         .search-container{
             opacity: 70%;
-            padding-bottom: 80px;
+            padding-bottom: 20px;
+            margin: auto;
         }
 
         .find .search-container button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 0px 5px;
-            background: #e9e9e9;
+            background: var(--primary-color);
             font-size: 17px;
             border: none;
             cursor: pointer;
             height: 20px;
             width: 80px;
             border-radius: 10px;
-            color: rgb(0, 0, 0);
+            color: var(--font-color);
             opacity: 100%;
+            margin: auto;
+            margin-top: 5px;
         }
 
         .find .search-container button:hover {
-            background: #f9f9f9;
+            background: var(--primary-color);
+            opacity: 75%;
         }
 
         .findTitle{
-            margin-bottom: 0px;
+            color: var(--font-color); 
+            width: 60%;
+            margin: auto;
+            border-radius: 15px;
+            background-color: var(--primary-faded-color);
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            min-width: 170px;
+            padding-top: 10px;
+        }
+
+        .results{
+            display: none;
+        }
+
+        .recipe-container{
+            display: none;
+        }
+
+        .results-container {
+            display: none;
+            flex-wrap: wrap;
+            justify-content:center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .box {
+            width: 60%;
+            height: 200px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            max-width: 300px;
+            margin: 20px;
+            min-width: 170px;
+        }
+
+        .recipe-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transform: translateY(20px);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+            background-color: var(--primary-color);
+            color: var(--font-color);
+            border-radius: 30px;
+            padding: 20px;
+            font-size: 150%;
+            text-align: center;
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
+            width: 100%;
+            max-width: 1000px;
+            display: inline;
+            margin: 20px;
+        }
+
+        button{
+            border: none;
+        }
+
+        .instruct{
+            margin: auto;
+        }
+
+        .topTitle{
+            margin-top: 0px;
+            margin: auto;
+            font-size: 30px;
+            color: var(--font-color);
+            text-align: center;
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 150%;
+        }
+
+        .title{
+            cursor: pointer;
+        }
+
+        .top{
+            width: 50%;
+            min-width: none;
         }
 
     </style>
@@ -84,25 +178,274 @@
                             'X-CSRFToken': csrftoken
                         },
                         success: function(response) {
-                            console.log("text:", response.text);
+                            console.log(response)
+                            if (Array.isArray(response.text) && response.text.length > 0) {
+                                document.querySelector('.results').style.display = 'block';
+                                document.querySelector('.top').innerText = "Recipe Results";
+                                document.querySelector('.results-container').style.display = 'flex';
+
+                                var boxElements = document.querySelectorAll('.box');
+                                var j = 0;
+                                for (var i = 0; i < response.text.length && i < boxElements.length; i++) {
+                                    if (i+1 == response.text.length){
+                                        j = i+1;
+                                    }
+                                    if (response.text[i] && response.text[i].length >= 3) {
+                                        var imageUrl = response.text[i][2];
+                                        boxElements[i].style.backgroundImage = 'url(' + imageUrl + ')';
+                                        var titleElement = boxElements[i].querySelector('.title');
+                                        if (titleElement) {
+                                            titleElement.innerText = response.text[i][1];
+                                        } else {
+                                            boxElements[i].innerText = 'Default Recipe Title';
+                                        }
+                                        var recipeId = response.text[i][0];
+                                        boxElements[i].setAttribute('onclick', 'loadRecipe(' + recipeId +','+ '"'+response.text[i][1]+'"'+')');
+                
+                                    } else {
+                                        boxElements[i].style.display = 'none';
+                                    }
+                                }
+                                if (j != 0){
+                                    for (var h = j; h < boxElements.length; h++){
+                                        boxElements[h].style.display = 'none';
+                                    }
+                                }
+                            } else {
+                                console.log("No results found.");
+                                document.querySelector('.results').style.display = 'block';
+                                document.querySelector('.top').innerText = "No results found";
+                            }
                         },
                         error: function(xhr, status, error) {
-                            // Handle the error if needed
+                            console.log("No results found.");
+                            document.querySelector('.results').style.display = 'block';
+                            document.querySelector('.top').innerText = "No results found";
                         }
                     });
                 }
             </script>
-            <h1 class="findTitle">
-                Find a Recipe
-            </h1>
-            <div class="search-container">
-                <form onsubmit="submitsearch(); return false;">
-                    <input type="text" placeholder="Chicken Alfredo Pasta" name="search">
-                    <button class="find search-container button" type="submit">Search</button>
-                </form>
+            <script>
+                function loadRecipe(id,titleText){
+                    var csrftoken = getCookie('csrftoken');
+                    j.ajax({
+                        type: "POST",
+                        url: "/loadRecipe/",
+                        data: { input: id },
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRFToken': csrftoken
+                        },
+                        success: function(response) {
+                            var titleBox = document.querySelector('.recipe-container')
+                            var titleHeader = titleBox.querySelector('.top')
+                            var title = titleHeader.querySelector('.topTitle')
+                            title.innerText = titleText
+                            console.log("This is after button click")
+                            console.log(response)
+                            var recipeContainer = document.querySelector('.flex-container')
+                            while (recipeContainer.firstChild) {
+                                recipeContainer.removeChild(recipeContainer.firstChild);
+                            }
+                            // var recipeContainer = document.querySelector('.recipe-container');
+
+                            // Create a div element to hold the ingredients
+                            var ingredientsDiv = document.createElement('div');
+                            ingredientsDiv.classList.add('recipe-box', 'a');
+                            ingredientsDiv.style.maxWidth = '600px';
+                            ingredientsDiv.style.marginTop = '0px';
+
+                            // Create and append the h3 element for Ingredients
+                            var ingredientsHeading = document.createElement('h3');
+                            ingredientsHeading.style.marginTop = '0px';
+                            ingredientsHeading.innerText = 'Ingredients';
+                            ingredientsDiv.appendChild(ingredientsHeading);
+
+                            // Create and append the ul element for Ingredients list
+                            var ingredientsUl = document.createElement('ul');
+
+                            // Loop through the ingredients list and create list items
+                            for (var i = 0; i < response.ingredients.length; i++) {
+                                var ingredient = response.ingredients[i];
+                                var ingredientLi = document.createElement('li');
+                                var ingredientInput = document.createElement('input');
+                                ingredientInput.type = 'checkbox';
+                                ingredientInput.id = 'ingredient' + (i + 1);
+                                var ingredientLabel = document.createElement('label');
+                                ingredientLabel.htmlFor = 'ingredient' + (i + 1);
+                                ingredientLabel.innerText = ingredient;
+                                ingredientLi.appendChild(ingredientInput);
+                                ingredientLi.appendChild(ingredientLabel);
+                                ingredientsUl.appendChild(ingredientLi);
+
+                                // Add an ingredient divider except for the last item
+                                if (i !== response.ingredients.length - 1) {
+                                    var ingredientDivider = document.createElement('hr');
+                                    ingredientDivider.classList.add('ingredient-divider');
+                                    ingredientsUl.appendChild(ingredientDivider);
+                                }
+                            }
+
+                            // Append the ingredients list to the ingredientsDiv
+                            ingredientsDiv.appendChild(ingredientsUl);
+
+                            // Append the ingredientsDiv to the recipeContainer
+                            recipeContainer.appendChild(ingredientsDiv);
+
+                            // Create a div element to hold the instructions
+                            var instructionsDiv = document.createElement('div');
+                            instructionsDiv.classList.add('recipe-box', 'b');
+                            instructionsDiv.style.marginBottom = '40px'
+
+                            // Create and append the h3 element for Instructions
+                            var instructionsHeading = document.createElement('h3');
+                            instructionsHeading.style.marginTop = '0px';
+                            instructionsHeading.innerText = 'Instructions';
+                            instructionsDiv.appendChild(instructionsHeading);
+
+                            // Create and append the ol element for Instructions list
+                            var instructionsOl = document.createElement('ol');
+
+                            // Loop through the instructions list and create list items
+                            set = 1;
+                            for (var i = 0; i < response.instructions.length; i++) {
+                                var instruction = response.instructions[i];
+                                var instructionLi = document.createElement('li');
+                                instructionLi.classList.add('instruct');
+
+                                if (i !== response.instructions.length - 1) {
+                                    instructionLi.innerText = (i + 1) + '. ' + instruction;
+                                } else {
+                                    instructionLi.innerText = 'Enjoy!';
+                                }
+                                
+                                // Add an instruction divider
+                                var instructionDivider = document.createElement('br');
+                                var instructionBreak = document.createElement('br');
+                                var instructionHr = document.createElement('hr');
+                                instructionHr.classList.add('ingredient-divider');
+                                if (set != 1){
+                                    instructionsOl.appendChild(instructionBreak);
+                                    instructionsOl.appendChild(instructionHr);
+                                    instructionsOl.appendChild(instructionDivider);
+                                } else{
+                                    set = 0;
+                                }
+                                
+                                instructionsOl.appendChild(instructionLi);
+                            }
+
+                            // Append the instructions list to the instructionsDiv
+                            instructionsDiv.appendChild(instructionsOl);
+
+                            // Append the instructionsDiv to the recipeContainer
+                            recipeContainer.appendChild(instructionsDiv);
+
+                            // Show the recipe container
+                            document.querySelector('.results').style.display = 'none';
+                            document.querySelector('.results-container').style.display = 'none';
+                            document.querySelector('.recipe-container').style.display = 'block';
+
+                        },
+                        error: function(xhr, status, error) {
+                            console.log("Error");
+                        }
+                    });
+                }
+            </script>
+            <script>
+                function hideRecipe(){
+                    window.scroll({
+                        top: 0,
+                        left: 0,
+                        behavior: 'smooth' // You can use 'auto' for instant scroll without smooth animation
+                    });
+                    document.querySelector('.results').style.display = 'block';
+                    document.querySelector('.results-container').style.display = 'flex';
+                    document.querySelector('recipe-container').style.display = 'none';
+                }
+            </script>
+            <div class="findTitle">
+                <h1 style="margin-bottom: 0px;">
+                    Find a Recipe
+                </h1>
+                <div class="search-container">
+                    <form class="" onsubmit="submitsearch(); return false;" style="margin-bottom: 20px;">
+                        <input type="text" placeholder='Search "Chicken Alfredo Pasta"' name="search" style="width: 40%; min-width: 130px;">
+                        <button class="find search-container button" type="submit">Search</button>
+                    </form>
+                </div>
             </div>
         </div>
-        <h1>Cookify</h1>
+        <div class="results">
+            <h1 class="top"></h1>
+        </div>
+        <div class="results-container">
+            <button class="box a" >
+                <div class="title">Recipe A Title</div>
+            </button>
+            <button class="box b">
+                <div class="title">Recipe B Title</div>
+            </button>
+            <button class="box c">
+                <div class="title">Recipe C Title</div>
+            </button>
+            <button class="box d">
+                <div class="title">Recipe D Title</div>
+            </button>
+            <button class="box e">
+                <div class="title">Recipe E Title</div>
+            </button>
+            <button class="box f">
+                <div class="title">Recipe F Title</div>
+            </button>
+            <button class="box g">
+                <div class="title">Recipe G Title</div>
+            </button>
+            <button class="box h">
+                <div class="title">Recipe H Title</div>
+            </button>
+            <button class="box i">
+                <div class="title">Recipe I Title</div>
+            </button>
+            <button class="box j">
+                <div class="title">Recipe J Title</div>
+            </button>
+            <button class="box k">
+                <div class="title">Recipe K Title</div>
+            </button>
+            <button class="box l">
+                <div class="title">Recipe L Title</div>
+            </button>
+            <button class="box m">
+                <div class="title">Recipe M Title</div>
+            </button>
+            <button class="box n">
+                <div class="title">Recipe N Title</div>
+            </button>
+            <button class="box o">
+                <div class="title">Recipe O Title</div>
+            </button>
+            <button class="box p">
+                <div class="title">Recipe P Title</div>
+            </button>
+            <button class="box q">
+                <div class="title">Recipe Q Title</div>
+            </button>
+            <button class="box r">
+                <div class="title">Recipe R Title</div>
+            </button>
+        </div>
+        <div class="recipe-container">
+            
+            <div class="top">
+                <button class="title" onclick="hideRecipe()" style="background-color: var(--font-color); color: var(--primary-color); width: 100px;">Back</button>
+                <h1 class="topTitle"></h1>
+            </div>
+            
+            <div class="flex-container">
+            </div>
+        </div>
     </div>
 </body>
 {% endblock %}

@@ -3,8 +3,8 @@ from . import views
 
 urlpatterns = [
     #----------------Pages----------------
-    path('',views.recipesPage, name='recipes-page'),
-    # path('index/',views.index, name='index'),
+    path('',views.index, name='index'),
+    path('index/',views.index, name='index'),
     path('recipes-page/',views.recipesPage, name='recipes-page'),
     path('breakfast/',views.breakfast, name='breakfast'),
     path('lunch/',views.lunch, name='lunch'),
@@ -16,8 +16,8 @@ urlpatterns = [
     path('dessert/',views.dessert, name='dessert'),
 
     #----------------requests----------------
-    # path('searchRecipe/', views.searchRecipe, name='searchRecipe'),
-    # path('login_info/', views.login_info, name='login_info'),
+    path('searchRecipe/', views.searchRecipe, name='searchRecipe'),
+    path('loadRecipe/', views.loadRecipe, name='loadRecipe'),
 
     # ------------- breakfast pages -------------
     path('Breakfast-Casserole/',views.breakfastCasserole, name='breakfast-casserole'),

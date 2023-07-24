@@ -68,9 +68,10 @@ nav{
 }
 
 .main{
-    padding-top: 40px;
+    padding-top: 30px;
     max-width: 1615px;
     margin: auto;
+    color: var(--font-color);
 }
 
 .nameButton{
@@ -245,11 +246,13 @@ ul li input[type="checkbox"]:checked {
 
 /* Style the check mark inside the checkbox */
 ul li input[type="checkbox"]::before {
+    width: 0px;
+    height: 0px;
     content: "\2713"; /* Unicode character for check mark */
     position: absolute; /* Position the check mark */
-    top: -40px; /* Adjust vertical position */
-    left: -8px; /* Adjust horizontal position */
-    font-size: 60px; /* Adjust the size of the check mark */
+    top: -20px; /* Adjust vertical position */
+    left: -1px; /* Adjust horizontal position */
+    font-size: 40px; /* Adjust the size of the check mark */
     color: var(--font-color); /* Set the color of the check mark */
     visibility: hidden; /* Hide the check mark by default */
 }
