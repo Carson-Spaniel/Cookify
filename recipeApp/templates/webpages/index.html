@@ -139,6 +139,14 @@
             min-width: none;
         }
 
+        #search{
+            display: none;
+        }
+
+        #password{
+            display: block;
+        }
+
     </style>
 </head>
 
@@ -365,12 +373,26 @@
                     document.querySelector('recipe-container').style.display = 'none';
                 }
             </script>
+            <script>
+                function unHide(){
+                    var inputElement = document.getElementById('passwordInput');
+                    var password = inputElement.value;
+                    if (password == 'Sand123'){
+                        document.querySelector('#search').style.display = 'block';
+                        document.querySelector('#password').style.display = 'none';
+                    }
+                }
+            </script>
             <div class="findTitle">
                 <h1 style="margin-bottom: 0px;">
                     Find a Recipe
                 </h1>
                 <div class="search-container">
-                    <form class="" onsubmit="submitsearch(); return false;" style="margin-bottom: 20px;">
+                    <form id="password" onsubmit="unHide(); return false;" style="margin-bottom: 20px;">
+                        <input type="password" placeholder='Enter password' name="password" id="passwordInput" style="width: 40%; min-width: 130px;">
+                        <button class="find search-container button" type="submit">Go</button>
+                    </form>
+                    <form id="search" onsubmit="submitsearch(); return false;" style="margin-bottom: 20px;">
                         <input type="text" placeholder='Search "Chicken Alfredo Pasta"' name="search" style="width: 40%; min-width: 130px;">
                         <button class="find search-container button" type="submit">Search</button>
                     </form>
