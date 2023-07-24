@@ -18,6 +18,8 @@ urlpatterns = [
     #----------------requests----------------
     path('searchRecipe/', views.searchRecipe, name='searchRecipe'),
     path('loadRecipe/', views.loadRecipe, name='loadRecipe'),
+    path('sendOTPtoFunction/', views.sendOTPtoFunction, name='sendOTP'),
+    path('enterOTP/', views.enterOTP, name='enterOTP'),
 
     # ------------- breakfast pages -------------
     path('Breakfast-Casserole/',views.breakfastCasserole, name='breakfast-casserole'),

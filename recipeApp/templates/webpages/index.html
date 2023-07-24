@@ -60,6 +60,7 @@
             box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
             min-width: 170px;
             padding-top: 10px;
+            max-width: 1000px;
         }
 
         .results{
@@ -140,6 +141,10 @@
         }
 
         #search{
+            display: none;
+        }
+
+        #OTP{
             display: none;
         }
 
@@ -374,13 +379,53 @@
                 }
             </script>
             <script>
-                function unHide(){
-                    var inputElement = document.getElementById('passwordInput');
-                    var password = inputElement.value;
-                    if (password == 'Sand123'){
-                        document.querySelector('#search').style.display = 'block';
-                        document.querySelector('#password').style.display = 'none';
-                    }
+                function unHideOTP(){
+                    var csrftoken = getCookie('csrftoken');
+                    var userInput = document.querySelector('input[name="password"]').value;
+                    j.ajax({
+                        type: "POST",
+                        url: "/sendOTPtoFunction/",
+                        data: { input: userInput },
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRFToken': csrftoken
+                        },
+                        success: function(response) {
+                            if (response.send == 1){
+                                document.querySelector('#OTP').style.display = 'block';
+                                document.querySelector('#password').style.display = 'none';
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.log("Error with password");
+                        }
+                    });
+                }
+
+                function checkOTP(){
+                    var csrftoken = getCookie('csrftoken');
+                    var userInput = document.querySelector('input[name="OTP"]').value;
+                    j.ajax({
+                        type: "POST",
+                        url: "/enterOTP/",
+                        data: { input: userInput },
+                        dataType: 'json',
+                        headers: {
+                            'X-CSRFToken': csrftoken
+                        },
+                        success: function(response) {
+                            if (response.approve == 1){
+                                document.querySelector('#OTP').style.display = 'none';
+                                document.querySelector('#search').style.display = 'block';
+                            }
+                            else{
+                                console.log("Wrong OTP")
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.log("Error with password");
+                        }
+                    });
                 }
             </script>
             <div class="findTitle">
@@ -388,8 +433,12 @@
                     Find a Recipe
                 </h1>
                 <div class="search-container">
-                    <form id="password" onsubmit="unHide(); return false;" style="margin-bottom: 20px;">
+                    <form id="password" onsubmit="unHideOTP(); return false;" style="margin-bottom: 20px;">
                         <input type="password" placeholder='Enter password' name="password" id="passwordInput" style="width: 40%; min-width: 130px;">
+                        <button class="find search-container button" type="submit">Go</button>
+                    </form>
+                    <form id="OTP" onsubmit="checkOTP(); return false;" style="margin-bottom: 20px;">
+                        <input type="password" placeholder='Enter OTP' name="OTP" id="passwordInput" style="width: 40%; min-width: 130px;">
                         <button class="find search-container button" type="submit">Go</button>
                     </form>
                     <form id="search" onsubmit="submitsearch(); return false;" style="margin-bottom: 20px;">

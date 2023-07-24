@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .functions.apiGrab import searchRecipes, grabRecipe
+from .functions.authen import sendOTP,checkOTP
 
 TEMPLATE_DIRS = (
     'os.path.join(BASE_DIR, "templates"),'
@@ -65,6 +66,45 @@ def loadRecipe(request):
             'title': title,
             'ingredients': ingredients,
             'instructions':instructions
+            }
+        print("\nExiting post")
+        return JsonResponse(response_data)
+    else:
+        print("Exiting post with error")
+        return JsonResponse({'error': 'Invalid request method'}, status=400)
+    
+@csrf_exempt
+def enterOTP(request):
+    print("Entering post\n")
+    if request.method == 'POST':
+        try:
+            InputOTP = int(request.POST.get('input', ''))
+            approve = checkOTP(InputOTP)
+        except ValueError:
+            InputOTP = 0
+
+        response_data = {
+            'approve': approve
+            }
+        print("\nExiting post")
+        return JsonResponse(response_data)
+    else:
+        print("Exiting post with error")
+        return JsonResponse({'error': 'Invalid request method'}, status=400)
+    
+@csrf_exempt
+def sendOTPtoFunction(request):
+    print("Entering post\n")
+    if request.method == 'POST':
+        password = request.POST.get('input', '')
+        send = sendOTP(password)
+        if send:
+            response_data = {
+                'send': send
+            }
+        else:
+            response_data = {
+                'send': send
             }
         print("\nExiting post")
         return JsonResponse(response_data)

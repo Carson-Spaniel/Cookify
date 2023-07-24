@@ -1,12 +1,13 @@
 import requests
 
-def searchRecipes(userInput):
-    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch"
-
-    headers = {
+headers = {
         "X-RapidAPI-Key": "7096120029mshb7e384dcd85b2c6p11f3b8jsnf8b6f47186b2",
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
+
+def searchRecipes(userInput):
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch"
+
     querystring = {"query":f"{userInput}","instructionsRequired":"true","number":"12"}
     r = (requests.get(url, headers=headers, params=querystring)).json()
 
@@ -19,11 +20,6 @@ def searchRecipes(userInput):
 def grabRecipe(id):
     # print(id)
     url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{id}/information"
-
-    headers = {
-        "X-RapidAPI-Key": "7096120029mshb7e384dcd85b2c6p11f3b8jsnf8b6f47186b2",
-        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
-    }
 
     r = (requests.get(url, headers=headers)).json()
 #     r = {'vegetarian': False, 'vegan': False, 'glutenFree': False, 'dairyFree': False, 'veryHealthy': False, 'cheap': False, 'veryPopular': False, 'sustainable': False, 'lowFodmap': False, 'weightWatcherSmartPoints': 21, 'gaps': 'no', 'preparationMinutes': 5, 'cookingMinutes': 25, 'aggregateLikes': 119, 'healthScore': 13, 'creditsText': 'Jo Cooks', 'sourceName': 'Jo Cooks', 'pricePerServing': 148.43, 'extendedIngredients': [{'id': 5062, 'aisle': 'Meat', 'image': 'chicken-breasts.png', 'consistency': 'SOLID', 'name': 'chicken breast', 'nameClean': 'chicken breast', 'original': '1 chicken breast, cut into small pieces', 'originalName': 'chicken breast, cut into small pieces', 'amount': 1.0, 'unit': '', 'meta': ['cut into small pieces'], 'measures': {'us': {'amount': 1.0, 'unitShort': '', 'unitLong': ''}, 'metric': {'amount': 1.0, 'unitShort': '', 'unitLong': ''}}}, {'id': 20081, 'aisle': 'Baking', 'image': 'flour.png', 'consistency': 'SOLID', 'name': 'flour', 'nameClean': 'wheat flour', 'original': '2 tbsp flour', 'originalName': 'flour', 'amount': 2.0, 'unit': 'tbsp', 'meta': [], 'measures': {'us': {'amount': 2.0, 'unitShort': 'Tbsps', 'unitLong': 'Tbsps'}, 'metric': {'amount': 2.0, 'unitShort': 'Tbsps', 'unitLong': 'Tbsps'}}}, {'id': 1053, 'aisle': 'Milk, Eggs, Other Dairy', 'image': 'fluid-cream.jpg', 'consistency': 'LIQUID', 'name': 'heavy cream', 'nameClean': 'cream', 'original': '1 cup heavy cream', 'originalName': 'heavy cream', 'amount': 1.0, 'unit': 'cup', 'meta': [], 'measures': {'us': {'amount': 1.0, 'unitShort': 'cup', 'unitLong': 'cup'}, 'metric': {'amount': 238.0, 'unitShort': 'ml', 'unitLong': 'milliliters'}}}, {'id': 1026, 'aisle': 'Cheese', 'image': 'mozzarella.png', 'consistency': 'SOLID', 'name': 'mozzarella cheese', 'nameClean': 'mozzarella', 'original': '1 cup mozzarella cheese', 'originalName': 'mozzarella cheese', 'amount': 1.0, 'unit': 'cup', 'meta': [], 'measures': {'us': {'amount': 1.0, 'unitShort': 'cup', 'unitLong': 'cup'}, 'metric': {'amount': 112.0, 'unitShort': 'g', 'unitLong': 'grams'}}}, {'id': 1033, 'aisle': 'Cheese', 'image': 'parmesan.jpg', 'consistency': 'SOLID', 'name': 'parmesan cheese', 'nameClean': 'parmesan', 'original': '¾ cup parmesan cheese', 'originalName': 'parmesan cheese', 'amount': 0.75, 'unit': 'cup', 'meta': [], 'measures': {'us': {'amount': 0.75, 'unitShort': 'cups', 'unitLong': 'cups'}, 'metric': {'amount': 75.0, 'unitShort': 'g', 'unitLong': 'grams'}}}, {'id': 11297, 'aisle': 'Produce;Spices and Seasonings', 'image': 'parsley.jpg', 'consistency': 'SOLID', 'name': 'parsley', 'nameClean': 'parsley', 'original': 'parsley for garnish', 'originalName': 'parsley for garnish', 'amount': 6.0, 'unit': 'servings', 'meta': ['for garnish'], 'measures': {'us': {'amount': 6.0, 'unitShort': 'servings', 'unitLong': 'servings'}, 'metric': {'amount': 6.0, 'unitShort': 'servings', 'unitLong': 'servings'}}}, {'id': 10120499, 'aisle': 'Pasta and Rice', 'image': 'elbow.jpg', 'consistency': 'SOLID', 'name': 'pasta', 'nameClean': 'elbow macaroni', 'original': '16 oz pasta (I used elbow macaroni)', 'originalName': 'pasta (I used elbow macaroni)', 'amount': 16.0, 'unit': 'oz', 'meta': ['(I used elbow macaroni)'], 'measures': {'us': {'amount': 16.0, 'unitShort': 'oz', 'unitLong': 'ounces'}, 'metric': {'amount': 453.592, 'unitShort': 'g', 'unitLong': 'grams'}}}, {'id': 14412, 'aisle': 
