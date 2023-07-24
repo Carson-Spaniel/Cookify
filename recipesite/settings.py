@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['cookify-16e5ae3525c7.herokuapp.com', 'cookify-recipes.com', 'www.cookify-recipes.com', '127.0.0.1']
 
