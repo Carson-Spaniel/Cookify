@@ -198,12 +198,13 @@
                                 document.querySelector('.results-container').style.display = 'flex';
 
                                 var boxElements = document.querySelectorAll('.box');
-                                var j = 0;
-                                for (var i = 0; i < response.text.length && i < boxElements.length; i++) {
-                                    if (i+1 == response.text.length){
-                                        j = i+1;
-                                    }
+                                for (var j = 0; j < boxElements.length; j++){
+                                    boxElements[j].style.display = 'none';
+                                }
+
+                                for (var i = 0; i < boxElements.length; i++) {
                                     if (response.text[i] && response.text[i].length >= 3) {
+                                        boxElements[i].style.display = 'flex';
                                         var imageUrl = response.text[i][2];
                                         boxElements[i].style.backgroundImage = 'url(' + imageUrl + ')';
                                         var titleElement = boxElements[i].querySelector('.title');
@@ -217,11 +218,6 @@
                 
                                     } else {
                                         boxElements[i].style.display = 'none';
-                                    }
-                                }
-                                if (j != 0){
-                                    for (var h = j; h < boxElements.length; h++){
-                                        boxElements[h].style.display = 'none';
                                     }
                                 }
                             } else {
@@ -266,7 +262,6 @@
                             var ingredientsDiv = document.createElement('div');
                             ingredientsDiv.classList.add('recipe-box', 'a');
                             ingredientsDiv.style.maxWidth = '600px';
-                            ingredientsDiv.style.marginTop = '0px';
 
                             // Create and append the h3 element for Ingredients
                             var ingredientsHeading = document.createElement('h3');
@@ -308,7 +303,6 @@
                             // Create a div element to hold the instructions
                             var instructionsDiv = document.createElement('div');
                             instructionsDiv.classList.add('recipe-box', 'b');
-                            instructionsDiv.style.marginBottom = '40px'
 
                             // Create and append the h3 element for Instructions
                             var instructionsHeading = document.createElement('h3');
@@ -327,7 +321,7 @@
                                 instructionLi.classList.add('instruct');
 
                                 if (i !== response.instructions.length - 1) {
-                                    instructionLi.innerText = (i + 1) + '. ' + instruction;
+                                    instructionLi.innerText = instruction;
                                 } else {
                                     instructionLi.innerText = 'Enjoy!';
                                 }
@@ -375,7 +369,7 @@
                     });
                     document.querySelector('.results').style.display = 'block';
                     document.querySelector('.results-container').style.display = 'flex';
-                    document.querySelector('recipe-container').style.display = 'none';
+                    document.querySelector('.recipe-container').style.display = 'none';
                 }
             </script>
             <script>
@@ -432,6 +426,9 @@
                 <h1 style="margin-bottom: 0px;">
                     Find a Recipe
                 </h1>
+                <h6 style="margin-bottom: 0px; margin-top: 0px;">
+                    (Only available to authorized users)
+                </h6>
                 <div class="search-container">
                     <form id="password" onsubmit="unHideOTP(); return false;" style="margin-bottom: 20px;">
                         <input type="password" placeholder='Enter password' name="password" id="passwordInput" style="width: 40%; min-width: 130px;">
@@ -514,7 +511,7 @@
                 <h1 class="topTitle"></h1>
             </div>
             
-            <div class="flex-container">
+            <div class="flex-container" style="margin-bottom: 20px;">
             </div>
         </div>
     </div>

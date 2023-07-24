@@ -7,12 +7,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = os.environ["SECRET_KEY"]
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
+# SECURITY WARNING: keep the secret key used in production secret!
+if DEBUG:
+    from .secrets import SECRET_KEY
+else:
+    SECRET_KEY = os.environ["SECRET_KEY"]
 
 ALLOWED_HOSTS = ['cookify-16e5ae3525c7.herokuapp.com', 'cookify-recipes.com', 'www.cookify-recipes.com', '127.0.0.1']
 
