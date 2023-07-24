@@ -1,7 +1,8 @@
 import requests
+import os
 
 headers = {
-        "X-RapidAPI-Key": "7096120029mshb7e384dcd85b2c6p11f3b8jsnf8b6f47186b2",
+        "X-RapidAPI-Key": os.environ["RAPIDPI_KEY"],
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     }
 

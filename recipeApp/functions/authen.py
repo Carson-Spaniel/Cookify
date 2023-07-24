@@ -4,7 +4,7 @@ from twilio.rest import Client
 # Set environment variables for your credentials
 # Read more at http://twil.io/secure
 account_sid = "AC2a0af17920d5af1cf68d57714e062068"
-auth_token = "07eed299451d1bf04d11dc7221b969df"
+auth_token = os.environ["TWILIO_AUTH_TOKEN"]
 verify_sid = "VAda616dc8fe2c07db78def635f1c95fe1"
 verified_number = "+15127610870"
 
