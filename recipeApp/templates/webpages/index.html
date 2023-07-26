@@ -40,6 +40,11 @@
             <form id="myForm" method="POST">
                 {% csrf_token %}
             </form>
+            <script>                    
+            function scrollToSection() {
+                const section = document.getElementById('top');
+                section.scrollIntoView({ behavior: 'smooth' });
+            }</script>
             <script>
                 var j = jQuery.noConflict();
                 function getCookie(name) {
@@ -69,11 +74,7 @@
                             'X-CSRFToken': csrftoken
                         },
                         success: function(response) {
-                            window.scroll({
-                                top: 0,
-                                left: 0,
-                                behavior: 'smooth' // You can set 'auto' or 'smooth' for scroll behavior
-                            });
+                            scrollToSection();
                             console.log(response)
                             if (Array.isArray(response.text) && response.text.length > 0) {
                                 document.querySelector('.results').style.display = 'block';
@@ -129,11 +130,7 @@
                             'X-CSRFToken': csrftoken
                         },
                         success: function(response) {
-                            window.scroll({
-                                top: 0,
-                                left: 0,
-                                behavior: 'smooth' // You can set 'auto' or 'smooth' for scroll behavior
-                            });
+                            scrollToSection();
                             var titleBox = document.querySelector('.recipe-container')
                             var titleHeader = titleBox.querySelector('.top')
                             var title = titleHeader.querySelector('.topTitle')
@@ -250,11 +247,7 @@
             </script>
             <script>
                 function hideRecipe(){
-                    window.scroll({
-                        top: 0,
-                        left: 0,
-                        behavior: 'smooth' // You can use 'auto' for instant scroll without smooth animation
-                    });
+                    scrollToSection();
                     document.querySelector('.results').style.display = 'block';
                     document.querySelector('.results-container').style.display = 'flex';
                     document.querySelector('.recipe-container').style.display = 'none';
@@ -334,7 +327,7 @@
         </div>
         <div class="recipe-container">
             
-            <div class="top">
+            <div class="top" id="top">
                 <button class="title" onclick="hideRecipe()" style="background-color: var(--font-color); color: var(--primary-color); width: 100px;">Back</button>
                 <h1 class="topTitle"></h1>
             </div>
