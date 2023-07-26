@@ -39,12 +39,7 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <form id="myForm" method="POST">
                 {% csrf_token %}
-            </form>
-            <script>                    
-            function scrollToSection() {
-                const section = document.getElementById('top');
-                section.scrollIntoView({ behavior: 'smooth' });
-            }</script>
+            </form>                   
             <script>
                 var j = jQuery.noConflict();
                 function getCookie(name) {
@@ -63,6 +58,10 @@
                 }
 
                 function submitsearch(){
+                    function scrollToSection() {
+                        const section = document.querySelector('.top');
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
                     var csrftoken = getCookie('csrftoken');
                     var userInput = document.querySelector('input[name="search"]').value;
                     j.ajax({
@@ -120,6 +119,10 @@
             </script>
             <script>
                 function loadRecipe(id,titleText){
+                    function scrollToSection() {
+                        const section = document.querySelector('.top');
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
                     var csrftoken = getCookie('csrftoken');
                     j.ajax({
                         type: "POST",
@@ -247,6 +250,10 @@
             </script>
             <script>
                 function hideRecipe(){
+                    function scrollToSection() {
+                        const section = document.querySelector('.top');
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
                     scrollToSection();
                     document.querySelector('.results').style.display = 'block';
                     document.querySelector('.results-container').style.display = 'flex';
