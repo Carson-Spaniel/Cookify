@@ -59,8 +59,14 @@
 
                 function submitsearch(){
                     function scrollToSection() {
-                        const section = document.querySelector('.top');
-                        section.scrollIntoView({ behavior: 'smooth' });
+                        const section = document.getElementById('top');
+                        const sectionCoordinates = section.getBoundingClientRect();
+
+                        window.scroll({
+                            top: sectionCoordinates.top + window.scrollY,
+                            left: sectionCoordinates.left + window.scrollX,
+                            behavior: 'smooth'
+                        });
                     }
                     var csrftoken = getCookie('csrftoken');
                     var userInput = document.querySelector('input[name="search"]').value;
@@ -120,8 +126,14 @@
             <script>
                 function loadRecipe(id,titleText){
                     function scrollToSection() {
-                        const section = document.querySelector('.top');
-                        section.scrollIntoView({ behavior: 'smooth' });
+                        const section = document.getElementById('top');
+                        const sectionCoordinates = section.getBoundingClientRect();
+
+                        window.scroll({
+                            top: sectionCoordinates.top + window.scrollY,
+                            left: sectionCoordinates.left + window.scrollX,
+                            behavior: 'smooth'
+                        });
                     }
                     var csrftoken = getCookie('csrftoken');
                     j.ajax({
@@ -251,8 +263,14 @@
             <script>
                 function hideRecipe(){
                     function scrollToSection() {
-                        const section = document.querySelector('.top');
-                        section.scrollIntoView({ behavior: 'smooth' });
+                        const section = document.getElementById('top');
+                        const sectionCoordinates = section.getBoundingClientRect();
+
+                        window.scroll({
+                            top: sectionCoordinates.top + window.scrollY,
+                            left: sectionCoordinates.left + window.scrollX,
+                            behavior: 'smooth'
+                        });
                     }
                     scrollToSection();
                     document.querySelector('.results').style.display = 'block';
