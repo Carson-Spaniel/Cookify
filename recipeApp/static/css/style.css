@@ -174,11 +174,11 @@ nav{
     color: var(--font-color);
     border-radius: 30px;
     padding: 20px;
-    font-size: 150%;
     text-align: center;
     transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
     width: 100%;
     max-width: 1000px;
+    font-size: 125%;
 }
 
 .box.visible {
