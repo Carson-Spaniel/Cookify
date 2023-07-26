@@ -69,6 +69,11 @@
                             'X-CSRFToken': csrftoken
                         },
                         success: function(response) {
+                            window.scroll({
+                                top: 0,
+                                left: 0,
+                                behavior: 'smooth' // You can set 'auto' or 'smooth' for scroll behavior
+                            });
                             console.log(response)
                             if (Array.isArray(response.text) && response.text.length > 0) {
                                 document.querySelector('.results').style.display = 'block';
@@ -124,6 +129,11 @@
                             'X-CSRFToken': csrftoken
                         },
                         success: function(response) {
+                            window.scroll({
+                                top: 0,
+                                left: 0,
+                                behavior: 'smooth' // You can set 'auto' or 'smooth' for scroll behavior
+                            });
                             var titleBox = document.querySelector('.recipe-container')
                             var titleHeader = titleBox.querySelector('.top')
                             var title = titleHeader.querySelector('.topTitle')
@@ -257,7 +267,7 @@
                 </h1>
                 <div class="search-container">
                     <form id="search" onsubmit="submitsearch(); return false;" style="margin-bottom: 20px;">
-                        <input type="text" placeholder='Search "Chicken Alfredo Pasta"' name="search" style="width: 40%; min-width: 130px;">
+                        <input type="text" placeholder='Search "Chicken Alfredo Pasta"' name="search" style="width: 40%; min-width: 130px; margin-bottom: 10px;">
                         <button class="find search-container button" type="submit">Search</button>
                     </form>
                 </div>
