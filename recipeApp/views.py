@@ -3,14 +3,40 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .functions.apiGrab import searchRecipes, grabRecipe
 from .functions.authen import sendOTP,checkOTP
+from .functions.checkLogin import checkLoginFun
+from django.template.loader import render_to_string
 
 TEMPLATE_DIRS = (
     'os.path.join(BASE_DIR, "templates"),'
 )
 
 # ------------- main pages -------------
-def index(request):
+def indexPage(request):
     return render(request, "webpages/index.html",)
+
+def index(request):
+    # For GET request, render the login page
+    if request.method == 'GET':
+        return render(request, "webpages/login.html")
+    # For POST request, handle form submission and login validation
+    elif request.method == 'POST':
+        print("Going into POST")
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        usernameCheck, passwordCheck = checkLoginFun(username, password)
+        if usernameCheck and passwordCheck:
+            print("Should login")
+            return JsonResponse({'html': render_to_string('webpages/index.html', context, request=request),})
+        elif usernameCheck and not passwordCheck:
+            response_data = {'text': 'wrongPass'}
+        else:
+            response_data = {'text': 'wrongUser'}
+        print("\nExiting post")
+        return JsonResponse(response_data)
+    else:
+        print("Exiting post with error")
+        return JsonResponse({'error': 'Invalid request method'}, status=400)
+
 
 def recipesPage(request):
     return render(request, "webpages/recipesPage.html",)
@@ -111,6 +137,30 @@ def sendOTPtoFunction(request):
     else:
         print("Exiting post with error")
         return JsonResponse({'error': 'Invalid request method'}, status=400)
+    
+# @csrf_exempt
+# def checkLogin(request):
+#     print("Entering post\n")
+#     if request.method == 'POST':
+#         username = request.POST.get('username', '')
+#         password = request.POST.get('password', '')
+#         usernameCheck, passwordCheck = checkLoginFun(username,password)
+#         if usernameCheck and passwordCheck:
+#             print("Should login")
+#             return render(request, 'webpages/index.html')
+#         elif usernameCheck and not passwordCheck:
+#             response_data = {
+#                 'text': 'wrongPass'
+#                 }
+#         else:
+#             response_data = {
+#                 'text': 'wrongUser'
+#                 }
+#         print("\nExiting post")
+#         return JsonResponse(response_data)
+#     else:
+#         print("Exiting post with error")
+#         return JsonResponse({'error': 'Invalid request method'}, status=400)
     
 # ------------- breakfast pages -------------
 def breakfastCasserole(request):
