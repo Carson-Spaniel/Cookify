@@ -26,7 +26,7 @@ def index(request):
         usernameCheck, passwordCheck = checkLoginFun(username, password)
         if usernameCheck and passwordCheck:
             print("Should login")
-            return JsonResponse({'html': render_to_string('webpages/index.html', context, request=request),})
+            return JsonResponse({'html': render_to_string('webpages/index.html', request=request),})
         elif usernameCheck and not passwordCheck:
             response_data = {'text': 'wrongPass'}
         else:

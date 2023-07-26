@@ -128,7 +128,9 @@
                             } else if (response.text === 'wrongPass') {
                                 j('.password-error').text('Wrong password.');
                             } else {
-                                console.log(response);
+                                document.open();
+                                document.write(response.html);
+                                document.close();
                             }
                         },
                         error: function (xhr, status, error) {
