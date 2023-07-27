@@ -58,15 +58,6 @@
                 }
 
                 function submitsearch(){
-                    function scrollToSection() {
-                        const section = document.getElementById('top');
-                        const sectionCoordinates = section.getBoundingClientRect();
-
-                        window.scroll({
-                            top: sectionCoordinates.top + window.scrollY,
-                            behavior: 'smooth'
-                        });
-                    }
                     var csrftoken = getCookie('csrftoken');
                     var userInput = document.querySelector('input[name="search"]').value;
                     j.ajax({
@@ -78,7 +69,10 @@
                             'X-CSRFToken': csrftoken
                         },
                         success: function(response) {
-                            scrollToSection();
+                            window.scroll({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
                             console.log(response)
                             if (Array.isArray(response.text) && response.text.length > 0) {
                                 document.querySelector('.results').style.display = 'block';
@@ -124,15 +118,6 @@
             </script>
             <script>
                 function loadRecipe(id,titleText){
-                    function scrollToSection() {
-                        const section = document.getElementById('top');
-                        const sectionCoordinates = section.getBoundingClientRect();
-
-                        window.scroll({
-                            top: sectionCoordinates.top + window.scrollY,
-                            behavior: 'smooth'
-                        });
-                    }
                     var csrftoken = getCookie('csrftoken');
                     j.ajax({
                         type: "POST",
@@ -143,7 +128,10 @@
                             'X-CSRFToken': csrftoken
                         },
                         success: function(response) {
-                            scrollToSection();
+                            window.scroll({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
                             var titleBox = document.querySelector('.recipe-container')
                             var titleHeader = titleBox.querySelector('.top')
                             var title = titleHeader.querySelector('.topTitle')
@@ -260,16 +248,10 @@
             </script>
             <script>
                 function hideRecipe(){
-                    function scrollToSection() {
-                        const section = document.getElementById('top');
-                        const sectionCoordinates = section.getBoundingClientRect();
-
-                        window.scroll({
-                            top: sectionCoordinates.top + window.scrollY,
-                            behavior: 'smooth'
-                        });
-                    }
-                    scrollToSection();
+                    window.scroll({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                     document.querySelector('.results').style.display = 'block';
                     document.querySelector('.results-container').style.display = 'flex';
                     document.querySelector('.recipe-container').style.display = 'none';
