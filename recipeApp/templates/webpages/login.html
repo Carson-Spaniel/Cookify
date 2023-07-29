@@ -42,37 +42,55 @@
                     var csrftoken = getCookie('csrftoken');
                     var usernameInput = document.getElementById('usernameInput').value;
                     var passwordInput = document.getElementById('passwordInput').value;
-                    j.ajax({
-                        type: "POST",
-                        url: "/index/",  // Use the actual URL path for the index view
-                        data: {
-                            username: usernameInput,
-                            password: passwordInput
-                        },
-                        dataType: 'json',
-                        headers: {
-                            'X-CSRFToken': csrftoken
-                        },
-                        success: function (response) {
-                            j('.username-error').text('');
-                            j('.password-error').text('');
-                            if (response.text === 'wrongUser') {
-                                j('.username-error').text('This username does not exist.');
-                            } else if (response.text === 'wrongPass') {
-                                j('.password-error').text('Wrong password.');
-                            } else {
-                                document.open();
-                                document.write(response.html);
-                                document.close();
+
+                    var usernameError = document.querySelector('.username-error');
+                    var passwordError = document.querySelector('.password-error');
+
+                    usernameError.innerHTML = '';
+                    passwordError.innerHTML = '';
+
+                    if (usernameInput.trim() === '') {
+                        usernameError.innerHTML = 'Username cannot be blank.';
+                        return;
+                    }
+
+                    if (passwordInput.trim() === '') {
+                        passwordError.innerHTML = 'Password cannot be blank.';
+                        return;
+                    }
+                    else{
+                        j.ajax({
+                            type: "POST",
+                            url: "/index/",  // Use the actual URL path for the index view
+                            data: {
+                                username: usernameInput,
+                                password: passwordInput
+                            },
+                            dataType: 'json',
+                            headers: {
+                                'X-CSRFToken': csrftoken
+                            },
+                            success: function (response) {
+                                j('.username-error').text('');
+                                j('.password-error').text('');
+                                if (response.text === 'wrongUser') {
+                                    j('.username-error').text('This username does not exist.');
+                                } else if (response.text === 'wrongPass') {
+                                    j('.password-error').text('Wrong password.');
+                                } else {
+                                    document.open();
+                                    document.write(response.html);
+                                    document.close();
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                console.log("Error with login.");
+                                console.log(xhr);
+                                console.log(status);
+                                console.log(error);
                             }
-                        },
-                        error: function (xhr, status, error) {
-                            console.log("Error with login.");
-                            console.log(xhr);
-                            console.log(status);
-                            console.log(error);
-                        }
-                    });
+                        });
+                    } 
                 }
             </script>
             <div class="findTitle">
