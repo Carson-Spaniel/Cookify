@@ -1,6 +1,6 @@
 :root {
     --primary-color: #ecedda;
-    --primary-faded-color: #eceddab5;
+    --primary-faded-color: #eceddadb;
     --secondary-color: #DDE7C7;
     --background-color: #fffff6;
     --font-color: #477463;
@@ -10,7 +10,7 @@
 :root.light-mode {
     /* Light color palette */
     --primary-color: #ecedda;
-    --primary-faded-color: #eceddab5;
+    --primary-faded-color: #eceddadb;
     --secondary-color: #DDE7C7;
     --background-color: #fffff6;
     --font-color: #477463;
@@ -20,7 +20,7 @@
 :root.dark-mode {
     /* Dark color palette */
     --primary-color: #477463;
-    --primary-faded-color: #477463b5;
+    --primary-faded-color: #477463db;
     --secondary-color: #DDE7C7;
     --background-color: #1b2b25;
     --font-color: #ecedda;
