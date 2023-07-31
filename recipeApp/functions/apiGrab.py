@@ -29,7 +29,6 @@ def searchRecipes(userInput):
     return recipes
 
 def grabRecipe(id):
-    # print(id)
     url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{id}/information"
 
     r = (requests.get(url, headers=headers)).json()
