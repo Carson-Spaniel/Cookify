@@ -166,7 +166,6 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Remove min-width */
     opacity: 0;
     transform: translateY(20px);
     box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
