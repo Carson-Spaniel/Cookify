@@ -1,0 +1,41 @@
+{% load static %}
+<head>
+    <style>
+        .backButton{
+            display: block;
+            margin: auto;
+            background-color: var(--primary-color);
+            color: var(--font-color);
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: -20px;
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
+        }
+
+        .backButton.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
+        }
+
+        .backButton:hover {
+            background: var(--font-color);
+            color: var(--primary-color);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: rgba(0, 0, 0, 0.40) 2px 5px 8px;
+        }
+
+        .backButton:active {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+    </style>
+</head>
+
+<button class="backButton" onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
