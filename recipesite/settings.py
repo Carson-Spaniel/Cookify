@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
 if DEBUG:
@@ -17,6 +17,15 @@ else:
     SECRET_KEY = os.environ["SECRET_KEY"]
 
 ALLOWED_HOSTS = ['cookify-16e5ae3525c7.herokuapp.com', 'cookify-recipes.com', 'www.cookify-recipes.com', '127.0.0.1']
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
+
+# Set the default cache timeout (in seconds)
+CACHE_TIMEOUT = 300  # Example: 5 minutes (300 seconds)
 
 # Application definition
 
@@ -40,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'recipesite.urls'
