@@ -396,7 +396,6 @@ input[type="password"]::placeholder {
     text-align: center;
     margin: auto;
     width: 100%;
-
     background-color: rgba(0, 0, 255, 0.15);
     background-image: url('https://lh3.googleusercontent.com/pw/AIL4fc9JUH6bGtSw6Yq75A3itX2Cp79DLkgUVxIubXY4SfQi7KD8OXROe4fPeGIsVVXMsPG0foFzJ0OTL7TAnjrQmkAHCkXF6N3OmOWyPLXnx_vD47wFfUo=w2400');
     background-size: cover;
