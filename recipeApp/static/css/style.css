@@ -57,12 +57,10 @@ body{
 nav{
     margin: 0 auto;
     margin-top: 20px;
-
     width: 100%;
     background-color: var(--primary-color);
     position: fixed;
     text-align: center;
-    
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
     z-index: 10;
 }
