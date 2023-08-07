@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .functions.apiGrab import searchRecipes, grabRecipe
+from .functions.apiGrab import searchRecipesName, searchRecipesIngr, grabRecipe
 from .functions.checkLogin import checkLoginFun
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
@@ -80,10 +80,16 @@ def dessert(request):
 @cache_page(CACHE_TIMEOUT)
 @csrf_exempt
 def searchRecipe(request):
-    print("Entering post\n")
+    print("Entering post for searchRecipe\n")
     if request.method == 'POST':
         input_data = request.POST.get('input', '')
-        recipeArray = searchRecipes(input_data)
+        print("input_data:", input_data)
+        ingr = request.POST.get('ingr', '')
+        print("ingr:",ingr)
+        if ingr == 'True':
+            recipeArray = searchRecipesIngr(input_data)
+        else:
+            recipeArray = searchRecipesName(input_data)
         response_data = {'text': recipeArray}
         print("\nExiting post")
         return JsonResponse(response_data)

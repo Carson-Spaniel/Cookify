@@ -16,7 +16,7 @@ else:
 
 
 
-def searchRecipes(userInput):
+def searchRecipesName(userInput):
     url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch"
 
     querystring = {"query":f"{userInput}","instructionsRequired":"true","number":"20"}
@@ -25,6 +25,18 @@ def searchRecipes(userInput):
     recipes = []
     for i in range(len(r['results'])):
         recipes.append([r['results'][i]['id'],r['results'][i]['title'],r['results'][i]['image']])
+
+    return recipes
+
+def searchRecipesIngr(userInput):
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients"
+
+    querystring = {"ingredients":f"{userInput}","number":"20","ignorePantry":"true"} #can maximize used ingredients (1) or minimize missing ingredients (2) ["ranking":"1"]
+    r = (requests.get(url, headers=headers, params=querystring)).json()
+
+    recipes = []
+    for i in range(len(r)):
+        recipes.append([r[i]['id'],r[i]['title'],r[i]['image']])
 
     return recipes
 

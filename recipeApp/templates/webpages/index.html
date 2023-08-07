@@ -3,7 +3,6 @@
 {% block content %}
 <head>
     <style>
-
         .box {
             width: 60%;
             height: 200px;
@@ -30,6 +29,118 @@
             display: block;
         }
 
+        .ingr{
+            display: none;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            height: 20px;
+            width: 154px;
+            background-color: var(--font-color);
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* Hide the checkbox input */
+        .toggle-switch input {
+            display: none;
+        }
+
+        /* Styling for the toggle slider */
+        .slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            height: 16.5px;
+            background-color: var(--primary-color);
+            border-radius: 18px;
+            display: flex;
+            align-items: center; /* Center vertically */
+            transition: 0.2s ease-in-out;
+            width: var(--slider-width, 68px);
+        }
+
+        /* Styling for the label container */
+        .label-container {
+            margin: auto;
+            display: flex;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        /* Styling for the label text */
+        .label {
+            margin: auto 5px;
+            padding: 0 8px;
+            text-align: center;            
+            flex: 1; /* Occupy all available space */
+            display: flex;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+            font-size: 12px;
+        }
+
+
+        /* Move the label to the right side when the switch is on */
+        input:checked + .slider + .label-container .label:first-child {
+            color: var(--font-color);
+        }
+
+        /* Move the slider to the right side when the switch is on */
+        input:checked + .slider {
+            left: 2px;
+            left: calc(100% - var(--slider-width) - 2px);
+        }
+
+        .searchBy{
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 0 10px;
+        }
+
+        .dropdown-content{
+            font-size: 12px;
+            text-align: start;
+        }
+
+        .buttonAlt {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 5px;
+            background: var(--font-color);
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            height: 20px;
+            width: 80px;
+            border-radius: 5px;
+            color: var(--primary-color);
+            opacity: 100%;
+            margin: auto;
+            margin-top: 5px;
+            padding-bottom: 15px;
+            padding-top: 15px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px;
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
+        }
+
+        .buttonAlt:hover {
+            background: var(--font-color);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: rgba(0, 0, 0, 0.40) 2px 5px 8px;
+        }
+
+        .buttonAlt:active {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
     </style>
 </head>
 
@@ -57,13 +168,22 @@
                     return cookieValue;
                 }
 
-                function submitsearch(){
+                function submitsearch(ingr){
                     var csrftoken = getCookie('csrftoken');
-                    var userInput = document.querySelector('input[name="search"]').value;
+                    if (ingr == 'True'){
+                        var userInput = document.querySelector('input[name="searchIngr"]').value;
+                    }
+                    else{
+                        var userInput = document.querySelector('input[name="searchName"]').value;
+                    }
+                    console.log("User Input:"+userInput)
+                    
                     j.ajax({
                         type: "POST",
                         url: "/searchRecipe/",
-                        data: { input: userInput },
+                        data: { input: userInput,
+                                ingr: ingr
+                            },
                         dataType: 'json',
                         headers: {
                             'X-CSRFToken': csrftoken
@@ -246,6 +366,7 @@
                     });
                 }
             </script>
+
             <script>
                 function hideRecipe(){
                     window.scroll({
@@ -256,15 +377,96 @@
                     document.querySelector('.results-container').style.display = 'flex';
                     document.querySelector('.recipe-container').style.display = 'none';
                 }
+
+                function toggleSwitch() {
+                    const slider = document.querySelector(".slider");
+                    const toggleLabel = document.getElementById("toggleLabel");
+                    const toggleLabelAlt = document.getElementById("toggleLabelAlt");
+                    const selectedLabel = document.getElementById("toggle").checked ? toggleLabelAlt : toggleLabel;
+
+                    slider.style.width = `${selectedLabel.offsetWidth + 16}px`; // Add padding for the label
+                    slider.style.setProperty("--slider-width", `${selectedLabel.offsetWidth + 16}px`); // Set CSS variable
+
+                    if (document.getElementById("toggle").checked) {
+                        
+                        toggleLabel.style.color = "var(--primary-color)";
+                        toggleLabelAlt.style.color = "var(--font-color)";
+                        document.querySelector('.name').style.display = 'none';
+                        document.querySelector('.ingr').style.display = 'block';
+                    } else {
+                        toggleLabel.style.color = "var(--font-color)";
+                        toggleLabelAlt.style.color = "var(--primary-color)";
+                        document.querySelector('.name').style.display = 'block';
+                        document.querySelector('.ingr').style.display = 'none';
+                    }
+                }
             </script>
 
             <div class="findTitle">
                 <h1 style="margin-bottom: 0px;">
                     Find a Recipe
                 </h1>
-                <div class="search-container">
-                    <form id="search" onsubmit="submitsearch(); return false;" style="margin-bottom: 20px;">
-                        <input type="text" placeholder='Search "Chicken Alfredo Pasta"' name="search" style="width: 40%; min-width: 130px; margin-bottom: 10px;">
+                <div class="searchBy">
+                    <h6 style="margin: 0 15px">
+                        Search By:
+                    </h6>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle" onchange="toggleSwitch()">
+                        <div class="slider"></div>
+                        <div class="label-container">
+                        <span class="label" id="toggleLabel" style="color: var(--font-color);">Name</span>
+                        <span class="label" id="toggleLabelAlt" style="color: var(--primary-color);">Ingredient</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="search-container name">
+                    <form id="search" onsubmit="submitsearch('False'); return false;" style="margin-bottom: 20px;">
+                        
+                        <input type="text" placeholder='Search "Chicken Alfredo Pasta"' name="searchName" style="width: 40%; min-width: 130px; margin-bottom: 10px; margin-top: 10px;">
+                        <!-- <div class="dropdown">
+                            <p style="margin: 0;" class="buttonAlt">Cuisines</p>
+                            <div id="cuisinesDropdown" class="dropdown-content">
+                                <label for="cuisines" class="custom-label" style="margin: auto;">Choose your cuisines:</label>
+                                <div id="checklist">
+                                    <input type="checkbox" value="african"> African<br>
+                                    <hr>
+                                    <input type="checkbox" value="chinese"> Chinese<br>
+                                    <hr>
+                                    <input type="checkbox" value="japanese"> Japanese<br>
+                                    <hr>
+                                    <input type="checkbox" value="korean"> Korean<br>
+                                    <hr>
+                                    <input type="checkbox" value="thai"> Thai<br>
+                                    <hr>
+                                    <input type="checkbox" value="indian"> Indian<br>
+                                    <hr>
+                                    <input type="checkbox" value="french"> French<br>
+                                    <hr>
+                                    <input type="checkbox" value="italian"> Italian<br>
+                                    <hr>
+                                    <input type="checkbox" value="mexican"> Mexican<br>
+                                    <hr>
+                                    <input type="checkbox" value="spanish"> Spanish<br>
+                                    <hr>
+                                    <input type="checkbox" value="american"> American<br>
+                                    <hr>
+                                    <input type="checkbox" value="cajun"> Cajun<br>
+                                    <hr>
+                                    <input type="checkbox" value="southern"> Southern<br>
+                                    <hr>
+                                    <input type="checkbox" value="greek"> Greek<br>
+                                    <hr>
+                                    <input type="checkbox" value="caribbean"> Caribbean<br>
+                                </div>
+                            </div>
+                        </div> -->
+                        <button class="find search-container button" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="search-container ingr">
+                    <form id="search" onsubmit="submitsearch('True'); return false;" style="margin-bottom: 20px;">
+                        <input type="text" placeholder='Search "Chicken, Heavy Cream, Pasta"' name="searchIngr" style="width: 40%; min-width: 130px; margin-bottom: 10px; margin-top: 10px;">
                         <button class="find search-container button" type="submit">Search</button>
                     </form>
                 </div>
@@ -304,6 +506,8 @@
             <button class="box j">
                 <div class="title">Recipe J Title</div>
             </button>
+
+            <!-- Start second page here -->
             <button class="box k">
                 <div class="title">Recipe K Title</div>
             </button>
@@ -327,6 +531,12 @@
             </button>
             <button class="box r">
                 <div class="title">Recipe R Title</div>
+            </button>
+            <button class="box s">
+                <div class="title">Recipe S Title</div>
+            </button>
+            <button class="box t">
+                <div class="title">Recipe T Title</div>
             </button>
         </div>
         <div class="recipe-container">
