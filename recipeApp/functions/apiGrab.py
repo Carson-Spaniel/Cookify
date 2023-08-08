@@ -42,19 +42,25 @@ def searchRecipesIngr(userInput):
 
 def grabRecipe(id):
     url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{id}/information"
-
     r = (requests.get(url, headers=headers)).json()
 
     title = r['title']
 
     ingredients = []
-    for i in range(len(r['extendedIngredients'])):
-       ingredients.append(r['extendedIngredients'][i]['original'])
+    try:
+        for i in range(len(r['extendedIngredients'])):
+            ingredients.append(r['extendedIngredients'][i]['original'])
+    except Exception as e:
+        print(e)
+        ingredients = ["This recipe has a problem with its ingredients. In this case, please find a different recipe. Sorry about this."]
 
-    instructions = r['instructions'].split('.')
-    instructions = [sentence.strip() + "." for sentence in instructions if sentence.strip()]
-    instructions.pop(-1)
+    try:
+        instructions = r['instructions']
+        instructions = instructions.split('.')
+        instructions = [sentence.strip() + "." for sentence in instructions if sentence.strip()]
+        instructions[-1] = 'Enjoy!'
+        instructions.append('')
+    except AttributeError:
+        instructions = ["This recipe has a problem with its instructions. In this case, make your best judgement if you can just mix the ingredients. If not, please find a different recipe. Sorry about this.",'']
 
     return title,ingredients,instructions
-
-# searchRecipes("here")

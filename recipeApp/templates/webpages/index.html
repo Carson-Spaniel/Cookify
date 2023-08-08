@@ -141,6 +141,15 @@
             transform: translateY(-2px) scale(1.05);
             box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
         }
+
+        .disclaimer{
+            padding-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .search-container{
+            padding-bottom: 0px;
+        }
     </style>
 </head>
 
@@ -329,7 +338,7 @@
                                 if (i !== response.instructions.length - 1) {
                                     instructionLi.innerText = instruction;
                                 } else {
-                                    instructionLi.innerText = 'Enjoy!';
+                                    continue
                                 }
                                 
                                 // Add an instruction divider
@@ -470,6 +479,9 @@
                         <button class="find search-container button" type="submit">Search</button>
                     </form>
                 </div>
+                <p class="disclaimer">
+                    Disclaimer: When reading the recipes on our end, sometimes the recipe may load weird.
+                </p>
             </div>
         </div>
         <div class="results">
