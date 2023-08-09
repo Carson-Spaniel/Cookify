@@ -3,3 +3,4 @@ Python_Website/mysite/home/functions/apiGrab.py
 Recipe_Rec/recipesite/recipeApp/functions/apiGrab.py
 Recipe_Rec/recipesite/recipeApp/functions/searchRecipes.py
 recipesite/secrets.py
+recipesite/__pycache__/secrets.cpython-310.pyc
