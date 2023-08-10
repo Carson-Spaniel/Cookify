@@ -331,7 +331,6 @@ ol {
 
 .dark-mode-toggle input[type="checkbox"]:checked + .toggle-button {
     background-color: var(--font-color);
-    /* Add this style to move the toggle to the other side when it's checked */
 }
 
 .diagonal-line {
