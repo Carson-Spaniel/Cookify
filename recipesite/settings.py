@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'recipeApp.apps.RecipeappConfig',
     'whitenoise.runserver_nostatic',
-    'sslserver',
 ]
 
 MIDDLEWARE = [
