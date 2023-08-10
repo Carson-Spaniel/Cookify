@@ -1,6 +1,6 @@
-Python_Website/mysite/home/functions/apiGrab.py
-
 Recipe_Rec/recipesite/recipeApp/functions/apiGrab.py
 Recipe_Rec/recipesite/recipeApp/functions/searchRecipes.py
 recipesite/secrets.py
 recipesite/__pycache__/secrets.cpython-310.pyc
+website_cert/www_cookify-recipes_com.key
+website_cert/www_cookify-recipes_com.pem
