@@ -8,7 +8,6 @@
 }
 
 :root.light-mode {
-    /* Light color palette */
     --primary-color: #ecedda;
     --primary-faded-color: #eceddadb;
     --secondary-color: #DDE7C7;
@@ -18,7 +17,6 @@
 }
 
 :root.dark-mode {
-    /* Dark color palette */
     --primary-color: #477463;
     --primary-faded-color: #477463db;
     --secondary-color: #DDE7C7;
