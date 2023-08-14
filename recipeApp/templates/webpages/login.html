@@ -76,7 +76,7 @@
                                 if (response.text === 'wrongUser') {
                                     j('.username-error').text('This username does not exist.');
                                 } else if (response.text === 'wrongPass') {
-                                    j('.password-error').text('Wrong password.');
+                                    j('.password-error').text('Wrong username or password.');
                                 } else {
                                     document.open();
                                     document.write(response.html);
