@@ -3,7 +3,7 @@ from recipesite.settings import DEBUG
 import json
 
 if DEBUG:
-    from secrets import USERS_ENV_VAR as users
+    from recipesite.secrets import USERS_ENV_VAR as users
 else:
     users_json = os.environ.get("USERS_ENV_VAR", "{}")
     users = json.loads(users_json)

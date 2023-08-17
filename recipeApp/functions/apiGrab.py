@@ -3,7 +3,7 @@ import os
 from recipesite.settings import DEBUG
 
 if DEBUG:
-    from secrets import RAPIDPI_KEY
+    from recipesite.secrets import RAPIDPI_KEY
     headers = {
         "X-RapidAPI-Key": RAPIDPI_KEY,
         "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
