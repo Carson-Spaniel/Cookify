@@ -68,7 +68,7 @@
         const toggleButton = document.getElementById('toggleButton');
         const viewportWidth = window.innerWidth;
 
-        if (viewportWidth < 1000) {
+        if (viewportWidth < 1000 || viewportWidth > 1675) {
             toggleButton.style.display = 'none';
         } else {
             toggleButton.style.display = 'block'; // Or any other appropriate display value
