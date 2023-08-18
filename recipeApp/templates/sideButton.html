@@ -1,0 +1,77 @@
+{% load static %}
+<head>
+    <style>
+        .sidebutton{
+            display: block;
+            margin: auto;
+            background-color: var(--primary-color);
+            color: var(--font-color);
+            border-radius: 5px;
+            margin-top: 30px;
+            margin-bottom: -20px;
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+
+        .sidebutton.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s ease;
+        }
+
+        .sidebutton:hover {
+            background: var(--font-color);
+            color: var(--primary-color);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: rgba(0, 0, 0, 0.40) 2px 5px 8px;
+        }
+
+        .sidebutton:active {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: rgba(0, 0, 0, 0.40) 0px 3px 8px;
+        }
+    </style>
+</head>
+
+<button class="sidebutton" id="toggleButton" onclick="toggleBoxWidth()">Click for Side by Side View</button>
+
+<script>
+    hideButtonBasedOnViewport();
+    window.addEventListener('resize', hideButtonBasedOnViewport);
+    function toggleBoxWidth() {
+        const boxA = document.querySelector('.box.a');
+        const boxB = document.querySelector('.box.b');
+        const button = document.querySelector('.sidebutton');
+
+        const computedStylesB = getComputedStyle(boxB);
+        const currentMaxWidthB = parseInt(computedStylesB.maxWidth);
+
+        const computedStylesA = getComputedStyle(boxA);
+        const currentMaxWidthA = parseInt(computedStylesA.maxWidth);
+        
+        if (currentMaxWidthB === 1000) {
+            boxA.style.maxWidth = '450px';
+            boxB.style.maxWidth = '450px';
+            button.innerHTML = "Click for Stacked View"
+        } 
+        else if (currentMaxWidthB === 450) {
+            boxA.style.maxWidth = '600px';
+            boxB.style.maxWidth = '1000px';
+            button.innerHTML = "Click for Side by Side View"
+        }
+        else{
+            console.log("problem with reading maxWith");
+        }
+    }
+
+    function hideButtonBasedOnViewport() {
+        const toggleButton = document.getElementById('toggleButton');
+        const viewportWidth = window.innerWidth;
+
+        if (viewportWidth < 1000) {
+            toggleButton.style.display = 'none';
+        } else {
+            toggleButton.style.display = 'block'; // Or any other appropriate display value
+        }
+    }
+</script>
