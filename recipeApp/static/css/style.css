@@ -497,7 +497,7 @@ button{
     color: var(--font-color);
     text-align: center;
     border-radius: 15px;
-    padding: 20px;
+    padding: 20px 0px;
     font-size: 150%;
 }
 
@@ -520,4 +520,29 @@ button{
 .topCredit{
     margin: 0 auto;
     font-size: 60%;
+}
+
+.recipeInfo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 60%;
+    margin: 0 10px;
+}
+
+.imgCon{
+    width: 60%;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    max-width: 300px;
+    margin: 20px auto;
+    min-width: 170px;
+    border: 1px solid var(--font-color);
+}
+
+.recipeInfo p{
+    margin: 0 10px;
 }

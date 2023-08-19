@@ -43,7 +43,7 @@ def searchRecipesIngr(userInput):
 def grabRecipe(id):
     if id == "random":
         url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random"
-        querystring = {"number":"1"}
+        querystring = {"number":"1", "limitLicense":"true"}
         r = requests.get(url, headers=headers, params=querystring).json()
         r = r['recipes'][0]
     else:
@@ -59,6 +59,9 @@ def grabRecipe(id):
             credit = "Recipe Author Unknown"
 
     title = r['title']
+    cookTime = r['readyInMinutes']
+    img = r['image']
+    servings = r['servings']
 
     ingredients = []
     try:
@@ -82,4 +85,4 @@ def grabRecipe(id):
     except AttributeError:
         instructions = ["This recipe has a problem with its instructions. In this case, make your best judgement if you can just mix the ingredients. If not, please find a different recipe. Sorry about this.",'']
 
-    return title,ingredients,instructions,credit
+    return title,ingredients,instructions,credit, cookTime, img, servings

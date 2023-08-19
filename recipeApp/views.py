@@ -103,13 +103,16 @@ def loadRecipe(request):
     print("Entering post\n")
     if request.method == 'POST':
         id = request.POST.get('input', '')
-        title,ingredients,instructions,credit = grabRecipe(id)
+        title,ingredients,instructions,credit,cookTime,img,servings = grabRecipe(id)
 
         response_data = {
             'title': title,
             'ingredients': ingredients,
             'instructions':instructions,
-            'credit': f"(Recipe Source: {credit})"
+            'credit': f"(Recipe Source: {credit})",
+            'cookTime':f"Cook time: {cookTime} minutes",
+            'image':img,
+            'servings':f"Servings: {servings}"
             }
         print("\nExiting post")
         return JsonResponse(response_data)
