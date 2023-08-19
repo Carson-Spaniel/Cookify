@@ -50,6 +50,14 @@ def grabRecipe(id):
         url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{id}/information"
         r = (requests.get(url, headers=headers)).json()
 
+    try:
+        credit = r['creditText']
+    except KeyError:
+        try:
+            credit = r['creditsText']
+        except KeyError:
+            credit = "Recipe Author Unknown"
+
     title = r['title']
 
     ingredients = []
@@ -64,14 +72,9 @@ def grabRecipe(id):
 
     try:
         instructions = r['instructions']
-        instructions = instructions.replace('<ol>', "")
-        instructions = instructions.replace('</ol>', "")
-        instructions = instructions.replace('<li>', "")
-        instructions = instructions.replace('</li>', "")
-        instructions = instructions.replace('<br>', "")
-        instructions = instructions.replace('<hr>', "")
-        instructions = instructions.replace('<b>', "")
-        instructions = instructions.replace('</b>', "")
+        html = ['<ol>', '</ol>', '<li>', '</li>', '<br>', '<hr>', '<b>', '</b>']
+        for i in html:
+            instructions = instructions.replace(i, "")
         instructions = instructions.split('.')
         instructions = [sentence.strip() + "." for sentence in instructions if sentence.strip()]
         instructions[-1] = 'Enjoy!'
@@ -79,4 +82,4 @@ def grabRecipe(id):
     except AttributeError:
         instructions = ["This recipe has a problem with its instructions. In this case, make your best judgement if you can just mix the ingredients. If not, please find a different recipe. Sorry about this.",'']
 
-    return title,ingredients,instructions
+    return title,ingredients,instructions,credit

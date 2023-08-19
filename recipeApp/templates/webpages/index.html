@@ -277,14 +277,17 @@
                             var titleBox = document.querySelector('.recipe-container');
                             var titleHeader = titleBox.querySelector('.top');
                             var title = titleHeader.querySelector('.topTitle');
+                            var credit = titleHeader.querySelector('.topCredit');
                             var back = titleHeader.querySelector('.title');
                             if (id == 'random'){
                                 title.innerText = response.title;
                                 back.style.display = 'none';
+                                credit.innerText = response.credit;
                             }
                             else{
                                 title.innerText = titleText;
                                 back.style.display = 'inline-block';
+                                credit.innerText = response.credit;
                             }
                             var recipeContainer = document.querySelector('.flex-container')
                             while (recipeContainer.firstChild) {
@@ -579,6 +582,7 @@
             <div class="top" id="top">
                 <button class="title" onclick="hideRecipe()" style="background-color: var(--font-color); color: var(--primary-color); width: 100px;">Back</button>
                 <h1 class="topTitle"></h1>
+                <p class="topCredit"></p>
             </div>
             
             <div class="flex-container" style="margin-bottom: 20px;">

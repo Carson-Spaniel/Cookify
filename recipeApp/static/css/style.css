@@ -516,3 +516,8 @@ button{
     max-width: 1200px;
     margin: auto;
 }
+
+.topCredit{
+    margin: 0 auto;
+    font-size: 60%;
+}
