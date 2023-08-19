@@ -41,21 +41,37 @@ def searchRecipesIngr(userInput):
     return recipes
 
 def grabRecipe(id):
-    url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{id}/information"
-    r = (requests.get(url, headers=headers)).json()
+    if id == "random":
+        url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random"
+        querystring = {"number":"1"}
+        r = requests.get(url, headers=headers, params=querystring).json()
+        r = r['recipes'][0]
+    else:
+        url = f"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{id}/information"
+        r = (requests.get(url, headers=headers)).json()
 
     title = r['title']
 
     ingredients = []
     try:
         for i in range(len(r['extendedIngredients'])):
-            ingredients.append(r['extendedIngredients'][i]['original'])
+            ingredient = r['extendedIngredients'][i]['original']
+            if ingredient not in ingredients:
+                ingredients.append(ingredient)
     except Exception as e:
         print(e)
         ingredients = ["This recipe has a problem with its ingredients. In this case, please find a different recipe. Sorry about this."]
 
     try:
         instructions = r['instructions']
+        instructions = instructions.replace('<ol>', "")
+        instructions = instructions.replace('</ol>', "")
+        instructions = instructions.replace('<li>', "")
+        instructions = instructions.replace('</li>', "")
+        instructions = instructions.replace('<br>', "")
+        instructions = instructions.replace('<hr>', "")
+        instructions = instructions.replace('<b>', "")
+        instructions = instructions.replace('</b>', "")
         instructions = instructions.split('.')
         instructions = [sentence.strip() + "." for sentence in instructions if sentence.strip()]
         instructions[-1] = 'Enjoy!'

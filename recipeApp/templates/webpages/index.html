@@ -191,11 +191,12 @@
 
                 function submitsearch(ingr){
                     var csrftoken = getCookie('csrftoken');
+                    var userInput;
                     if (ingr == 'True'){
-                        var userInput = document.querySelector('input[name="searchIngr"]').value;
+                        userInput = document.querySelector('input[name="searchIngr"]').value;
                     }
                     else{
-                        var userInput = document.querySelector('input[name="searchName"]').value;
+                        userInput = document.querySelector('input[name="searchName"]').value;
                     }
                     console.log("User Input:"+userInput)
                     
@@ -273,10 +274,18 @@
                                 top: 0,
                                 behavior: 'smooth'
                             });
-                            var titleBox = document.querySelector('.recipe-container')
-                            var titleHeader = titleBox.querySelector('.top')
-                            var title = titleHeader.querySelector('.topTitle')
-                            title.innerText = titleText
+                            var titleBox = document.querySelector('.recipe-container');
+                            var titleHeader = titleBox.querySelector('.top');
+                            var title = titleHeader.querySelector('.topTitle');
+                            var back = titleHeader.querySelector('.title');
+                            if (id == 'random'){
+                                title.innerText = response.title;
+                                back.style.display = 'none';
+                            }
+                            else{
+                                title.innerText = titleText;
+                                back.style.display = 'inline-block';
+                            }
                             var recipeContainer = document.querySelector('.flex-container')
                             while (recipeContainer.firstChild) {
                                 recipeContainer.removeChild(recipeContainer.firstChild);
@@ -437,6 +446,9 @@
                         <span class="label" id="toggleLabelAlt" style="color: var(--primary-color);">Ingredient</span>
                         </div>
                     </label>
+                    <div class="search-container" style="margin: 5px;">
+                        <button class="find search-container button" type="submit" onclick="loadRecipe('random','')" style="height: 20px; font-size: 12px; border-radius: 20px; padding: 0px 0px; width: 60px; margin-top: auto;">Random</button>
+                    </div>
                 </div>
 
                 <div class="search-container name">
