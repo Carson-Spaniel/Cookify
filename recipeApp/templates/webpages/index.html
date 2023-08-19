@@ -277,8 +277,6 @@
                             var titleHeader = titleBox.querySelector('.top')
                             var title = titleHeader.querySelector('.topTitle')
                             title.innerText = titleText
-                            console.log("This is after button click")
-                            console.log(response)
                             var recipeContainer = document.querySelector('.flex-container')
                             while (recipeContainer.firstChild) {
                                 recipeContainer.removeChild(recipeContainer.firstChild);
@@ -556,15 +554,16 @@
             <button class="box r">
                 <div class="title">Recipe R Title</div>
             </button>
-            <button class="box s">
+            <!-- <button class="box s">
                 <div class="title">Recipe S Title</div>
             </button>
             <button class="box t">
                 <div class="title">Recipe T Title</div>
-            </button>
+            </button> -->
         </div>
         <div class="recipe-container">
             
+            {% include 'sideButton.html' %}
             <div class="top" id="top">
                 <button class="title" onclick="hideRecipe()" style="background-color: var(--font-color); color: var(--primary-color); width: 100px;">Back</button>
                 <h1 class="topTitle"></h1>

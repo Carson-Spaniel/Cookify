@@ -41,26 +41,53 @@
     function toggleBoxWidth() {
         const boxA = document.querySelector('.box.a');
         const boxB = document.querySelector('.box.b');
+
+        const RboxA = document.querySelector('.recipe-box.a');
+        const RboxB = document.querySelector('.recipe-box.b');
+
         const button = document.querySelector('.sidebutton');
 
-        const computedStylesB = getComputedStyle(boxB);
-        const currentMaxWidthB = parseInt(computedStylesB.maxWidth);
+        if (RboxA != null){
+            const RcomputedStylesB = getComputedStyle(RboxB);
+            const RcurrentMaxWidthB = parseInt(RcomputedStylesB.maxWidth);
 
-        const computedStylesA = getComputedStyle(boxA);
-        const currentMaxWidthA = parseInt(computedStylesA.maxWidth);
-        
-        if (currentMaxWidthB === 1000) {
-            boxA.style.maxWidth = '450px';
-            boxB.style.maxWidth = '450px';
-            button.innerHTML = "Click for Stacked View"
-        } 
-        else if (currentMaxWidthB === 450) {
-            boxA.style.maxWidth = '600px';
-            boxB.style.maxWidth = '1000px';
-            button.innerHTML = "Click for Side by Side View"
+            const RcomputedStylesA = getComputedStyle(RboxA);
+            const RcurrentMaxWidthA = parseInt(RcomputedStylesA.maxWidth);
+
+            if (RcurrentMaxWidthB === 1000) {
+                RboxA.style.maxWidth = '450px';
+                RboxB.style.maxWidth = '450px';
+                button.innerHTML = "Click for Stacked View"
+            } 
+            else if (RcurrentMaxWidthB === 450) {
+                RboxA.style.maxWidth = '600px';
+                RboxB.style.maxWidth = '1000px';
+                button.innerHTML = "Click for Side by Side View"
+            }
+            else{
+                console.log("problem with reading maxWith");
+            }
         }
         else{
-            console.log("problem with reading maxWith");
+            const computedStylesB = getComputedStyle(boxB);
+            const currentMaxWidthB = parseInt(computedStylesB.maxWidth);
+
+            const computedStylesA = getComputedStyle(boxA);
+            const currentMaxWidthA = parseInt(computedStylesA.maxWidth);
+
+            if (currentMaxWidthB === 1000) {
+                boxA.style.maxWidth = '450px';
+                boxB.style.maxWidth = '450px';
+                button.innerHTML = "Click for Stacked View"
+            } 
+            else if (currentMaxWidthB === 450) {
+                boxA.style.maxWidth = '600px';
+                boxB.style.maxWidth = '1000px';
+                button.innerHTML = "Click for Side by Side View"
+            }
+            else{
+                console.log("problem with reading maxWith");
+            }
         }
     }
 

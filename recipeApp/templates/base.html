@@ -5,7 +5,7 @@
     <head>
         <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
         
-        <title>{% block title %}{% endblock %}Cookify</title>
+        <title>{% block title %}{% endblock %}Cookify Recipes</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -66,7 +66,7 @@
             }
         </script>
     </head>
-    <div class="content">
+    <body class="content">
         <header>
             <nav>
                 
@@ -78,7 +78,7 @@
                     <input type="checkbox" id="darkModeToggle" onclick="toggleColorPalette()" />
                     <label for="darkModeToggle" class="toggle-button"></label>
                 </div>
-                <a href="/index"><button class="nameButton"><h1>Cookify</h1></button></a>
+                <a href="/index"><button class="nameButton"><h1>Cookify Recipes</h1></button></a>
 
                 <a href="/index"><button class="recipe">Find a Recipe</button></a>
 
@@ -144,6 +144,10 @@
             {% block content %}{% endblock %}
         </main>
 
-        <!-- Add your common footer content here, if any -->
-    </div>
+        <footer>
+            <nav class="footerNav">
+                <p style="color: var(--font-color);">Copyright © 2023 by Cookify Recipes. All rights reserved.</p>
+            </nav>
+        </footer>
+    </body>
 </html>
