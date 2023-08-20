@@ -196,6 +196,7 @@
                 function submitsearch(ingr){
                     var csrftoken = getCookie('csrftoken');
                     var userInput;
+                    document.querySelector('.recipe-container').style.display = 'none';
                     if (ingr == 'True'){
                         userInput = document.querySelector('input[name="searchIngr"]').value;
                     }
