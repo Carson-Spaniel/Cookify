@@ -583,12 +583,11 @@ button{
     background-color: var(--primary-color);
     border-radius: 18px;
     display: flex;
-    align-items: center; /* Center vertically */
+    align-items: center;
     transition: 0.2s ease-in-out;
     width: var(--slider-width, 68px);
 }
 
-/* Styling for the label container */
 .label-container {
     margin: auto;
     display: flex;
