@@ -212,7 +212,7 @@ nav{
 .ingredient-divider {
     border: none;
     border-top: 2px solid var(--font-color); /* Set the desired color for the hr */
-    margin: 5px 0; /* Add some margin above and below the hr to separate the items */
+    margin: 5px 0;
 }
 
 ul {
