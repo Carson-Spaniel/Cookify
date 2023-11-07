@@ -136,6 +136,10 @@
                     </div>
                 </div>
 
+                {% for item in items %}
+                <a href="/index"><button class="recipe">{{item.name}}</button></a>
+                {% endfor %}
+
             </nav>
         </header>
 

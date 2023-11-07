@@ -6,21 +6,23 @@ from .functions.checkLogin import checkLoginFun
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
 from recipesite.settings import CACHE_TIMEOUT
+from .models import *
 
 TEMPLATE_DIRS = (
     'os.path.join(BASE_DIR, "templates"),'
 )
 
 # ------------- main pages -------------
-@cache_page(CACHE_TIMEOUT)
-def indexPage(request):
-    return render(request, "webpages/index.html",)
+# @cache_page(CACHE_TIMEOUT)
+# def indexPage(request):
+#     return render(request, "webpages/index.html",)
 
 @cache_page(CACHE_TIMEOUT)
 def index(request):
     # For GET request, render the login page
     if request.method == 'GET':
-        return render(request, "webpages/login.html")
+        items = Test.objects.all()
+        return render(request, "webpages/login.html", {"items":items})
     # For POST request, handle form submission and login validation
     elif request.method == 'POST':
         print("Going into POST")

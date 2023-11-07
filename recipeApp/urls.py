@@ -5,7 +5,7 @@ urlpatterns = [
     #----------------Pages----------------
     path('',views.index, name='index'),
     path('index/',views.index, name='index'),
-    path('indexPage/',views.indexPage, name='indexPage'),
+    # path('indexPage/',views.indexPage, name='indexPage'),
     path('recipes-page/',views.recipesPage, name='recipes-page'),
     path('breakfast/',views.breakfast, name='breakfast'),
     path('lunch/',views.lunch, name='lunch'),
