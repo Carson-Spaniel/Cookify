@@ -11,10 +11,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if DEBUG:
-    from .secrets import SECRET_KEY
-else:
-    SECRET_KEY = os.environ["SECRET_KEY"]
+# if DEBUG:
+#     from .secrets import SECRET_KEY
+# else:
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 ALLOWED_HOSTS = ['cookify-16e5ae3525c7.herokuapp.com', 'cookify-recipes.com', 'www.cookify-recipes.com', '127.0.0.1']
 
@@ -114,15 +114,15 @@ USE_TZ = True
 
 # Security settings for HTTPS
 
-if DEBUG:
-    SECURE_SSL_REDIRECT = False
-    SESSION_COOKIE_SECURE = False
-    CSRF_COOKIE_SECURE = False
-else:
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+# if DEBUG:
+#     SECURE_SSL_REDIRECT = False
+#     SESSION_COOKIE_SECURE = False
+#     CSRF_COOKIE_SECURE = False
+# else:
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 # Static files (CSS, JavaScript, Images)
